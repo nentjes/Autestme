@@ -1,0 +1,649 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA976D32A13B075004EC58D /* ShapeType.swift */; };
+		BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */; };
+		BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */; };
+		BCCCABC72A0BA55E006CB6EF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCCABC62A0BA55E006CB6EF /* Preview Assets.xcassets */; };
+		BCCCABD12A0BA55E006CB6EF /* Autestme1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABD02A0BA55E006CB6EF /* Autestme1Tests.swift */; };
+		BCCCABDB2A0BA55E006CB6EF /* Autestme1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */; };
+		BCCCABDD2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */; };
+		BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */; };
+		BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */; };
+		BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */; };
+		BCCCABF22A0BA7E2006CB6EF /* ShapeDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */; };
+		BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BCCCABCD2A0BA55E006CB6EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCCCABB32A0BA55C006CB6EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCCCABBA2A0BA55C006CB6EF;
+			remoteInfo = Autestme1;
+		};
+		BCCCABD72A0BA55E006CB6EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCCCABB32A0BA55C006CB6EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BCCCABBA2A0BA55C006CB6EF;
+			remoteInfo = Autestme1;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BCA976D32A13B075004EC58D /* ShapeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
+		BCCCABBB2A0BA55C006CB6EF /* Autestme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autestme.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutestmeApp.swift; sourceTree = "<group>"; };
+		BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BCCCABC42A0BA55E006CB6EF /* Autestme1.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Autestme1.entitlements; sourceTree = "<group>"; };
+		BCCCABC62A0BA55E006CB6EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BCCCABCC2A0BA55E006CB6EF /* Autestme1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Autestme1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCCABD02A0BA55E006CB6EF /* Autestme1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1Tests.swift; sourceTree = "<group>"; };
+		BCCCABD62A0BA55E006CB6EF /* Autestme1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Autestme1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITests.swift; sourceTree = "<group>"; };
+		BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
+		BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
+		BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerView.swift; sourceTree = "<group>"; };
+		BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDisplayView.swift; sourceTree = "<group>"; };
+		BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScreen.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BCCCABB82A0BA55C006CB6EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCCABC92A0BA55E006CB6EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCCABD32A0BA55E006CB6EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BCCCABB22A0BA55C006CB6EF = {
+			isa = PBXGroup;
+			children = (
+				BCCCABBD2A0BA55C006CB6EF /* Autestme1 */,
+				BCCCABCF2A0BA55E006CB6EF /* Autestme1Tests */,
+				BCCCABD92A0BA55E006CB6EF /* Autestme1UITests */,
+				BCCCABBC2A0BA55C006CB6EF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BCCCABBC2A0BA55C006CB6EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCCCABBB2A0BA55C006CB6EF /* Autestme.app */,
+				BCCCABCC2A0BA55E006CB6EF /* Autestme1Tests.xctest */,
+				BCCCABD62A0BA55E006CB6EF /* Autestme1UITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BCCCABBD2A0BA55C006CB6EF /* Autestme1 */ = {
+			isa = PBXGroup;
+			children = (
+				BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */,
+				BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */,
+				BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */,
+				BCA976D32A13B075004EC58D /* ShapeType.swift */,
+				BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */,
+				BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */,
+				BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */,
+				BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */,
+				BCCCABC42A0BA55E006CB6EF /* Autestme1.entitlements */,
+				BCCCABC52A0BA55E006CB6EF /* Preview Content */,
+			);
+			path = Autestme1;
+			sourceTree = "<group>";
+		};
+		BCCCABC52A0BA55E006CB6EF /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				BCCCABC62A0BA55E006CB6EF /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BCCCABCF2A0BA55E006CB6EF /* Autestme1Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BCCCABD02A0BA55E006CB6EF /* Autestme1Tests.swift */,
+			);
+			path = Autestme1Tests;
+			sourceTree = "<group>";
+		};
+		BCCCABD92A0BA55E006CB6EF /* Autestme1UITests */ = {
+			isa = PBXGroup;
+			children = (
+				BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */,
+				BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */,
+			);
+			path = Autestme1UITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BCCCABBA2A0BA55C006CB6EF /* Autestme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCCCABE02A0BA55E006CB6EF /* Build configuration list for PBXNativeTarget "Autestme" */;
+			buildPhases = (
+				BCCCABB72A0BA55C006CB6EF /* Sources */,
+				BCCCABB82A0BA55C006CB6EF /* Frameworks */,
+				BCCCABB92A0BA55C006CB6EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Autestme;
+			productName = Autestme1;
+			productReference = BCCCABBB2A0BA55C006CB6EF /* Autestme.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BCCCABCB2A0BA55E006CB6EF /* Autestme1Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCCCABE32A0BA55E006CB6EF /* Build configuration list for PBXNativeTarget "Autestme1Tests" */;
+			buildPhases = (
+				BCCCABC82A0BA55E006CB6EF /* Sources */,
+				BCCCABC92A0BA55E006CB6EF /* Frameworks */,
+				BCCCABCA2A0BA55E006CB6EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCCCABCE2A0BA55E006CB6EF /* PBXTargetDependency */,
+			);
+			name = Autestme1Tests;
+			productName = Autestme1Tests;
+			productReference = BCCCABCC2A0BA55E006CB6EF /* Autestme1Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BCCCABD52A0BA55E006CB6EF /* Autestme1UITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BCCCABE62A0BA55E006CB6EF /* Build configuration list for PBXNativeTarget "Autestme1UITests" */;
+			buildPhases = (
+				BCCCABD22A0BA55E006CB6EF /* Sources */,
+				BCCCABD32A0BA55E006CB6EF /* Frameworks */,
+				BCCCABD42A0BA55E006CB6EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BCCCABD82A0BA55E006CB6EF /* PBXTargetDependency */,
+			);
+			name = Autestme1UITests;
+			productName = Autestme1UITests;
+			productReference = BCCCABD62A0BA55E006CB6EF /* Autestme1UITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BCCCABB32A0BA55C006CB6EF /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1540;
+				TargetAttributes = {
+					BCCCABBA2A0BA55C006CB6EF = {
+						CreatedOnToolsVersion = 14.3;
+					};
+					BCCCABCB2A0BA55E006CB6EF = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = BCCCABBA2A0BA55C006CB6EF;
+					};
+					BCCCABD52A0BA55E006CB6EF = {
+						CreatedOnToolsVersion = 14.3;
+						TestTargetID = BCCCABBA2A0BA55C006CB6EF;
+					};
+				};
+			};
+			buildConfigurationList = BCCCABB62A0BA55C006CB6EF /* Build configuration list for PBXProject "Autestme1" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BCCCABB22A0BA55C006CB6EF;
+			productRefGroup = BCCCABBC2A0BA55C006CB6EF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BCCCABBA2A0BA55C006CB6EF /* Autestme */,
+				BCCCABCB2A0BA55E006CB6EF /* Autestme1Tests */,
+				BCCCABD52A0BA55E006CB6EF /* Autestme1UITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BCCCABB92A0BA55C006CB6EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCCABC72A0BA55E006CB6EF /* Preview Assets.xcassets in Resources */,
+				BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCCABCA2A0BA55E006CB6EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCCABD42A0BA55E006CB6EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BCCCABB72A0BA55C006CB6EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCCABF22A0BA7E2006CB6EF /* ShapeDisplayView.swift in Sources */,
+				BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */,
+				BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */,
+				BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */,
+				BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */,
+				BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */,
+				BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCCABC82A0BA55E006CB6EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCCABD12A0BA55E006CB6EF /* Autestme1Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BCCCABD22A0BA55E006CB6EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BCCCABDD2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift in Sources */,
+				BCCCABDB2A0BA55E006CB6EF /* Autestme1UITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BCCCABCE2A0BA55E006CB6EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCCCABBA2A0BA55C006CB6EF /* Autestme */;
+			targetProxy = BCCCABCD2A0BA55E006CB6EF /* PBXContainerItemProxy */;
+		};
+		BCCCABD82A0BA55E006CB6EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BCCCABBA2A0BA55C006CB6EF /* Autestme */;
+			targetProxy = BCCCABD72A0BA55E006CB6EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BCCCABDE2A0BA55E006CB6EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BCCCABDF2A0BA55E006CB6EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		BCCCABE12A0BA55E006CB6EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BCCCABE22A0BA55E006CB6EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
+				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphoneos*]" = YES;
+				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
+				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
+				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BCCCABE42A0BA55E006CB6EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Autestme1.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Autestme1";
+			};
+			name = Debug;
+		};
+		BCCCABE52A0BA55E006CB6EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1Tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Autestme1.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Autestme1";
+			};
+			name = Release;
+		};
+		BCCCABE72A0BA55E006CB6EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Autestme1;
+			};
+			name = Debug;
+		};
+		BCCCABE82A0BA55E006CB6EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MACOSX_DEPLOYMENT_TARGET = 13.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1UITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Autestme1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BCCCABB62A0BA55C006CB6EF /* Build configuration list for PBXProject "Autestme1" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCCABDE2A0BA55E006CB6EF /* Debug */,
+				BCCCABDF2A0BA55E006CB6EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCCCABE02A0BA55E006CB6EF /* Build configuration list for PBXNativeTarget "Autestme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCCABE12A0BA55E006CB6EF /* Debug */,
+				BCCCABE22A0BA55E006CB6EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCCCABE32A0BA55E006CB6EF /* Build configuration list for PBXNativeTarget "Autestme1Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCCABE42A0BA55E006CB6EF /* Debug */,
+				BCCCABE52A0BA55E006CB6EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BCCCABE62A0BA55E006CB6EF /* Build configuration list for PBXNativeTarget "Autestme1UITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BCCCABE72A0BA55E006CB6EF /* Debug */,
+				BCCCABE82A0BA55E006CB6EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BCCCABB32A0BA55C006CB6EF /* Project object */;
+}

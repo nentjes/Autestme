@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B1F6D2F2DF6DEE100D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D2E2DF6DEE100D99F37 /* GameTimer.swift */; };
 		BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA976D32A13B075004EC58D /* ShapeType.swift */; };
 		BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */; };
 		BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */; };
@@ -17,7 +18,6 @@
 		BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */; };
 		BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */; };
 		BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */; };
-		BCCCABF22A0BA7E2006CB6EF /* ShapeDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */; };
 		BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8B1F6D2E2DF6DEE100D99F37 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		BCA976D32A13B075004EC58D /* ShapeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
 		BCCCABBB2A0BA55C006CB6EF /* Autestme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autestme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutestmeApp.swift; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerView.swift; sourceTree = "<group>"; };
-		BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDisplayView.swift; sourceTree = "<group>"; };
 		BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,7 +110,7 @@
 				BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */,
 				BCA976D32A13B075004EC58D /* ShapeType.swift */,
 				BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */,
-				BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */,
+				8B1F6D2E2DF6DEE100D99F37 /* GameTimer.swift */,
 				BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */,
 				BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */,
 				BCCCABC42A0BA55E006CB6EF /* Autestme1.entitlements */,
@@ -208,7 +208,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1640;
 				TargetAttributes = {
 					BCCCABBA2A0BA55C006CB6EF = {
 						CreatedOnToolsVersion = 14.3;
@@ -274,10 +274,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BCCCABF22A0BA7E2006CB6EF /* ShapeDisplayView.swift in Sources */,
 				BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */,
 				BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */,
 				BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */,
+				8B1F6D2F2DF6DEE100D99F37 /* GameTimer.swift in Sources */,
 				BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */,
 				BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */,
 				BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */,
@@ -352,6 +352,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -412,6 +413,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -441,7 +443,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -481,7 +482,6 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -513,12 +513,10 @@
 		BCCCABE42A0BA55E006CB6EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -537,12 +535,10 @@
 		BCCCABE52A0BA55E006CB6EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -561,11 +557,9 @@
 		BCCCABE72A0BA55E006CB6EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -584,11 +578,9 @@
 		BCCCABE82A0BA55E006CB6EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;

@@ -3,17 +3,17 @@ import Combine
 
 struct GameContainerView: View {
     private let shapeDisplayRate: Int
+    @StateObject private var gameTimer: GameTimer
     @State private var gameLogic: GameLogic
-    @State private var remainingTime: Int
-    @State private var timerCancellable: AnyCancellable?
     @State private var showEndScreen = false
     @State private var shapeCounts: [ShapeType: Int]
     @State private var colorMode: ColorMode
+    @State private var currentShape: ShapeType?
 
-    init(gameLogic: GameLogic, shapeDisplayRate: Int = 1, remainingTime: Int = 60) {
+    init(gameLogic: GameLogic, shapeDisplayRate: Int = 1) {
         self._gameLogic = State(initialValue: gameLogic)
         self.shapeDisplayRate = shapeDisplayRate
-        self._remainingTime = State(initialValue: remainingTime)
+        self._gameTimer = StateObject(wrappedValue: GameTimer(gameTime: gameLogic.gameTime, displayRate: shapeDisplayRate))
         self._shapeCounts = State(initialValue: Dictionary(uniqueKeysWithValues: ShapeType.allCases.map { ($0, 0) }))
         self._colorMode = State(initialValue: gameLogic.colorMode)
     }
@@ -24,11 +24,15 @@ struct GameContainerView: View {
                 .font(.largeTitle)
                 .padding()
             
-            Text("Resterende tijd: \(remainingTime) seconden")
+            Text("Resterende tijd: \(gameTimer.remainingTime) seconden")
                 .font(.title2)
                 .padding()
             
-            ShapeDisplayView(shapes: gameLogic.shapeType, displayRate: shapeDisplayRate, colorMode: colorMode, shapeCounts: $shapeCounts)
+            if let shape = currentShape {
+                shape.shapeView()
+                    .foregroundColor(colorMode == .random ? .random() : shape.color)
+                    .frame(width: 100, height: 100)
+            }
             
             NavigationLink(
                 destination: EndScreen(
@@ -39,29 +43,24 @@ struct GameContainerView: View {
                 ),
                 isActive: $showEndScreen
             ) {
-                Text("Ga naar eindscherm")
-                    .font(.title2)
-                    .padding()
-                    .background(Color.blue)
-                    .foregroundColor(.white)
-                    .cornerRadius(10)
+                EmptyView()
             }
-            .padding()
         }
         .onAppear {
-            timerCancellable = Timer.publish(every: 1, on: .main, in: .common)
-                .autoconnect()
-                .sink { _ in
-                    if remainingTime > 0 {
-                        remainingTime -= 1
-                    } else {
-                        timerCancellable?.cancel()
-                        showEndScreen = true
-                    }
-                }
+            gameTimer.start { [weak gameLogic] in
+                guard let gameLogic = gameLogic else { return }
+                let newShape = GameLogic.getRandomShape(shapes: gameLogic.shapeType, excluding: currentShape)
+                currentShape = newShape
+                shapeCounts[newShape, default: 0] += 1
+            }
+        }
+        .onChange(of: gameTimer.isRunning) { isRunning in
+            if !isRunning {
+                showEndScreen = true
+            }
         }
         .onDisappear {
-            timerCancellable?.cancel()
+            gameTimer.stop()
         }
     }
 }

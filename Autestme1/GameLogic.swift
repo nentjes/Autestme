@@ -139,13 +139,39 @@ class GameLogic: ObservableObject, Equatable, Hashable {
         hasher.combine(score)
     }
 
-    static func getRandomShape(shapes: [ShapeType], excluding lastShape: ShapeType? = nil) -> ShapeType {
-        var availableShapes = shapes
-
+    /// Genereert een willekeurige vorm die niet dezelfde is als de laatste vorm
+    /// - Parameters:
+    ///   - shapes: De beschikbare vormen
+    ///   - lastShape: De laatst getoonde vorm
+    ///   - lastShapes: Een array van de laatste getoonde vormen om te voorkomen dat vormen te vaak herhaald worden
+    /// - Returns: Een willekeurige vorm die niet in de laatste vormen voorkomt
+    static func getRandomShape(shapes: [ShapeType], excluding lastShape: ShapeType? = nil, lastShapes: [ShapeType] = []) -> ShapeType {
+        // Als er maar één vorm beschikbaar is, geef die terug
+        if shapes.count == 1 {
+            return shapes[0]
+        }
+        
+        // Filter de vormen die niet in de laatste vormen voorkomen
+        var availableShapes = shapes.filter { shape in
+            !lastShapes.contains(shape)
+        }
+        
+        // Als er geen vormen meer over zijn, reset de beschikbare vormen
+        if availableShapes.isEmpty {
+            availableShapes = shapes
+        }
+        
+        // Verwijder de laatste vorm als die bestaat
         if let lastShape = lastShape {
             availableShapes = availableShapes.filter { $0 != lastShape }
         }
-
+        
+        // Als er nog steeds geen vormen beschikbaar zijn, gebruik alle vormen
+        if availableShapes.isEmpty {
+            availableShapes = shapes
+        }
+        
+        // Kies een willekeurige vorm
         let randomIndex = Int.random(in: 0..<availableShapes.count)
         return availableShapes[randomIndex]
     }

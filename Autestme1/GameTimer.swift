@@ -30,7 +30,7 @@ class GameTimer: ObservableObject {
         }
 
         // vormen laten zien
-        shapeTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(displayRate), repeats: true) { _ in
+        shapeTimer = Timer.scheduledTimer(withTimeInterval: 1.0 / Double(displayRate), repeats: true) { _ in
             if self.remainingTime > 0 {
                 onShapeDisplay()
             }
@@ -45,8 +45,11 @@ class GameTimer: ObservableObject {
         shapeTimer = nil
     }
 
-    func reset() {
+    func reset(gameTime: Int, displayRate: Int) {
         stop()
-        remainingTime = gameTime
+        self.remainingTime = gameTime
+        self.timer = nil
+        self.shapeTimer = nil
+        self.isRunning = false
     }
 }

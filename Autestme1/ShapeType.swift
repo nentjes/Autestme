@@ -56,17 +56,17 @@ enum ShapeType: Int, CaseIterable {
     func shapeView() -> some View {
         switch self {
         case .dot:
-            return AnyView(Circle())
+            return AnyView(Circle().frame(width: 20, height: 20)) // klein
         case .line:
             return AnyView(Rectangle().frame(height: 5))
         case .circle:
-            return AnyView(Circle())
+            return AnyView(Circle().frame(width: 80, height: 80)) // groot
         case .oval:
-            return AnyView(Ellipse())
+            return AnyView(Ellipse().frame(width: 100, height: 60)) // langwerpig
         case .square:
-            return AnyView(Rectangle())
+            return AnyView(Rectangle().frame(width: 80, height: 80))
         case .rectangle:
-            return AnyView(Rectangle().aspectRatio(2, contentMode: .fit))
+            return AnyView(Rectangle().frame(width: 120, height: 60))
         }
     }
 }

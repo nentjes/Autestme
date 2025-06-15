@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */; };
+		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
 		BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA976D32A13B075004EC58D /* ShapeType.swift */; };
 		BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */; };
 		BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
+		8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewWrapper.swift; sourceTree = "<group>"; };
 		BCA976D32A13B075004EC58D /* ShapeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
 		BCCCABBB2A0BA55C006CB6EF /* Autestme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autestme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutestmeApp.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 				8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */,
 				BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */,
 				BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */,
+				8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */,
 				BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */,
 				BCCCABC42A0BA55E006CB6EF /* Autestme1.entitlements */,
 				BCCCABC52A0BA55E006CB6EF /* Preview Content */,
@@ -277,6 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */,
 				BCCCABF22A0BA7E2006CB6EF /* ShapeDisplayView.swift in Sources */,
 				BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */,
 				BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */,

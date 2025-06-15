@@ -9,8 +9,9 @@ import SwiftUI
 struct AutestmeApp: App {
     var body: some Scene {
         WindowGroup {
-            StartScreen()
+            NavigationViewWrapper()
         }
     }
 }
+
 

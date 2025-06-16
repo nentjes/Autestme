@@ -9,6 +9,16 @@
 /* Begin PBXBuildFile section */
 		8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */; };
 		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
+		8BC9EEF22DFEB891003B628F /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF12DFEB891003B628F /* beep.mp3 */; };
+		8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF32DFEB900003B628F /* circle.mp3 */; };
+		8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF52DFEB910003B628F /* oval.mp3 */; };
+		8BC9EEF82DFEB918003B628F /* rectangle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF72DFEB918003B628F /* rectangle.mp3 */; };
+		8BC9EEFA2DFEB921003B628F /* line.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF92DFEB921003B628F /* line.mp3 */; };
+		8BC9EEFC2DFEB928003B628F /* dot.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEFB2DFEB928003B628F /* dot.mp3 */; };
+		8BC9EEFE2DFEB933003B628F /* square.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEFD2DFEB933003B628F /* square.mp3 */; };
+		8BC9EF002DFEC714003B628F /* cijfer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEFF2DFEC714003B628F /* cijfer.mp3 */; };
+		8BC9EF022DFEC71F003B628F /* letter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EF012DFEC71F003B628F /* letter.mp3 */; };
+		8BC9EF042DFEDE62003B628F /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EF032DFEDE62003B628F /* click.mp3 */; };
 		BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA976D32A13B075004EC58D /* ShapeType.swift */; };
 		BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */; };
 		BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */; };
@@ -43,6 +53,16 @@
 /* Begin PBXFileReference section */
 		8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewWrapper.swift; sourceTree = "<group>"; };
+		8BC9EEF12DFEB891003B628F /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
+		8BC9EEF32DFEB900003B628F /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
+		8BC9EEF52DFEB910003B628F /* oval.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oval.mp3; sourceTree = "<group>"; };
+		8BC9EEF72DFEB918003B628F /* rectangle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rectangle.mp3; sourceTree = "<group>"; };
+		8BC9EEF92DFEB921003B628F /* line.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = line.mp3; sourceTree = "<group>"; };
+		8BC9EEFB2DFEB928003B628F /* dot.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dot.mp3; sourceTree = "<group>"; };
+		8BC9EEFD2DFEB933003B628F /* square.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = square.mp3; sourceTree = "<group>"; };
+		8BC9EEFF2DFEC714003B628F /* cijfer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cijfer.mp3; sourceTree = "<group>"; };
+		8BC9EF012DFEC71F003B628F /* letter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = letter.mp3; sourceTree = "<group>"; };
+		8BC9EF032DFEDE62003B628F /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
 		BCA976D32A13B075004EC58D /* ShapeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
 		BCCCABBB2A0BA55C006CB6EF /* Autestme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autestme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutestmeApp.swift; sourceTree = "<group>"; };
@@ -118,6 +138,16 @@
 				BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */,
 				BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */,
 				8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */,
+				8BC9EEF12DFEB891003B628F /* beep.mp3 */,
+				8BC9EEFF2DFEC714003B628F /* cijfer.mp3 */,
+				8BC9EEF32DFEB900003B628F /* circle.mp3 */,
+				8BC9EF032DFEDE62003B628F /* click.mp3 */,
+				8BC9EEFB2DFEB928003B628F /* dot.mp3 */,
+				8BC9EF012DFEC71F003B628F /* letter.mp3 */,
+				8BC9EEF92DFEB921003B628F /* line.mp3 */,
+				8BC9EEF52DFEB910003B628F /* oval.mp3 */,
+				8BC9EEF72DFEB918003B628F /* rectangle.mp3 */,
+				8BC9EEFD2DFEB933003B628F /* square.mp3 */,
 				BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */,
 				BCCCABC42A0BA55E006CB6EF /* Autestme1.entitlements */,
 				BCCCABC52A0BA55E006CB6EF /* Preview Content */,
@@ -254,8 +284,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BC9EEF82DFEB918003B628F /* rectangle.mp3 in Resources */,
+				8BC9EEFE2DFEB933003B628F /* square.mp3 in Resources */,
 				BCCCABC72A0BA55E006CB6EF /* Preview Assets.xcassets in Resources */,
+				8BC9EF002DFEC714003B628F /* cijfer.mp3 in Resources */,
+				8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */,
 				BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */,
+				8BC9EEFC2DFEB928003B628F /* dot.mp3 in Resources */,
+				8BC9EF022DFEC71F003B628F /* letter.mp3 in Resources */,
+				8BC9EEFA2DFEB921003B628F /* line.mp3 in Resources */,
+				8BC9EF042DFEDE62003B628F /* click.mp3 in Resources */,
+				8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */,
+				8BC9EEF22DFEB891003B628F /* beep.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +486,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				DEVELOPMENT_TEAM = RZGT4526W3;
@@ -468,6 +508,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
+				"MARKETING_VERSION[sdk=*]" = 1.5;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -486,7 +527,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 1.5;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				DEVELOPMENT_TEAM = RZGT4526W3;
@@ -508,6 +549,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 1.0;
+				"MARKETING_VERSION[sdk=*]" = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

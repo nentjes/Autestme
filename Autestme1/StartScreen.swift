@@ -8,11 +8,30 @@ struct StartScreen: View {
     @State private var shapeDisplayRate: Double = 1
     @State private var selectedColorMode: ColorMode = .fixed
     @State private var showInfoAlert = false
+    @State private var selectedGameVersion: GameVersion = .shapes
+
+
+    // computed property to determine the range for the slider based on the selected game
+    var labelForType: String {
+        switch selectedGameVersion {
+        case .shapes: return "figuren"
+        case .numbers: return "cijfers"
+        case .letters: return "letters"
+        }
+    }
+
+    var rangeForType: ClosedRange<Double> {
+        switch selectedGameVersion {
+        case .shapes: return 1...Double(ShapeType.allCases.count)
+        case .numbers: return 1...10
+        case .letters: return 1...26
+        }
+    }
 
     private func createGameLogic() -> GameLogic {
         return GameLogic(
             gameTime: Int(gameDuration),
-            gameVersion: .shapes,
+            gameVersion: selectedGameVersion,
             colorMode: selectedColorMode,
             displayRate: Int(shapeDisplayRate),
             player: "Player 1",
@@ -40,15 +59,23 @@ struct StartScreen: View {
                     Text("""
                     Welkom bij Autestme!
 
-                    In dit spel worden verschillende vormen getoond. Je taak is om te onthouden hoeveel keer je elke vorm hebt gezien.
+                    In dit spel worden verschillende vormen, letters of cijfers getoond. 
+                    Je taak is om te onthouden hoe vaak je elk item hebt gezien.
+
+                    Speltypes:
+                    • Vormen – cirkels, vierkanten, lijnen enz.
+                    • Letters – willekeurige hoofdletters (A t/m Z)
+                    • Cijfers – willekeurige cijfers (0 t/m 9)
 
                     Instellingen:
-                    • Spelduur: Hoe lang het spel duurt
-                    • Aantal figuren: Hoeveel verschillende vormen er zijn
-                    • Tempo: Hoe snel de vormen worden getoond
-                    • Kleurmodus: Vast of willekeurige kleuren
+                    • Spelduur – hoe lang het spel duurt
+                    • Tempo – hoe snel de items elkaar opvolgen
+                    • Aantal figuren – bij vormen: hoeveel verschillende figuren, bij letters/cijfers: uit hoeveel verschillende opties gekozen wordt
+                    
+                    • Kleurmodus – vaste kleuren per item of willekeurige kleuren.
 
                     Succes!
+
                     """)
                 }
             }
@@ -61,20 +88,13 @@ struct StartScreen: View {
             .padding()
 
             VStack {
-                Text("Aantal verschillende figuren: \(Int(numberOfShapes))")
-                Slider(value: $numberOfShapes, in: 1...Double(ShapeType.allCases.count))
-            }
-            .padding()
-
-            VStack {
-                Text("Tempo figuren: \(Int(shapeDisplayRate))")
+                Text("Tempo: \(Int(shapeDisplayRate))")
                 Slider(value: $shapeDisplayRate, in: 1...10)
             }
             .padding()
 
             VStack {
-                Text("Kies een kleurmodus")
-                    .font(.title2)
+                Text("Kleurmodus")
                     .padding()
                 Picker("Kleurmodus", selection: $selectedColorMode) {
                     Text("Vast").tag(ColorMode.fixed)
@@ -84,6 +104,26 @@ struct StartScreen: View {
             }
             .padding()
 
+            VStack {
+                Text("Speltype")
+                    .padding(.top)
+                Picker("Speltype", selection: $selectedGameVersion) {
+                    Text("Vormen").tag(GameVersion.shapes)
+                    Text("Letters").tag(GameVersion.letters)
+                    Text("Cijfers").tag(GameVersion.numbers)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+            }
+            .padding()
+
+            
+            VStack {
+                Text("Aantal verschillende \(labelForType): \(Int(numberOfShapes))")
+                Slider(value: $numberOfShapes, in: rangeForType, step: 1)
+            }
+            .padding()
+
+            
             Button(action: {
                 let logic = createGameLogic()
                 logic.displayRate = Int(shapeDisplayRate)

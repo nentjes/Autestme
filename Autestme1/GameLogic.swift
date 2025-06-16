@@ -42,6 +42,9 @@ class GameLogic: ObservableObject, Equatable, Hashable {
     var displayRate: Int
     
     var shapeColors: [ShapeType: Color] = [:]
+    var letterColors: [Character: Color] = [:]
+    var numberColors: [Int: Color] = [:]
+
     var shapeType: [ShapeType]
     
     var shapeCounts: [ShapeType: Int] = [:]
@@ -55,6 +58,9 @@ class GameLogic: ObservableObject, Equatable, Hashable {
     var remainingTime: Int
     var player: String
     var score: Int
+    
+    var numberOfItems: Int
+
 
     init(gameTime: Int, gameVersion: GameVersion, colorMode: ColorMode, displayRate: Int, player: String, numberOfShapes: Int) {
         self.gameID = UUID()
@@ -65,13 +71,16 @@ class GameLogic: ObservableObject, Equatable, Hashable {
         self.displayRate = displayRate
         self.remainingTime = gameTime
         self.player = player
-        
+        self.numberOfItems = numberOfShapes  // <--- voeg dit toe
+
         self.shapeType = GameLogic.generateShapes(numberOfShapes: numberOfShapes)
         self.score = 0
-        
+
         setupShapeColors()
+        setupLetterAndNumberColors()
         resetCounts()
     }
+
     
     func reset() {
         gameTime = 10
@@ -96,6 +105,20 @@ class GameLogic: ObservableObject, Equatable, Hashable {
         }
     }
 
+    private func setupLetterAndNumberColors() {
+        let allColors: [Color] = [.red, .blue, .green, .yellow, .orange, .purple, .pink]
+        
+        let letters = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ").prefix(numberOfItems)
+        for letter in letters {
+            letterColors[letter] = allColors.randomElement() ?? .gray
+        }
+
+        for number in 0..<numberOfItems {
+            numberColors[number] = allColors.randomElement() ?? .gray
+        }
+    }
+
+    
     private func resetCounts() {
         switch gameVersion {
         case .shapes:
@@ -103,11 +126,13 @@ class GameLogic: ObservableObject, Equatable, Hashable {
                 shapeCounts[shape] = 0
             }
         case .letters:
-            for letter in "ABCDEFGHIJKLMNOPQRSTUVWXYZ" {
+            let letters = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ").prefix(numberOfItems)
+            for letter in letters {
                 letterCounts[letter] = 0
             }
+
         case .numbers:
-            for number in 0...9 {
+            for number in 0..<numberOfItems {
                 numberCounts[number] = 0
             }
         }
@@ -186,4 +211,5 @@ class GameLogic: ObservableObject, Equatable, Hashable {
         return generatedShapes
     }
 }
+
 

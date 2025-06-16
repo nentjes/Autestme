@@ -1,4 +1,4 @@
-// EndScreen.swift (resultaat kleuren correct tonen bij 0/0)
+
 import SwiftUI
 
 struct EndScreen: View {
@@ -8,15 +8,30 @@ struct EndScreen: View {
     @Binding var gameLogic: GameLogic
     @Binding var navigationPath: NavigationPath
 
-    @State private var enteredCounts: [ShapeType: Int] = [:]
+    @State private var enteredShapes: [ShapeType: Int] = [:]
+    @State private var enteredLetters: [Character: Int] = [:]
+    @State private var enteredNumbers: [Int: Int] = [:]
     @State private var isShowingResults = false
-    @FocusState private var focusedShape: ShapeType?
-    @State private var selectedField: ShapeType? = nil
+    @State private var textInputs: [AnyHashable: String] = [:]
+
 
     private var totalCorrect: Int {
-        shapeCounts.reduce(0) { result, pair in
-            let entered = enteredCounts[pair.key] ?? 0
-            return result + (entered == pair.value ? 1 : 0)
+        switch gameLogic.gameVersion {
+        case .shapes:
+            return shapeCounts.reduce(0) { acc, pair in
+                let entered = enteredShapes[pair.key] ?? 0
+                return acc + (entered == pair.value ? 1 : 0)
+            }
+        case .letters:
+            return gameLogic.letterCounts.filter { $0.value > 0 }.reduce(0) { acc, pair in
+                let entered = enteredLetters[pair.key] ?? 0
+                return acc + (entered == pair.value ? 1 : 0)
+            }
+        case .numbers:
+            return gameLogic.numberCounts.filter { $0.value > 0 }.reduce(0) { acc, pair in
+                let entered = enteredNumbers[pair.key] ?? 0
+                return acc + (entered == pair.value ? 1 : 0)
+            }
         }
     }
 
@@ -31,115 +46,114 @@ struct EndScreen: View {
                     .font(.title)
                     .padding()
 
-                List(shapeCounts.sorted(by: { $0.key.rawValue < $1.key.rawValue }), id: \ .key) { shape, actual in
-                    let entered = enteredCounts[shape] ?? 0
-                    let isCorrect = entered == actual
-                    let isSkipped = actual == 0 && entered == 0
-                    let color: Color = isCorrect || isSkipped ? .green : .red
-
-                    HStack {
-                        Text("\(shape.displayName):")
-                        Spacer()
-                        Text("\(entered)/\(actual)")
-                            .foregroundColor(color)
-                    }
+                switch gameLogic.gameVersion {
+                case .shapes:
+                    resultList(data: shapeCounts.map { ($0.key.displayName, enteredShapes[$0.key] ?? 0, $0.value) })
+                case .letters:
+                    resultList(data: gameLogic.letterCounts.filter { $0.value > 0 }
+                        .map { (String($0.key), enteredLetters[$0.key] ?? 0, $0.value) })
+                case .numbers:
+                    resultList(data: gameLogic.numberCounts.filter { $0.value > 0 }
+                        .map { (String($0.key), enteredNumbers[$0.key] ?? 0, $0.value) })
                 }
-                .padding()
 
-                Text("Score: \(totalCorrect)/\(shapeCounts.count)")
+                Text("Score: \(totalCorrect)")
                     .font(.title2)
                     .padding()
 
-                Button(action: {
+                Button("Terug naar start") {
                     gameLogic.reset()
                     navigationPath.removeLast(navigationPath.count)
-                }) {
-                    Text("Terug naar start")
-                        .font(.title2)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
                 }
+                .font(.title2)
                 .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
             } else {
-                Text("Voer het aantal geziene vormen in:")
-                    .font(.title)
+                Text("Voer in hoeveel je hebt gezien:")
+                    .font(.title2)
                     .padding()
 
-                List(ShapeType.allCases, id: \ .self) { shape in
-                    HStack {
-                        Text("\(shape.displayName):")
-                        Spacer()
-                        TextField("0", text: Binding(
-                            get: {
-                                if let value = enteredCounts[shape] {
-                                    return String(value)
-                                } else {
-                                    return ""
-                                }
-                            },
-                            set: { newValue in
-                                if let value = Int(newValue.filter { $0.isNumber }) {
-                                    enteredCounts[shape] = value
-                                } else {
-                                    enteredCounts[shape] = 0
-                                }
-                            }
-                        ))
-                        .keyboardType(.numberPad)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        .focused($focusedShape, equals: shape)
-                        .submitLabel(.next)
-                        .onTapGesture {
-                            selectedField = shape
-                            focusedShape = shape
-                        }
-                        .onChange(of: focusedShape) { newFocus in
-                            if newFocus == shape {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
-                                    selectedField = shape
-                                }
-                            }
-                        }
-                        .onAppear {
-                            if shape == ShapeType.allCases.first {
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    focusedShape = shape
-                                }
-                            }
-                        }
-                        .background(
-                            GeometryReader { geo in
-                                Color.clear.onChange(of: selectedField) { target in
-                                    if target == shape {
-                                        UITextField.appearance().clearButtonMode = .never
-                                        UITextField.appearance().tintColor = .clear
-                                    }
-                                }
-                            }
-                        )
-                        .multilineTextAlignment(.trailing)
-                        .frame(width: 60)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 5)
-                                .stroke(focusedShape == shape ? Color.accentColor : Color.clear, lineWidth: 2)
-                        )
-                    }
+                switch gameLogic.gameVersion {
+                case .shapes:
+                    entryList(
+                        items: shapeCounts.map { $0.key },
+                        getValue: { enteredShapes[$0] ?? 0 },
+                        setValue: { enteredShapes[$0] = $1 },
+                        label: { $0.displayName }
+                    )
+                case .letters:
+                    entryList(
+                        items: gameLogic.letterCounts.filter { $0.value > 0 }.map { $0.key }.sorted(),
+                        getValue: { enteredLetters[$0] ?? 0 },
+                        setValue: { enteredLetters[$0] = $1 },
+                        label: { String($0) }
+                    )
+                case .numbers:
+                    entryList(
+                        items: gameLogic.numberCounts.filter { $0.value > 0 }.map { $0.key }.sorted(),
+                        getValue: { enteredNumbers[$0] ?? 0 },
+                        setValue: { enteredNumbers[$0] = $1 },
+                        label: { String($0) }
+                    )
                 }
-                .padding()
 
-                Button(action: { isShowingResults = true }) {
-                    Text("Toon resultaten")
-                        .font(.title2)
-                        .padding()
-                        .background(Color.blue)
-                        .foregroundColor(.white)
-                        .cornerRadius(10)
+                Button("Toon resultaten") {
+                    isShowingResults = true
                 }
+                .font(.title2)
                 .padding()
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(10)
+            }
+        }
+        .padding()
+    }
+
+    // 🔧 Invoervelden voor vormen/letters/cijfers
+    func entryList<T: Hashable>(
+        items: [T],
+        getValue: @escaping (T) -> Int,
+        setValue: @escaping (T, Int) -> Void,
+        label: @escaping (T) -> String
+    ) -> some View {
+        List(items, id: \.self) { item in
+            HStack {
+                Text(label(item) + ":")
+                Spacer()
+                TextField("0", text: Binding(
+                    get: {
+                        textInputs[item] ?? "\(getValue(item))"
+                    },
+                    set: { newText in
+                        let filtered = newText.filter { $0.isNumber }
+                        textInputs[item] = filtered
+                        setValue(item, Int(filtered) ?? 0)
+                    }
+                ))
+                .keyboardType(.numberPad)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .frame(width: 60)
+                .multilineTextAlignment(.trailing)
+
+            }
+        }
+    }
+
+    // 📊 Resultaten tonen
+    func resultList(data: [(String, Int, Int)]) -> some View {
+        List(data, id: \.0) { label, entered, actual in
+            let correct = entered == actual
+            let skipped = entered == 0 && actual == 0
+            let color: Color = correct || skipped ? .green : .red
+
+            HStack {
+                Text(label + ":")
+                Spacer()
+                Text("\(entered)/\(actual)").foregroundColor(color)
             }
         }
     }
 }
-

@@ -1,11 +1,10 @@
-
 import SwiftUI
 
 struct EndScreen: View {
     @Binding var shapeCounts: [ShapeType: Int]
     let dismissAction: () -> Void
     let restartAction: () -> Void
-    @Binding var gameLogic: GameLogic
+    @ObservedObject var gameLogic: GameLogic
     @Binding var navigationPath: NavigationPath
 
     @State private var enteredShapes: [ShapeType: Int] = [:]
@@ -13,7 +12,7 @@ struct EndScreen: View {
     @State private var enteredNumbers: [Int: Int] = [:]
     @State private var isShowingResults = false
     @State private var textInputs: [AnyHashable: String] = [:]
-
+    @FocusState private var focusedField: AnyHashable? // <-- HIER IS DE FOCUS
 
     private var totalCorrect: Int {
         switch gameLogic.gameVersion {
@@ -37,12 +36,12 @@ struct EndScreen: View {
 
     var body: some View {
         VStack {
-            Text("Eindscherm")
+            Text("end_screen_title") // <-- Gelokaliseerd
                 .font(.largeTitle)
                 .padding()
 
             if isShowingResults {
-                Text("Resultaten:")
+                Text("end_screen_results_title") // <-- Gelokaliseerd
                     .font(.title)
                     .padding()
 
@@ -51,17 +50,19 @@ struct EndScreen: View {
                     resultList(data: shapeCounts.map { ($0.key.displayName, enteredShapes[$0.key] ?? 0, $0.value) })
                 case .letters:
                     resultList(data: gameLogic.letterCounts.filter { $0.value > 0 }
+                        .sorted(by: {$0.key < $1.key}) // <-- HIER IS DE SORTERING
                         .map { (String($0.key), enteredLetters[$0.key] ?? 0, $0.value) })
                 case .numbers:
                     resultList(data: gameLogic.numberCounts.filter { $0.value > 0 }
+                        .sorted(by: {$0.key < $1.key}) // <-- HIER IS DE SORTERING
                         .map { (String($0.key), enteredNumbers[$0.key] ?? 0, $0.value) })
                 }
 
-                Text("Score: \(totalCorrect)")
+                Text(String(format: NSLocalizedString("end_screen_score_label", comment: ""), "\(totalCorrect)"))
                     .font(.title2)
                     .padding()
 
-                Button("Terug naar start") {
+                Button("end_screen_back_button") { // <-- Gelokaliseerd
                     gameLogic.reset()
                     navigationPath.removeLast(navigationPath.count)
                 }
@@ -71,7 +72,7 @@ struct EndScreen: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
             } else {
-                Text("Voer in hoeveel je hebt gezien:")
+                Text("end_screen_input_prompt") // <-- Gelokaliseerd
                     .font(.title2)
                     .padding()
 
@@ -81,26 +82,32 @@ struct EndScreen: View {
                         items: shapeCounts.map { $0.key },
                         getValue: { enteredShapes[$0] ?? 0 },
                         setValue: { enteredShapes[$0] = $1 },
-                        label: { $0.displayName }
+                        label: { $0.displayName },
+                        focusState: $focusedField
                     )
                 case .letters:
                     entryList(
                         items: gameLogic.letterCounts.filter { $0.value > 0 }.map { $0.key }.sorted(),
                         getValue: { enteredLetters[$0] ?? 0 },
                         setValue: { enteredLetters[$0] = $1 },
-                        label: { String($0) }
+                        label: { String($0) },
+                        focusState: $focusedField
                     )
                 case .numbers:
                     entryList(
                         items: gameLogic.numberCounts.filter { $0.value > 0 }.map { $0.key }.sorted(),
                         getValue: { enteredNumbers[$0] ?? 0 },
                         setValue: { enteredNumbers[$0] = $1 },
-                        label: { String($0) }
+                        label: { String($0) },
+                        focusState: $focusedField
                     )
                 }
 
-                Button("Toon resultaten") {
+                Button("end_screen_show_results_button") { // <-- Gelokaliseerd
                     isShowingResults = true
+                    if totalCorrect > GameLogic.getHighScore(for: gameLogic.player, gameVersion: gameLogic.gameVersion) {
+                        GameLogic.setHighScore(totalCorrect, for: gameLogic.player, gameVersion: gameLogic.gameVersion)
+                    }
                 }
                 .font(.title2)
                 .padding()
@@ -110,39 +117,63 @@ struct EndScreen: View {
             }
         }
         .padding()
+        .onAppear { // <-- HIER IS DE AUTO-FOCUS LOGICA
+            if !isShowingResults {
+                var firstItem: AnyHashable?
+                switch gameLogic.gameVersion {
+                case .shapes:
+                    firstItem = shapeCounts.map { $0.key }.first
+                case .letters:
+                    firstItem = gameLogic.letterCounts.filter { $0.value > 0 }.map { $0.key }.sorted().first
+                case .numbers:
+                    firstItem = gameLogic.numberCounts.filter { $0.value > 0 }.map { $0.key }.sorted().first
+                }
+                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    focusedField = firstItem
+                }
+            }
+        }
     }
 
-    // 🔧 Invoervelden voor vormen/letters/cijfers
+    // 🔧 Invoervelden
     func entryList<T: Hashable>(
         items: [T],
         getValue: @escaping (T) -> Int,
         setValue: @escaping (T, Int) -> Void,
-        label: @escaping (T) -> String
+        label: @escaping (T) -> String,
+        focusState: FocusState<AnyHashable?>.Binding
     ) -> some View {
         List(items, id: \.self) { item in
             HStack {
-                Text(label(item) + ":")
+                Text(String(format: NSLocalizedString("end_screen_item_label", comment: ""), label(item)))
                 Spacer()
-                TextField("0", text: Binding(
+                
+                // HIER IS DE "0" PLACEHOLDER LOGICA
+                TextField("end_screen_input_placeholder", text: Binding(
                     get: {
-                        textInputs[item] ?? "\(getValue(item))"
+                        let value = getValue(item)
+                        if value != 0 {
+                            return "\(value)"
+                        }
+                        return "" // <-- Toon leeg veld als waarde 0 is
                     },
                     set: { newText in
                         let filtered = newText.filter { $0.isNumber }
                         textInputs[item] = filtered
-                        setValue(item, Int(filtered) ?? 0)
+                        setValue(item, Int(filtered) ?? 0) // Sla 0 op als veld leeg is
                     }
                 ))
                 .keyboardType(.numberPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 60)
                 .multilineTextAlignment(.trailing)
-
+                .focused(focusState, equals: item)
             }
         }
     }
 
-    // 📊 Resultaten tonen
+    // 📊 Resultaten
     func resultList(data: [(String, Int, Int)]) -> some View {
         List(data, id: \.0) { label, entered, actual in
             let correct = entered == actual
@@ -150,9 +181,10 @@ struct EndScreen: View {
             let color: Color = correct || skipped ? .green : .red
 
             HStack {
-                Text(label + ":")
+                Text(String(format: NSLocalizedString("end_screen_item_label", comment: ""), label))
                 Spacer()
-                Text("\(entered)/\(actual)").foregroundColor(color)
+                Text(String(format: NSLocalizedString("end_screen_result_format", comment: ""), "\(entered)", "\(actual)"))
+                    .foregroundColor(color)
             }
         }
     }

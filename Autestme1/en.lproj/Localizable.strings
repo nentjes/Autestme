@@ -1,0 +1,56 @@
+/* Localizable.strings (English) */
+
+/* MARK: - Info Alert (Game Explanation) */
+"info_title" = "Game Explanation";
+"alert_button_ok" = "OK";
+"info_body" = "Welcome to Autestme!\n\nIn this game, different shapes, letters, or numbers are displayed.\nYour task is to remember how many times you have seen each item.\n\nGame Types:\n• Shapes – circles, squares, lines, etc.\n• Letters – random capital letters (A to Z)\n• Numbers – random numbers (0 to 9)\n\nSettings:\n• Game Duration – how long the game lasts\n• Tempo – how fast the items appear\n• Number of items – for shapes: how many different shapes, for letters/numbers: how many different options are chosen from\n• Color Mode – fixed colors per item or random colors.";
+
+/* MARK: - StartScreen UI */
+"app_title" = "Autestme";
+"start_game_button" = "Start the game";
+
+/* MARK: - Player Info */
+"player_name_label" = "Player Name";
+"player_name_placeholder" = "Name";
+"highscore_display" = "Highscore: %@";
+"no_highscore" = "No highscore yet";
+
+/* MARK: - Game Settings */
+"game_duration_label" = "Game duration: %@ seconds";
+"game_speed_label" = "Speed: %@";
+"color_mode_label" = "Color Mode";
+"color_mode_fixed" = "Fixed";
+"color_mode_random" = "Random";
+"game_type_label" = "Game Type";
+"game_type_shapes" = "Shapes";
+"game_type_letters" = "Letters";
+"game_type_numbers" = "Numbers";
+
+/* MARK: - Item Count (met variabelen) */
+"item_count_label" = "Number of different %@: %@";
+"item_type_shapes" = "shapes";
+"item_type_letters" = "letters";
+"item_type_numbers" = "numbers";
+
+/* MARK: - Game Screen */
+"game_screen_title" = "Game Screen";
+"game_screen_time_left" = "Time remaining: %@ seconds";
+
+/* MARK: - End Screen */
+"end_screen_title" = "End Screen";
+"end_screen_results_title" = "Results:";
+"end_screen_score_label" = "Score: %@";
+"end_screen_back_button" = "Back to start";
+"end_screen_input_prompt" = "How many items did you see:";
+"end_screen_show_results_button" = "Show Results";
+"end_screen_input_placeholder" = "0";
+"end_screen_item_label" = "%@:";
+"end_screen_result_format" = "%@/%@";
+
+/* MARK: - Shape Names */
+"shape_dot" = "Dot";
+"shape_line" = "Line";
+"shape_circle" = "Circle";
+"shape_oval" = "Oval";
+"shape_square" = "Square";
+"shape_rectangle" = "Rectangle";

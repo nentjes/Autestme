@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */; };
 		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
-		8BC9EEF22DFEB891003B628F /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF12DFEB891003B628F /* beep.mp3 */; };
 		8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF32DFEB900003B628F /* circle.mp3 */; };
 		8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF52DFEB910003B628F /* oval.mp3 */; };
 		8BC9EEF82DFEB918003B628F /* rectangle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF72DFEB918003B628F /* rectangle.mp3 */; };
@@ -19,6 +18,8 @@
 		8BC9EF002DFEC714003B628F /* cijfer.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEFF2DFEC714003B628F /* cijfer.mp3 */; };
 		8BC9EF022DFEC71F003B628F /* letter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EF012DFEC71F003B628F /* letter.mp3 */; };
 		8BC9EF042DFEDE62003B628F /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EF032DFEDE62003B628F /* click.mp3 */; };
+		8BE673272EB6B25C009F7596 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BE673262EB6B25C009F7596 /* beep.mp3 */; };
+		8BE6736D2EB7569A009F7596 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BE6736B2EB7569A009F7596 /* Localizable.strings */; };
 		BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA976D32A13B075004EC58D /* ShapeType.swift */; };
 		BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */; };
 		BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */; };
@@ -29,7 +30,6 @@
 		BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */; };
 		BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */; };
 		BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */; };
-		BCCCABF22A0BA7E2006CB6EF /* ShapeDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */; };
 		BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,10 +50,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		8BE673042EB69F19009F7596 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewWrapper.swift; sourceTree = "<group>"; };
-		8BC9EEF12DFEB891003B628F /* beep.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep.mp3; sourceTree = "<group>"; };
 		8BC9EEF32DFEB900003B628F /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
 		8BC9EEF52DFEB910003B628F /* oval.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oval.mp3; sourceTree = "<group>"; };
 		8BC9EEF72DFEB918003B628F /* rectangle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rectangle.mp3; sourceTree = "<group>"; };
@@ -63,6 +75,18 @@
 		8BC9EEFF2DFEC714003B628F /* cijfer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cijfer.mp3; sourceTree = "<group>"; };
 		8BC9EF012DFEC71F003B628F /* letter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = letter.mp3; sourceTree = "<group>"; };
 		8BC9EF032DFEDE62003B628F /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
+		8BE673132EB6A3FB009F7596 /* AVFAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFAudio.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/AVFAudio.framework; sourceTree = DEVELOPER_DIR; };
+		8BE673152EB6A41C009F7596 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
+		8BE673172EB6A425009F7596 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		8BE673252EB6B25C009F7596 /* en */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = en; path = en.lproj/beep.mp3; sourceTree = "<group>"; };
+		8BE6732B2EB6B275009F7596 /* nl */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = nl; path = nl.lproj/beep.mp3; sourceTree = "<group>"; };
+		8BE6732C2EB74C81009F7596 /* Base */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Base; path = Base.lproj/beep.mp3; sourceTree = "<group>"; };
+		8BE6732D2EB74C84009F7596 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "zh-Hans"; path = "zh-Hans.lproj/beep.mp3"; sourceTree = "<group>"; };
+		8BE6736C2EB7569A009F7596 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8BE6736E2EB756C1009F7596 /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8BE6736F2EB75704009F7596 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8BE673702EB75705009F7596 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8BE673712EB75706009F7596 /* es-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-US"; path = "es-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		BCA976D32A13B075004EC58D /* ShapeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
 		BCCCABBB2A0BA55C006CB6EF /* Autestme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autestme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutestmeApp.swift; sourceTree = "<group>"; };
@@ -77,7 +101,6 @@
 		BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerView.swift; sourceTree = "<group>"; };
-		BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeDisplayView.swift; sourceTree = "<group>"; };
 		BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,12 +129,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8BE673122EB6A3FA009F7596 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8BE673172EB6A425009F7596 /* Foundation.framework */,
+				8BE673152EB6A41C009F7596 /* SwiftUI.framework */,
+				8BE673132EB6A3FB009F7596 /* AVFAudio.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BCCCABB22A0BA55C006CB6EF = {
 			isa = PBXGroup;
 			children = (
 				BCCCABBD2A0BA55C006CB6EF /* Autestme1 */,
 				BCCCABCF2A0BA55E006CB6EF /* Autestme1Tests */,
 				BCCCABD92A0BA55E006CB6EF /* Autestme1UITests */,
+				8BE673122EB6A3FA009F7596 /* Frameworks */,
 				BCCCABBC2A0BA55C006CB6EF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -135,10 +169,9 @@
 				BCA976D32A13B075004EC58D /* ShapeType.swift */,
 				BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */,
 				8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */,
-				BCCCABF12A0BA7E2006CB6EF /* ShapeDisplayView.swift */,
 				BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */,
 				8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */,
-				8BC9EEF12DFEB891003B628F /* beep.mp3 */,
+				8BE673262EB6B25C009F7596 /* beep.mp3 */,
 				8BC9EEFF2DFEC714003B628F /* cijfer.mp3 */,
 				8BC9EEF32DFEB900003B628F /* circle.mp3 */,
 				8BC9EF032DFEDE62003B628F /* click.mp3 */,
@@ -150,6 +183,7 @@
 				8BC9EEFD2DFEB933003B628F /* square.mp3 */,
 				BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */,
 				BCCCABC42A0BA55E006CB6EF /* Autestme1.entitlements */,
+				8BE6736B2EB7569A009F7596 /* Localizable.strings */,
 				BCCCABC52A0BA55E006CB6EF /* Preview Content */,
 			);
 			path = Autestme1;
@@ -190,6 +224,7 @@
 				BCCCABB72A0BA55C006CB6EF /* Sources */,
 				BCCCABB82A0BA55C006CB6EF /* Frameworks */,
 				BCCCABB92A0BA55C006CB6EF /* Resources */,
+				8BE673042EB69F19009F7596 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
@@ -243,7 +278,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					BCCCABBA2A0BA55C006CB6EF = {
@@ -266,6 +301,14 @@
 			knownRegions = (
 				en,
 				Base,
+				nl,
+				fr,
+				de,
+				"es-US",
+				"zh-Hans",
+				hi,
+				uk,
+				sw,
 			);
 			mainGroup = BCCCABB22A0BA55C006CB6EF;
 			productRefGroup = BCCCABBC2A0BA55C006CB6EF /* Products */;
@@ -287,6 +330,7 @@
 				8BC9EEF82DFEB918003B628F /* rectangle.mp3 in Resources */,
 				8BC9EEFE2DFEB933003B628F /* square.mp3 in Resources */,
 				BCCCABC72A0BA55E006CB6EF /* Preview Assets.xcassets in Resources */,
+				8BE6736D2EB7569A009F7596 /* Localizable.strings in Resources */,
 				8BC9EF002DFEC714003B628F /* cijfer.mp3 in Resources */,
 				8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */,
 				BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */,
@@ -295,7 +339,7 @@
 				8BC9EEFA2DFEB921003B628F /* line.mp3 in Resources */,
 				8BC9EF042DFEDE62003B628F /* click.mp3 in Resources */,
 				8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */,
-				8BC9EEF22DFEB891003B628F /* beep.mp3 in Resources */,
+				8BE673272EB6B25C009F7596 /* beep.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,7 +365,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */,
-				BCCCABF22A0BA7E2006CB6EF /* ShapeDisplayView.swift in Sources */,
 				BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */,
 				BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */,
 				BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */,
@@ -363,6 +406,32 @@
 			targetProxy = BCCCABD72A0BA55E006CB6EF /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8BE673262EB6B25C009F7596 /* beep.mp3 */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BE673252EB6B25C009F7596 /* en */,
+				8BE6732B2EB6B275009F7596 /* nl */,
+				8BE6732C2EB74C81009F7596 /* Base */,
+				8BE6732D2EB74C84009F7596 /* zh-Hans */,
+			);
+			name = beep.mp3;
+			sourceTree = "<group>";
+		};
+		8BE6736B2EB7569A009F7596 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8BE6736C2EB7569A009F7596 /* en */,
+				8BE6736E2EB756C1009F7596 /* nl */,
+				8BE6736F2EB75704009F7596 /* zh-Hans */,
+				8BE673702EB75705009F7596 /* hi */,
+				8BE673712EB75706009F7596 /* es-US */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BCCCABDE2A0BA55E006CB6EF /* Debug */ = {
@@ -486,13 +555,15 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Memory Game";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -507,12 +578,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.0;
-				"MARKETING_VERSION[sdk=*]" = 1.5;
+				MARKETING_VERSION = 2.0;
+				"MARKETING_VERSION[sdk=iphoneos*]" = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -527,13 +599,15 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.5;
+				CURRENT_PROJECT_VERSION = 2;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "Memory Game";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -548,12 +622,13 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 1.0;
-				"MARKETING_VERSION[sdk=*]" = 1.0;
+				MARKETING_VERSION = 2.0;
+				"MARKETING_VERSION[sdk=iphoneos*]" = 2.0;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -563,7 +638,6 @@
 		BCCCABE42A0BA55E006CB6EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -587,7 +661,6 @@
 		BCCCABE52A0BA55E006CB6EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -611,7 +684,6 @@
 		BCCCABE72A0BA55E006CB6EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
@@ -634,7 +706,6 @@
 		BCCCABE82A0BA55E006CB6EF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;

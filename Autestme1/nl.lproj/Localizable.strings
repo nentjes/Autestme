@@ -1,0 +1,56 @@
+/* Localizable.strings (Dutch) */
+
+/* MARK: - Info Alert (Speluitleg) */
+"info_title" = "Speluitleg";
+"alert_button_ok" = "OK";
+"info_body" = "Welkom bij Autestme!\n\nIn dit spel worden verschillende vormen, letters of cijfers getoond.\nJe taak is om te onthouden hoe vaak je elk item hebt gezien.\n\nSpeltypes:\n• Vormen – cirkels, vierkanten, lijnen enz.\n• Letters – willekeurige hoofdletters (A t/m Z)\n• Cijfers – willekeurige cijfers (0 t/m 9)\n\nInstellingen:\n• Spelduur – hoe lang het spel duurt\n• Tempo – hoe snel de items elkaar opvolgen\n• Aantal figuren – bij vormen: hoeveel verschillende figuren, bij letters/cijfers: uit hoeveel verschillende opties gekozen wordt\n• Kleurmodus – vaste kleuren per item of willekeurige kleuren.";
+
+/* MARK: - StartScreen UI */
+"app_title" = "Autestme";
+"start_game_button" = "Start het spel";
+
+/* MARK: - Player Info */
+"player_name_label" = "Naam speler";
+"player_name_placeholder" = "Naam";
+"highscore_display" = "Highscore: %@";
+"no_highscore" = "Nog geen highscore";
+
+/* MARK: - Game Settings */
+"game_duration_label" = "Spelduur: %@ seconden";
+"game_speed_label" = "Tempo: %@";
+"color_mode_label" = "Kleurmodus";
+"color_mode_fixed" = "Vast";
+"color_mode_random" = "Willekeurig";
+"game_type_label" = "Speltype";
+"game_type_shapes" = "Vormen";
+"game_type_letters" = "Letters";
+"game_type_numbers" = "Cijfers";
+
+/* MARK: - Item Count (met variabelen) */
+"item_count_label" = "Aantal verschillende %@: %@";
+"item_type_shapes" = "figuren";
+"item_type_letters" = "letters";
+"item_type_numbers" = "cijfers";
+
+/* MARK: - Game Screen */
+"game_screen_title" = "Spelscherm";
+"game_screen_time_left" = "Resterende tijd: %@ seconden";
+
+/* MARK: - End Screen */
+"end_screen_title" = "Eindscherm";
+"end_screen_results_title" = "Resultaten:";
+"end_screen_score_label" = "Score: %@";
+"end_screen_back_button" = "Terug naar start";
+"end_screen_input_prompt" = "Hoeveel items hebt je gezien:";
+"end_screen_show_results_button" = "Toon resultaten";
+"end_screen_input_placeholder" = "0";
+"end_screen_item_label" = "%@:";
+"end_screen_result_format" = "%@/%@";
+
+/* MARK: - Shape Names */
+"shape_dot" = "Stip";
+"shape_line" = "Lijn";
+"shape_circle" = "Cirkel";
+"shape_oval" = "Ovaal";
+"shape_square" = "Vierkant";
+"shape_rectangle" = "Rechthoek";

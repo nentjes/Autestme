@@ -1,0 +1,56 @@
+/* Localizable.strings (Spanish) */
+
+/* MARK: - Info Alert (Explicación del juego) */
+"info_title" = "Explicación del juego";
+"alert_button_ok" = "Aceptar";
+"info_body" = "¡Bienvenido a Autestme!\n\nEn este juego, se muestran diferentes formas, letras o números.\nTu tarea es recordar cuántas veces has visto cada elemento.\n\nTipos de juego:\n• Formas – círculos, cuadrados, líneas, etc.\n• Letras – letras mayúsculas aleatorias (A a Z)\n• Números – números aleatorios (0 a 9)\n\nAjustes:\n• Duración del juego – cuánto dura el juego\n• Ritmo – qué tan rápido aparecen los elementos\n• Número de elementos – para formas: cuántas formas diferentes, para letras/números: de cuántas opciones diferentes se elige\n• Modo de color – colores fijos por elemento o colores aleatorios.";
+
+/* MARK: - StartScreen UI */
+"app_title" = "Autestme";
+"start_game_button" = "Iniciar juego";
+
+/* MARK: - Player Info */
+"player_name_label" = "Nombre del jugador";
+"player_name_placeholder" = "Nombre";
+"highscore_display" = "Récord: %@";
+"no_highscore" = "Sin récord";
+
+/* MARK: - Game Settings */
+"game_duration_label" = "Duración: %@ segundos";
+"game_speed_label" = "Velocidad: %@";
+"color_mode_label" = "Modo de color";
+"color_mode_fixed" = "Fijo";
+"color_mode_random" = "Aleatorio";
+"game_type_label" = "Tipo de juego";
+"game_type_shapes" = "Formas";
+"game_type_letters" = "Letras";
+"game_type_numbers" = "Números";
+
+/* MARK: - Item Count (met variabelen) */
+"item_count_label" = "Número de %@ diferentes: %@";
+"item_type_shapes" = "formas";
+"item_type_letters" = "letras";
+"item_type_numbers" = "números";
+
+/* MARK: - Game Screen */
+"game_screen_title" = "Pantalla de juego";
+"game_screen_time_left" = "Tiempo restante: %@ segundos";
+
+/* MARK: - End Screen */
+"end_screen_title" = "Pantalla final";
+"end_screen_results_title" = "Resultados:";
+"end_screen_score_label" = "Puntuación: %@";
+"end_screen_back_button" = "Volver al inicio";
+"end_screen_input_prompt" = "¿Cuántos elementos has visto:";
+"end_screen_show_results_button" = "Mostrar resultados";
+"end_screen_input_placeholder" = "0";
+"end_screen_item_label" = "%@:";
+"end_screen_result_format" = "%@/%@";
+
+/* MARK: - Shape Names */
+"shape_dot" = "Punto";
+"shape_line" = "Línea";
+"shape_circle" = "Círculo";
+"shape_oval" = "Óvalo";
+"shape_square" = "Cuadrado";
+"shape_rectangle" = "Rectángulo";

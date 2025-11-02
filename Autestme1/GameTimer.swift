@@ -8,8 +8,8 @@ class GameTimer: ObservableObject {
     private var timer: Timer?
     private var shapeTimer: Timer?
 
-    private let gameTime: Int
-    private let displayRate: Int
+    private var gameTime: Int
+    private var displayRate: Int
 
     init(gameTime: Int, displayRate: Int) {
         self.remainingTime = gameTime
@@ -21,7 +21,6 @@ class GameTimer: ObservableObject {
         isRunning = true
         remainingTime = gameTime
 
-        // aftellen
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
             self.remainingTime -= 1
             if self.remainingTime <= 0 {
@@ -29,7 +28,6 @@ class GameTimer: ObservableObject {
             }
         }
 
-        // vormen laten zien
         shapeTimer = Timer.scheduledTimer(withTimeInterval: 1.0 / Double(displayRate), repeats: true) { _ in
             if self.remainingTime > 0 {
                 onShapeDisplay()

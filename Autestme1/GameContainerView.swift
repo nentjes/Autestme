@@ -2,11 +2,10 @@ import SwiftUI
 import Combine
 import AVFoundation
 
-
 struct GameContainerView: View {
     private let shapeDisplayRate: Int
     @StateObject private var gameTimer: GameTimer
-    @State private var gameLogic: GameLogic
+    @ObservedObject private var gameLogic: GameLogic // <-- Correcte @ObservedObject
     @State private var shapeCounts: [ShapeType: Int]
     @State private var colorMode: ColorMode
     @State private var currentShape: ShapeType?
@@ -18,7 +17,7 @@ struct GameContainerView: View {
     @Binding var navigationPath: NavigationPath
 
     init(gameLogic: GameLogic, navigationPath: Binding<NavigationPath>) {
-        self._gameLogic = State(initialValue: gameLogic)
+        self.gameLogic = gameLogic // <-- Correcte init
         self.shapeDisplayRate = gameLogic.displayRate
         self._gameTimer = StateObject(wrappedValue: GameTimer(gameTime: gameLogic.gameTime, displayRate: gameLogic.displayRate))
         self._shapeCounts = State(initialValue: Dictionary(uniqueKeysWithValues: ShapeType.allCases.map { ($0, 0) }))
@@ -26,15 +25,13 @@ struct GameContainerView: View {
         self._navigationPath = navigationPath
     }
 
-
-
     var body: some View {
         VStack {
-            Text("Spelscherm")
+            Text("game_screen_title") // <-- Gelokaliseerd
                 .font(.largeTitle)
                 .padding()
 
-            Text("Resterende tijd: \(gameTimer.remainingTime) seconden")
+            Text(String(format: NSLocalizedString("game_screen_time_left", comment: ""), "\(gameTimer.remainingTime)")) // <-- Gelokaliseerd
                 .font(.title2)
                 .padding()
 
@@ -50,17 +47,14 @@ struct GameContainerView: View {
                     Text(String(letter))
                         .font(.system(size: 100))
                         .foregroundColor(colorMode == .random ? .random() : gameLogic.letterColors[letter] ?? .blue)
-
                 }
             case .numbers:
                 if let number = currentNumber {
                     Text("\(number)")
                         .font(.system(size: 100))
                         .foregroundColor(colorMode == .random ? .random() : gameLogic.numberColors[number] ?? .orange)
-
                 }
             }
-
 
             EmptyView()
                 .onChange(of: goToEndScreen) { newValue in
@@ -75,7 +69,6 @@ struct GameContainerView: View {
             shapeCounts[firstShape, default: 0] += 1
             firstShape.playSound(player: &audioPlayer)
 
-
             gameTimer.reset(gameTime: gameLogic.gameTime, displayRate: gameLogic.displayRate)
 
             gameTimer.start {
@@ -87,18 +80,14 @@ struct GameContainerView: View {
                     currentNumber = nil
                     shapeCounts[newShape, default: 0] += 1
                     newShape.playSound(player: &audioPlayer)
-
                 case .letters:
                     let allowedLetters = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ").prefix(gameLogic.numberOfItems)
                     let letter = allowedLetters.randomElement()!
-
                     currentLetter = letter
                     currentShape = nil
                     currentNumber = nil
                     gameLogic.letterCounts[letter, default: 0] += 1
                     playCommonClick()
-
-
                 case .numbers:
                     let number = Int.random(in: 0..<gameLogic.numberOfItems)
                     currentNumber = number
@@ -106,11 +95,9 @@ struct GameContainerView: View {
                     currentLetter = nil
                     gameLogic.numberCounts[number, default: 0] += 1
                     playCommonClick()
-
                 }
             }
         }
-
         .onChange(of: gameTimer.isRunning) { isRunning in
             if !isRunning {
                 goToEndScreen = true
@@ -122,25 +109,24 @@ struct GameContainerView: View {
             audioPlayer?.stop()
             audioPlayer = nil
         }
-
         .navigationDestination(for: String.self) { value in
             if value == "endscreen" {
                 EndScreen(
                     shapeCounts: $shapeCounts,
                     dismissAction: { navigationPath.removeLast() },
                     restartAction: { navigationPath.removeLast() },
-                    gameLogic: $gameLogic,
+                    gameLogic: gameLogic, // <-- Correct (geen $)
                     navigationPath: $navigationPath
                 )
             }
         }
     }
+    
     func playCommonClick() {
         guard let url = Bundle.main.url(forResource: "click", withExtension: "mp3") else {
             print("Geluid niet gevonden")
             return
         }
-
         do {
             if audioPlayer?.isPlaying == true {
                 audioPlayer?.stop()
@@ -159,7 +145,6 @@ struct GameContainerView: View {
             print("Geluid voor \(shape.displayName) niet gevonden")
             return
         }
-
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.play()
@@ -168,4 +153,3 @@ struct GameContainerView: View {
         }
     }
 }
-

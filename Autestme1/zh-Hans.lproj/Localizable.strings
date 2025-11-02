@@ -1,0 +1,56 @@
+/* Localizable.strings (Chinese - Simplified) */
+
+/* MARK: - Info Alert (游戏说明) */
+"info_title" = "游戏说明";
+"alert_button_ok" = "好的";
+"info_body" = "欢迎来到 Autestme!\n\n在这个游戏中，会显示不同的形状、字母或数字。\n您的任务是记住您看到过每个项目多少次。\n\n游戏类型:\n• 形状 – 圆形、方形、线条等。\n• 字母 – 随机大写字母 (A 到 Z)\n• 数字 – 随机数字 (0 到 9)\n\n设置:\n• 游戏时长 – 游戏持续时间\n• 节奏 – 项目出现的速度\n• 项目数量 – 对于形状：多少种不同的形状；对于字母/数字：从多少个不同选项中选择\n• 顏色模式 – 每项固定顏色或随机顏色。";
+
+/* MARK: - StartScreen UI */
+"app_title" = "Autestme";
+"start_game_button" = "开始游戏";
+
+/* MARK: - Player Info */
+"player_name_label" = "玩家名称";
+"player_name_placeholder" = "名称";
+"highscore_display" = "最高分: %@";
+"no_highscore" = "暂无最高分";
+
+/* MARK: - Game Settings */
+"game_duration_label" = "游戏时长: %@ 秒";
+"game_speed_label" = "速度: %@";
+"color_mode_label" = "顏色模式";
+"color_mode_fixed" = "固定";
+"color_mode_random" = "随机";
+"game_type_label" = "游戏类型";
+"game_type_shapes" = "形状";
+"game_type_letters" = "字母";
+"game_type_numbers" = "数字";
+
+/* MARK: - Item Count (met variabelen) */
+"item_count_label" = "不同 %@ 的数量: %@";
+"item_type_shapes" = "形状";
+"item_type_letters" = "字母";
+"item_type_numbers" = "数字";
+
+/* MARK: - Game Screen */
+"game_screen_title" = "游戏屏幕";
+"game_screen_time_left" = "剩余时间: %@ 秒";
+
+/* MARK: - End Screen */
+"end_screen_title" = "结束屏幕";
+"end_screen_results_title" = "结果:";
+"end_screen_score_label" = "得分: %@";
+"end_screen_back_button" = "返回首页";
+"end_screen_input_prompt" = "您看到了多少个项目:";
+"end_screen_show_results_button" = "显示结果";
+"end_screen_input_placeholder" = "0";
+"end_screen_item_label" = "%@:";
+"end_screen_result_format" = "%@/%@";
+
+/* MARK: - Shape Names */
+"shape_dot" = "点";
+"shape_line" = "线";
+"shape_circle" = "圆形";
+"shape_oval" = "椭圆形";
+"shape_square" = "正方形";
+"shape_rectangle" = "矩形";

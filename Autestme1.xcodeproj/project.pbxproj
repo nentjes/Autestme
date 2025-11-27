@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */; };
+		8B4AABD02ED9028700EE7D58 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B4AABCF2ED9028700EE7D58 /* web3swift */; };
+		8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */; };
 		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
 		8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF32DFEB900003B628F /* circle.mp3 */; };
 		8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF52DFEB910003B628F /* oval.mp3 */; };
@@ -65,6 +67,7 @@
 
 /* Begin PBXFileReference section */
 		8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
+		8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3Manager.swift; sourceTree = "<group>"; };
 		8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewWrapper.swift; sourceTree = "<group>"; };
 		8BC9EEF32DFEB900003B628F /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
 		8BC9EEF52DFEB910003B628F /* oval.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oval.mp3; sourceTree = "<group>"; };
@@ -109,6 +112,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B4AABD02ED9028700EE7D58 /* web3swift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,6 +146,7 @@
 		BCCCABB22A0BA55C006CB6EF = {
 			isa = PBXGroup;
 			children = (
+				8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */,
 				BCCCABBD2A0BA55C006CB6EF /* Autestme1 */,
 				BCCCABCF2A0BA55E006CB6EF /* Autestme1Tests */,
 				BCCCABD92A0BA55E006CB6EF /* Autestme1UITests */,
@@ -311,6 +316,9 @@
 				sw,
 			);
 			mainGroup = BCCCABB22A0BA55C006CB6EF;
+			packageReferences = (
+				8B4AABCE2ED9028700EE7D58 /* XCRemoteSwiftPackageReference "web3swift" */,
+			);
 			productRefGroup = BCCCABBC2A0BA55C006CB6EF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -365,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */,
+				8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */,
 				BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */,
 				BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */,
 				BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */,
@@ -765,6 +774,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8B4AABCE2ED9028700EE7D58 /* XCRemoteSwiftPackageReference "web3swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/web3swift-team/web3swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.3.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8B4AABCF2ED9028700EE7D58 /* web3swift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B4AABCE2ED9028700EE7D58 /* XCRemoteSwiftPackageReference "web3swift" */;
+			productName = web3swift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BCCCABB32A0BA55C006CB6EF /* Project object */;
 }

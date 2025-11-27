@@ -7,12 +7,15 @@ struct EndScreen: View {
     @ObservedObject var gameLogic: GameLogic
     @Binding var navigationPath: NavigationPath
 
+    // WEB3 TOEVOEGING
+    @StateObject private var web3Manager = Web3Manager.shared
+
     @State private var enteredShapes: [ShapeType: Int] = [:]
     @State private var enteredLetters: [Character: Int] = [:]
     @State private var enteredNumbers: [Int: Int] = [:]
     @State private var isShowingResults = false
     @State private var textInputs: [AnyHashable: String] = [:]
-    @FocusState private var focusedField: AnyHashable? // <-- HIER IS DE FOCUS
+    @FocusState private var focusedField: AnyHashable?
 
     private var totalCorrect: Int {
         switch gameLogic.gameVersion {
@@ -36,25 +39,38 @@ struct EndScreen: View {
 
     var body: some View {
         VStack {
-            Text("end_screen_title") // <-- Gelokaliseerd
+            Text("end_screen_title")
                 .font(.largeTitle)
                 .padding()
 
             if isShowingResults {
-                Text("end_screen_results_title") // <-- Gelokaliseerd
+                Text("end_screen_results_title")
                     .font(.title)
                     .padding()
+
+                // WEB3 STATUS MELDING
+                if web3Manager.isLoading {
+                    ProgressView()
+                    Text(web3Manager.statusMessage)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                } else {
+                    Text(web3Manager.statusMessage)
+                        .font(.headline)
+                        .foregroundColor(.blue)
+                        .padding(.bottom, 10)
+                }
 
                 switch gameLogic.gameVersion {
                 case .shapes:
                     resultList(data: shapeCounts.map { ($0.key.displayName, enteredShapes[$0.key] ?? 0, $0.value) })
                 case .letters:
                     resultList(data: gameLogic.letterCounts.filter { $0.value > 0 }
-                        .sorted(by: {$0.key < $1.key}) // <-- HIER IS DE SORTERING
+                        .sorted(by: {$0.key < $1.key})
                         .map { (String($0.key), enteredLetters[$0.key] ?? 0, $0.value) })
                 case .numbers:
                     resultList(data: gameLogic.numberCounts.filter { $0.value > 0 }
-                        .sorted(by: {$0.key < $1.key}) // <-- HIER IS DE SORTERING
+                        .sorted(by: {$0.key < $1.key})
                         .map { (String($0.key), enteredNumbers[$0.key] ?? 0, $0.value) })
                 }
 
@@ -62,7 +78,7 @@ struct EndScreen: View {
                     .font(.title2)
                     .padding()
 
-                Button("end_screen_back_button") { // <-- Gelokaliseerd
+                Button("end_screen_back_button") {
                     gameLogic.reset()
                     navigationPath.removeLast(navigationPath.count)
                 }
@@ -72,7 +88,7 @@ struct EndScreen: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
             } else {
-                Text("end_screen_input_prompt") // <-- Gelokaliseerd
+                Text("end_screen_input_prompt")
                     .font(.title2)
                     .padding()
 
@@ -103,10 +119,21 @@ struct EndScreen: View {
                     )
                 }
 
-                Button("end_screen_show_results_button") { // <-- Gelokaliseerd
+                Button("end_screen_show_results_button") {
                     isShowingResults = true
+                    
+                    // Highscore logica
                     if totalCorrect > GameLogic.getHighScore(for: gameLogic.player, gameVersion: gameLogic.gameVersion) {
                         GameLogic.setHighScore(totalCorrect, for: gameLogic.player, gameVersion: gameLogic.gameVersion)
+                    }
+                    
+                    // WEB3 TRIGGER: Beloon de speler
+                    if totalCorrect > 0 {
+                        Task {
+                            await web3Manager.rewardPlayer(amount: totalCorrect)
+                        }
+                    } else {
+                        web3Manager.statusMessage = "Geen munten verdiend (score 0)"
                     }
                 }
                 .font(.title2)
@@ -117,7 +144,7 @@ struct EndScreen: View {
             }
         }
         .padding()
-        .onAppear { // <-- HIER IS DE AUTO-FOCUS LOGICA
+        .onAppear {
             if !isShowingResults {
                 var firstItem: AnyHashable?
                 switch gameLogic.gameVersion {
@@ -149,19 +176,18 @@ struct EndScreen: View {
                 Text(String(format: NSLocalizedString("end_screen_item_label", comment: ""), label(item)))
                 Spacer()
                 
-                // HIER IS DE "0" PLACEHOLDER LOGICA
                 TextField("end_screen_input_placeholder", text: Binding(
                     get: {
                         let value = getValue(item)
                         if value != 0 {
                             return "\(value)"
                         }
-                        return "" // <-- Toon leeg veld als waarde 0 is
+                        return ""
                     },
                     set: { newText in
                         let filtered = newText.filter { $0.isNumber }
                         textInputs[item] = filtered
-                        setValue(item, Int(filtered) ?? 0) // Sla 0 op als veld leeg is
+                        setValue(item, Int(filtered) ?? 0)
                     }
                 ))
                 .keyboardType(.numberPad)

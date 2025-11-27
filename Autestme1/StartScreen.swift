@@ -3,6 +3,9 @@ import SwiftUI
 struct StartScreen: View {
     @Binding var navigationPath: NavigationPath
 
+    // WEB3 TOEVOEGING
+    @StateObject private var web3Manager = Web3Manager.shared
+
     @State private var gameDuration: Double = 10
     @State private var numberOfShapes: Double = 3
     @State private var shapeDisplayRate: Double = 1
@@ -12,7 +15,6 @@ struct StartScreen: View {
     @State private var playerName: String = ""
     @State private var currentHighscore: Int = 0
 
-    // HIER: Deze helper-functie haalt nu de vertaalde strings op
     var labelForType: String {
         let key: String
         switch selectedGameVersion {
@@ -20,7 +22,6 @@ struct StartScreen: View {
         case .numbers: key = "item_type_numbers"
         case .letters: key = "item_type_letters"
         }
-        // Haal de vertaalde string op uit je .strings bestand
         return NSLocalizedString(key, comment: "Game type label for item counter")
     }
 
@@ -32,10 +33,8 @@ struct StartScreen: View {
         }
     }
 
-    // HIER: Deze helper-functie laadt de highscore
     private func updateHighscore() {
-        // Gebruikt dezelfde logica als bij het aanmaken van het spel
-        let name = playerName.isEmpty ? "Speler" : playerName // "Speler" kun je ook lokaliseren
+        let name = playerName.isEmpty ? "Speler" : playerName
         currentHighscore = GameLogic.getHighScore(for: name, gameVersion: selectedGameVersion)
     }
 
@@ -53,8 +52,53 @@ struct StartScreen: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
+                
+                // --- NIEUW: WEB3 STATUS SECTIE ---
+                VStack(alignment: .leading) {
+                    Text("Schatkist Status")
+                        .font(.headline)
+                    
+                    HStack {
+                        Image(systemName: "bitcoinsign.circle.fill")
+                            .foregroundColor(web3Manager.isConnected ? .green : .orange)
+                            .font(.title2)
+                        
+                        if web3Manager.isLoading {
+                            ProgressView()
+                                .scaleEffect(0.8)
+                        } else {
+                            Text(web3Manager.statusMessage)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
+                        
+                        Spacer()
+                        
+                        if !web3Manager.isConnected {
+                            Button(action: {
+                                Task {
+                                    await web3Manager.connect()
+                                }
+                            }) {
+                                Text("Verbind")
+                                    .fontWeight(.bold)
+                                    .padding(.horizontal, 10)
+                                    .padding(.vertical, 5)
+                                    .background(Color.blue)
+                                    .foregroundColor(.white)
+                                    .cornerRadius(8)
+                            }
+                        }
+                    }
+                }
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(12)
+                .padding(.bottom, 10)
+                // ---------------------------------
+
                 HStack {
-                    Text("app_title") // <-- Gelokaliseerd
+                    Text("app_title")
                         .font(.largeTitle)
                         .bold()
 
@@ -66,12 +110,11 @@ struct StartScreen: View {
                 }
 
                 Group {
-                    Text("player_name_label") // <-- Gelokaliseerd
+                    Text("player_name_label")
                     
-                    TextField("player_name_placeholder", text: $playerName) // <-- Gelokaliseerd
+                    TextField("player_name_placeholder", text: $playerName)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                     
-                    // HIER: Highscore logica met lokalisatie
                     if currentHighscore > 0 {
                         Text(String(format: NSLocalizedString("highscore_display", comment: ""), "\(currentHighscore)"))
                     } else {
@@ -87,18 +130,18 @@ struct StartScreen: View {
                     Text(String(format: NSLocalizedString("game_speed_label", comment: ""), "\(Int(shapeDisplayRate))"))
                     Slider(value: $shapeDisplayRate, in: 1...10)
 
-                    Text("color_mode_label") // <-- Gelokaliseerd
+                    Text("color_mode_label")
                     Picker("Kleurmodus", selection: $selectedColorMode) {
-                        Text("color_mode_fixed").tag(ColorMode.fixed) // <-- Gelokaliseerd
-                        Text("color_mode_random").tag(ColorMode.random) // <-- Gelokaliseerd
+                        Text("color_mode_fixed").tag(ColorMode.fixed)
+                        Text("color_mode_random").tag(ColorMode.random)
                     }
                     .pickerStyle(SegmentedPickerStyle())
 
-                    Text("game_type_label") // <-- Gelokaliseerd
+                    Text("game_type_label")
                     Picker("Speltype", selection: $selectedGameVersion) {
-                        Text("game_type_shapes").tag(GameVersion.shapes) // <-- Gelokaliseerd
-                        Text("game_type_letters").tag(GameVersion.letters) // <-- Gelokaliseerd
-                        Text("game_type_numbers").tag(GameVersion.numbers) // <-- Gelokaliseerd
+                        Text("game_type_shapes").tag(GameVersion.shapes)
+                        Text("game_type_letters").tag(GameVersion.letters)
+                        Text("game_type_numbers").tag(GameVersion.numbers)
                     }
                     .pickerStyle(SegmentedPickerStyle())
 
@@ -111,7 +154,7 @@ struct StartScreen: View {
                     logic.displayRate = Int(shapeDisplayRate)
                     navigationPath.append(logic)
                 }) {
-                    Text("start_game_button") // <-- Gelokaliseerd
+                    Text("start_game_button")
                         .font(.title2)
                         .padding()
                         .frame(maxWidth: .infinity)
@@ -122,7 +165,6 @@ struct StartScreen: View {
             }
             .padding()
         }
-        // HIER: De .onChange en .onAppear die de highscore verversen
         .onAppear {
             updateHighscore()
         }
@@ -132,7 +174,6 @@ struct StartScreen: View {
         .onChange(of: selectedGameVersion) { _ in
             updateHighscore()
         }
-        // HIER: De gelokaliseerde alert
         .alert(Text("info_title"), isPresented: $showInfoAlert) {
             Button("alert_button_ok") { }
         } message: {

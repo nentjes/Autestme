@@ -3,13 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 70;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */; };
 		8B4AABD02ED9028700EE7D58 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B4AABCF2ED9028700EE7D58 /* web3swift */; };
 		8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */; };
+		8B4D32702EDB355A00E0BFFD /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D326F2EDB355A00E0BFFD /* Secrets.swift */; };
+		8B4D32722EDB39F700E0BFFD /* Secrets.exemples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */; };
 		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
 		8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF32DFEB900003B628F /* circle.mp3 */; };
 		8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF52DFEB910003B628F /* oval.mp3 */; };
@@ -68,6 +70,8 @@
 /* Begin PBXFileReference section */
 		8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3Manager.swift; sourceTree = "<group>"; };
+		8B4D326F2EDB355A00E0BFFD /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.exemples.swift; sourceTree = "<group>"; };
 		8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewWrapper.swift; sourceTree = "<group>"; };
 		8BC9EEF32DFEB900003B628F /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
 		8BC9EEF52DFEB910003B628F /* oval.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oval.mp3; sourceTree = "<group>"; };
@@ -106,6 +110,10 @@
 		BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerView.swift; sourceTree = "<group>"; };
 		BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		8B4D32732EDB4D7200E0BFFD /* Documentation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Documentation; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		BCCCABB82A0BA55C006CB6EF /* Frameworks */ = {
@@ -146,12 +154,15 @@
 		BCCCABB22A0BA55C006CB6EF = {
 			isa = PBXGroup;
 			children = (
+				8B4D326F2EDB355A00E0BFFD /* Secrets.swift */,
+				8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */,
 				8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */,
 				BCCCABBD2A0BA55C006CB6EF /* Autestme1 */,
 				BCCCABCF2A0BA55E006CB6EF /* Autestme1Tests */,
 				BCCCABD92A0BA55E006CB6EF /* Autestme1UITests */,
 				8BE673122EB6A3FA009F7596 /* Frameworks */,
 				BCCCABBC2A0BA55C006CB6EF /* Products */,
+				8B4D32732EDB4D7200E0BFFD /* Documentation */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,6 +245,9 @@
 			buildRules = (
 			);
 			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8B4D32732EDB4D7200E0BFFD /* Documentation */,
 			);
 			name = Autestme;
 			productName = Autestme1;
@@ -373,7 +387,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */,
+				8B4D32702EDB355A00E0BFFD /* Secrets.swift in Sources */,
 				8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */,
+				8B4D32722EDB39F700E0BFFD /* Secrets.exemples.swift in Sources */,
 				BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */,
 				BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */,
 				BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */,

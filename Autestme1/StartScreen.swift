@@ -4,13 +4,14 @@ struct StartScreen: View {
     @Binding var navigationPath: NavigationPath
 
     // WEB3 TOEVOEGING
-    @StateObject private var web3Manager = Web3Manager.shared
+    @ObservedObject private var web3Manager = Web3Manager.shared
 
-    @State private var gameDuration: Double = 10
-    @State private var numberOfShapes: Double = 3
-    @State private var shapeDisplayRate: Double = 1
+    @State private var gameDuration: Double = 5
+    @State private var numberOfShapes: Double = 2
+    @State private var shapeDisplayRate: Double = 3
     @State private var selectedColorMode: ColorMode = .fixed
     @State private var showInfoAlert = false
+    @State private var showDebugLog = false // NIEUW
     @State private var selectedGameVersion: GameVersion = .shapes
     @State private var playerName: String = ""
     @State private var currentHighscore: Int = 0
@@ -70,9 +71,17 @@ struct StartScreen: View {
                             Text(web3Manager.statusMessage)
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
+                                .lineLimit(1)
                         }
                         
                         Spacer()
+                        
+                        // LOG KNOP
+                        Button(action: { showDebugLog = true }) {
+                            Image(systemName: "doc.text.magnifyingglass")
+                                .foregroundColor(.blue)
+                        }
+                        .padding(.trailing, 5)
                         
                         if !web3Manager.isConnected {
                             Button(action: {
@@ -173,6 +182,24 @@ struct StartScreen: View {
         }
         .onChange(of: selectedGameVersion) { _ in
             updateHighscore()
+        }
+        // DEBUG SHEET
+        .sheet(isPresented: $showDebugLog) {
+            VStack {
+                Text("Diagnose Logboek")
+                    .font(.headline)
+                    .padding()
+                
+                ScrollView {
+                    Text(web3Manager.debugLog)
+                        .font(.system(.caption, design: .monospaced))
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                
+                Button("Sluit") { showDebugLog = false }
+                    .padding()
+            }
         }
         .alert(Text("info_title"), isPresented: $showInfoAlert) {
             Button("alert_button_ok") { }

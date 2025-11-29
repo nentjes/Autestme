@@ -5,6 +5,9 @@
 "alert_button_ok" = "好的";
 "info_body" = "欢迎来到 Autestme!\n\n在这个游戏中，会显示不同的形状、字母或数字。\n您的任务是记住您看到过每个项目多少次。\n\n游戏类型:\n• 形状 – 圆形、方形、线条等。\n• 字母 – 随机大写字母 (A 到 Z)\n• 数字 – 随机数字 (0 到 9)\n\n设置:\n• 游戏时长 – 游戏持续时间\n• 节奏 – 项目出现的速度\n• 项目数量 – 对于形状：多少种不同的形状；对于字母/数字：从多少个不同选项中选择\n• 顏色模式 – 每项固定顏色或随机顏色。";
 
+"info_crypto_title" = "加密货币奖励";
+"info_crypto_explanation" = "Autestme 应用程序使用 Polygon 主网区块链来奖励玩家 AUteste 代币。您有两种选择:\n\n1. 我的钱包: 奖励直接发送到您的个人钱包地址。\n2. 游戏金库: 奖励进入应用程序的中央金库。您可以通过这种方式为更大的联合奖金池储蓄。\n\n向右滑动到左侧进行选择。您的地址必须是有效的 Polygon 主网地址。";
+
 /* MARK: - StartScreen UI */
 "app_title" = "Autestme";
 "start_game_button" = "开始游戏";
@@ -26,7 +29,7 @@
 "game_type_letters" = "字母";
 "game_type_numbers" = "数字";
 
-/* MARK: - Item Count (met variabelen) */
+/* MARK: - Item Count (with variables) */
 "item_count_label" = "不同 %@ 的数量: %@";
 "item_type_shapes" = "形状";
 "item_type_letters" = "字母";
@@ -39,18 +42,21 @@
 /* MARK: - End Screen */
 "end_screen_title" = "结束屏幕";
 "end_screen_results_title" = "结果:";
-"end_screen_score_label" = "得分: %@";
-"end_screen_back_button" = "返回首页";
-"end_screen_input_prompt" = "您看到了多少个项目:";
-"end_screen_show_results_button" = "显示结果";
-"end_screen_input_placeholder" = "0";
-"end_screen_item_label" = "%@:";
-"end_screen_result_format" = "%@/%@";
+"end_screen_score_label" = "分数: %@";
+"end_screen_back_button" = "返回开始";
+"end_screen_restart_button" = "再次播放";
+"end_screen_item_label" = "已见计数: %@";
+"end_screen_result_format" = "输入: %@ | 实际: %@";
+"end_screen_input_placeholder" = "计数";
+"end_screen_reward_title" = "奖励";
+"end_screen_reward_pending" = "奖励正在处理中...";
+"end_screen_reward_success" = "✅ 奖励已发送!";
+"end_screen_reward_error" = "❌ 发送奖励时出错。";
 
-/* MARK: - Shape Names */
-"shape_dot" = "点";
-"shape_line" = "线";
-"shape_circle" = "圆形";
-"shape_oval" = "椭圆形";
-"shape_square" = "正方形";
-"shape_rectangle" = "矩形";
+/* MARK: - Wallet / Crypto */
+"wallet_address_label" = "您的钱包地址 (Polygon 主网)";
+"swipe_to_configure_wallet" = "滑动以配置您的钱包 ➡️";
+"crypto_mode_own_wallet" = "我的钱包";
+"crypto_mode_game_treasury" = "金库";
+"crypto_mode_info" = "您的奖励应该去哪里？";
+"address_placeholder" = "0x... (Polygon 钱包地址)";

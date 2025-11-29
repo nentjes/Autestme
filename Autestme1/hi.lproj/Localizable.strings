@@ -5,6 +5,9 @@
 "alert_button_ok" = "ठीक है";
 "info_body" = "ऑटेस्टमी में आपका स्वागत है!\n\nइस खेल में, विभिन्न आकृतियाँ, अक्षर या संख्याएँ प्रदर्शित की जाती हैं।\nआपका काम यह याद रखना है कि आपने प्रत्येक आइटम को कितनी बार देखा है।\n\nखेल के प्रकार:\n• आकृतियाँ – वृत्त, वर्ग, रेखाएँ, आदि।\n• अक्षर – यादृच्छिक बड़े अक्षर (A से Z)\n• संख्याएँ – यादृच्छिक संख्याएँ (0 से 9)\n\nसेटिंग्स:\n• खेल की अवधि – खेल कितनी देर तक चलता है\n• गति – आइटम कितनी तेजी से दिखाई देते हैं\n• आइटम की संख्या – आकृतियों के लिए: कितनी अलग-अलग आकृतियाँ; अक्षरों/संख्याओं के लिए: कितने अलग-अलग विकल्पों में से चुना जाता है\n• रंग मोड – प्रति आइटम निश्चित रंग या यादृच्छिक रंग।";
 
+"info_crypto_title" = "क्रिप्टो पुरस्कार";
+"info_crypto_explanation" = "ऑटेस्टमी ऐप खिलाड़ियों को AUteste टोकन से पुरस्कृत करने के लिए Polygon Mainnet ब्लॉकचेन का उपयोग करता है। आपके पास दो विकल्प हैं:\n\n1. मेरा वॉलेट: पुरस्कार सीधे आपके व्यक्तिगत वॉलेट पते पर भेजा जाता है।\n2. खेल खजाना: पुरस्कार ऐप के केंद्रीय खजाने में जाता है। इस तरह, आप एक बड़े संयुक्त पुरस्कार पूल के लिए बचत करते हैं।\n\nअपनी पसंद बनाने के लिए दाएं से बाएं स्वाइप करें। आपका पता एक वैध Polygon Mainnet पता होना चाहिए।";
+
 /* MARK: - StartScreen UI */
 "app_title" = "Autestme";
 "start_game_button" = "खेल शुरू करें";
@@ -26,7 +29,7 @@
 "game_type_letters" = "अक्षर";
 "game_type_numbers" = "संख्याएँ";
 
-/* MARK: - Item Count (met variabelen) */
+/* MARK: - Item Count (with variables) */
 "item_count_label" = "विभिन्न %@ की संख्या: %@";
 "item_type_shapes" = "आकृतियों";
 "item_type_letters" = "अक्षरों";
@@ -40,17 +43,20 @@
 "end_screen_title" = "अंतिम स्क्रीन";
 "end_screen_results_title" = "परिणाम:";
 "end_screen_score_label" = "स्कोर: %@";
-"end_screen_back_button" = "शुरू पर वापस";
-"end_screen_input_prompt" = "आपने कितनी आइटम देखीं:";
-"end_screen_show_results_button" = "परिणाम दिखाएं";
-"end_screen_input_placeholder" = "0";
-"end_screen_item_label" = "%@:";
-"end_screen_result_format" = "%@/%@";
+"end_screen_back_button" = "शुरुआत पर वापस जाएं";
+"end_screen_restart_button" = "फिर से खेलें";
+"end_screen_item_label" = "देखी गई गिनती: %@";
+"end_screen_result_format" = "दर्ज: %@ | वास्तविक: %@";
+"end_screen_input_placeholder" = "गिनती";
+"end_screen_reward_title" = "पुरस्कार";
+"end_screen_reward_pending" = "पुरस्कार संसाधित हो रहा है...";
+"end_screen_reward_success" = "✅ पुरस्कार भेजा गया!";
+"end_screen_reward_error" = "❌ पुरस्कार भेजने में त्रुटि।";
 
-/* MARK: - Shape Names */
-"shape_dot" = "बिंदु";
-"shape_line" = "रेखा";
-"shape_circle" = "वृत्त";
-"shape_oval" = "अंडाकार";
-"shape_square" = "वर्ग";
-"shape_rectangle" = "आयत";
+/* MARK: - Wallet / Crypto */
+"wallet_address_label" = "आपका वॉलेट पता (पॉलीगॉन मेननेट)";
+"swipe_to_configure_wallet" = "अपना वॉलेट कॉन्फ़िगर करने के लिए स्वाइप करें ➡️";
+"crypto_mode_own_wallet" = "मेरा वॉलेट";
+"crypto_mode_game_treasury" = "खजाना";
+"crypto_mode_info" = "आपके पुरस्कार कहाँ जाने चाहिए?";
+"address_placeholder" = "0x... (पॉलीगॉन वॉलेट पता)";

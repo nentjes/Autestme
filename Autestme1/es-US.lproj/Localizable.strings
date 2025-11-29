@@ -5,6 +5,9 @@
 "alert_button_ok" = "Aceptar";
 "info_body" = "¡Bienvenido a Autestme!\n\nEn este juego, se muestran diferentes formas, letras o números.\nTu tarea es recordar cuántas veces has visto cada elemento.\n\nTipos de juego:\n• Formas – círculos, cuadrados, líneas, etc.\n• Letras – letras mayúsculas aleatorias (A a Z)\n• Números – números aleatorios (0 a 9)\n\nAjustes:\n• Duración del juego – cuánto dura el juego\n• Ritmo – qué tan rápido aparecen los elementos\n• Número de elementos – para formas: cuántas formas diferentes, para letras/números: de cuántas opciones diferentes se elige\n• Modo de color – colores fijos por elemento o colores aleatorios.";
 
+"info_crypto_title" = "Recompensas de Cripto";
+"info_crypto_explanation" = "La aplicación Autestme utiliza la Blockchain de Polygon Mainnet para recompensar a los jugadores con Tokens AUteste. Tienes dos opciones a elegir:\n\n1. Mi Billetera: La recompensa se envía directamente a tu dirección de billetera personal.\n2. Tesorería del Juego: La recompensa va a la Tesorería central de la aplicación. De esta manera, ahorras para un fondo de premios conjunto más grande.\n\nDesliza de derecha a izquierda para hacer tu elección. Tu dirección debe ser una dirección válida de Polygon Mainnet.";
+
 /* MARK: - StartScreen UI */
 "app_title" = "Autestme";
 "start_game_button" = "Iniciar juego";
@@ -26,7 +29,7 @@
 "game_type_letters" = "Letras";
 "game_type_numbers" = "Números";
 
-/* MARK: - Item Count (met variabelen) */
+/* MARK: - Item Count (con variables) */
 "item_count_label" = "Número de %@ diferentes: %@";
 "item_type_shapes" = "formas";
 "item_type_letters" = "letras";
@@ -41,16 +44,19 @@
 "end_screen_results_title" = "Resultados:";
 "end_screen_score_label" = "Puntuación: %@";
 "end_screen_back_button" = "Volver al inicio";
-"end_screen_input_prompt" = "¿Cuántos elementos has visto:";
-"end_screen_show_results_button" = "Mostrar resultados";
-"end_screen_input_placeholder" = "0";
-"end_screen_item_label" = "%@:";
-"end_screen_result_format" = "%@/%@";
+"end_screen_restart_button" = "Jugar de nuevo";
+"end_screen_item_label" = "Cantidad vista: %@";
+"end_screen_result_format" = "Introducido: %@ | Real: %@";
+"end_screen_input_placeholder" = "Cantidad";
+"end_screen_reward_title" = "Recompensa";
+"end_screen_reward_pending" = "Procesando recompensa...";
+"end_screen_reward_success" = "✅ ¡Recompensa enviada!";
+"end_screen_reward_error" = "❌ Error al enviar recompensa.";
 
-/* MARK: - Shape Names */
-"shape_dot" = "Punto";
-"shape_line" = "Línea";
-"shape_circle" = "Círculo";
-"shape_oval" = "Óvalo";
-"shape_square" = "Cuadrado";
-"shape_rectangle" = "Rectángulo";
+/* MARK: - Wallet / Crypto */
+"wallet_address_label" = "Tu Dirección de Billetera (Polygon Mainnet)";
+"swipe_to_configure_wallet" = "Desliza para configurar tu billetera ➡️";
+"crypto_mode_own_wallet" = "Mi Billetera";
+"crypto_mode_game_treasury" = "Tesorería";
+"crypto_mode_info" = "¿A dónde deben ir tus recompensas?";
+"address_placeholder" = "0x... (Dirección de Billetera Polygon)";

@@ -128,10 +128,14 @@ struct EndScreen: View {
                     }
                     
                     // WEB3 TRIGGER: Reward the player
-                    if totalCorrect > 0 {
+                    // Check if an address was provided (either user's or app's default)
+                    if totalCorrect > 0 && !web3Manager.recipientAddress.isEmpty {
                         Task {
                             await web3Manager.rewardPlayer(amount: totalCorrect)
                         }
+                    } else if web3Manager.recipientAddress.isEmpty {
+                        // User chose to play without enabling crypto rewards (recipientAddress is intentionally set to "")
+                        web3Manager.statusMessage = "Rewards were disabled for this game."
                     } else {
                         web3Manager.statusMessage = "No tokens earned (score 0)"
                     }

@@ -1,11 +1,11 @@
 import SwiftUI
 import AVFoundation
-import Foundation // <-- Belangrijk voor lokalisatie
+import Foundation // <-- Important for localization
 
 enum ShapeType: Int, CaseIterable {
     case dot, line, circle, oval, square, rectangle
 
-    // HIER IS DE GELOKALISEERDE DISPLAYNAME
+    // HERE IS THE LOCALIZED DISPLAYNAME
     var displayName: String {
         let key: String
         switch self {
@@ -53,12 +53,12 @@ enum ShapeType: Int, CaseIterable {
         }
     }
 
-    // HIER IS DE CORRECTE PLAY-SOUND (die stopt als hij al speelt)
+    // HERE IS THE CORRECT PLAY-SOUND (which stops if already playing)
     func playSound(player: inout AVAudioPlayer?) {
         let soundName = "\(self)"
         
         guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {
-            print("❌ Geluid '\(soundName).mp3' niet gevonden")
+            print("❌ Sound '\(soundName).mp3' not found")
             return
         }
 
@@ -71,9 +71,9 @@ enum ShapeType: Int, CaseIterable {
             player?.currentTime = 0
             player?.prepareToPlay()
             player?.play()
-            print("✅ Geluid '\(soundName).mp3' afgespeeld")
+            print("✅ Sound '\(soundName).mp3' played")
         } catch {
-            print("❌ Fout bij afspelen '\(soundName).mp3': \(error.localizedDescription)")
+            print("❌ Error playing '\(soundName).mp3': \(error.localizedDescription)")
         }
     }
 }

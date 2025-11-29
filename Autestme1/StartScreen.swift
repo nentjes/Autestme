@@ -3,7 +3,7 @@ import SwiftUI
 struct StartScreen: View {
     @Binding var navigationPath: NavigationPath
 
-    // WEB3 TOEVOEGING
+    // WEB3 ADDITION
     @ObservedObject private var web3Manager = Web3Manager.shared
 
     @State private var gameDuration: Double = 5
@@ -11,7 +11,7 @@ struct StartScreen: View {
     @State private var shapeDisplayRate: Double = 3
     @State private var selectedColorMode: ColorMode = .fixed
     @State private var showInfoAlert = false
-    @State private var showDebugLog = false // NIEUW
+    @State private var showDebugLog = false // NEW
     @State private var selectedGameVersion: GameVersion = .shapes
     @State private var playerName: String = ""
     @State private var currentHighscore: Int = 0
@@ -54,7 +54,7 @@ struct StartScreen: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 10) {
                 
-                // --- NIEUW: WEB3 STATUS SECTIE ---
+                // --- NEW: WEB3 STATUS SECTION ---
                 VStack(alignment: .leading) {
                     Text("Schatkist Status")
                         .font(.headline)
@@ -76,7 +76,7 @@ struct StartScreen: View {
                         
                         Spacer()
                         
-                        // LOG KNOP
+                        // LOG BUTTON
                         Button(action: { showDebugLog = true }) {
                             Image(systemName: "doc.text.magnifyingglass")
                                 .foregroundColor(.blue)
@@ -186,7 +186,7 @@ struct StartScreen: View {
         // DEBUG SHEET
         .sheet(isPresented: $showDebugLog) {
             VStack {
-                Text("Diagnose Logboek")
+                Text("Diagnostic Log")
                     .font(.headline)
                     .padding()
                 
@@ -197,7 +197,7 @@ struct StartScreen: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 
-                Button("Sluit") { showDebugLog = false }
+                Button("Close") { showDebugLog = false }
                     .padding()
             }
         }

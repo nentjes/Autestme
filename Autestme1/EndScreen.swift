@@ -7,7 +7,7 @@ struct EndScreen: View {
     @ObservedObject var gameLogic: GameLogic
     @Binding var navigationPath: NavigationPath
 
-    // WEB3 TOEVOEGING
+    // WEB3 ADDITION
     @StateObject private var web3Manager = Web3Manager.shared
 
     @State private var enteredShapes: [ShapeType: Int] = [:]
@@ -48,7 +48,7 @@ struct EndScreen: View {
                     .font(.title)
                     .padding()
 
-                // WEB3 STATUS MELDING
+                // WEB3 STATUS MESSAGE
                 if web3Manager.isLoading {
                     ProgressView()
                     Text(web3Manager.statusMessage)
@@ -122,18 +122,18 @@ struct EndScreen: View {
                 Button("end_screen_show_results_button") {
                     isShowingResults = true
                     
-                    // Highscore logica
+                    // Highscore logic
                     if totalCorrect > GameLogic.getHighScore(for: gameLogic.player, gameVersion: gameLogic.gameVersion) {
                         GameLogic.setHighScore(totalCorrect, for: gameLogic.player, gameVersion: gameLogic.gameVersion)
                     }
                     
-                    // WEB3 TRIGGER: Beloon de speler
+                    // WEB3 TRIGGER: Reward the player
                     if totalCorrect > 0 {
                         Task {
                             await web3Manager.rewardPlayer(amount: totalCorrect)
                         }
                     } else {
-                        web3Manager.statusMessage = "Geen munten verdiend (score 0)"
+                        web3Manager.statusMessage = "No tokens earned (score 0)"
                     }
                 }
                 .font(.title2)
@@ -163,7 +163,7 @@ struct EndScreen: View {
         }
     }
 
-    // 🔧 Invoervelden
+    // 🔧 Input fields
     func entryList<T: Hashable>(
         items: [T],
         getValue: @escaping (T) -> Int,
@@ -199,7 +199,7 @@ struct EndScreen: View {
         }
     }
 
-    // 📊 Resultaten
+    // 📊 Results
     func resultList(data: [(String, Int, Int)]) -> some View {
         List(data, id: \.0) { label, entered, actual in
             let correct = entered == actual

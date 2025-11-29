@@ -4,28 +4,32 @@ import web3swift
 import Web3Core
 import SwiftUI
 
-// @MainActor zorgt dat updates veilig naar de UI gaan
+// @MainActor ensures updates are sent safely to the UI
 @MainActor
 class Web3Manager: ObservableObject {
     static let shared = Web3Manager()
     
-    // --- 1. CONFIGURATIE ---
+    // --- 1. CONFIGURATION ---
     private let rpcURL = "https://polygon-amoy-bor-rpc.publicnode.com"
-    private let chainID = BigUInt(80002) // Chain ID voor Polygon Amoy
+    private let chainID = BigUInt(80002) // Chain ID for Polygon Amoy
     
-    // We halen de gevoelige data weer uit Secrets.swift
+    // Fetch sensitive data from Secrets.swift
     private let contractAddressString = Secrets.contractAddress
-    private let privateKey = Secrets.privateKey
+    
+    // AANGEPAST: De app fungeert als de 'Game Treasury' (De Bank)
+    // We gebruiken dus de sleutel van de Game Treasury om te ondertekenen.
+    // Zorg dat in jouw echte Secrets.swift 'static let privateKeyGameTreasury' bestaat!
+    private let privateKey = Secrets.privateKeyGameTreasury
     
     // --- 2. STATUS ---
-    @Published var statusMessage: String = "Klaar om te verbinden"
+    @Published var statusMessage: String = "Ready to connect"
     @Published var isLoading: Bool = false
     @Published var isConnected: Bool = false
     
-    // NIEUW: Een logboek dat de UI kan lezen
+    // Logbook for UI display
     @Published var debugLog: String = ""
     
-    // --- 3. DE HANDLEIDING (ABI) ---
+    // --- 3. ABI DEFINITION ---
     private let minimalABI = """
     [
         {
@@ -50,30 +54,22 @@ class Web3Manager: ObservableObject {
     
     private init() {}
     
-    // HULPFUNCTIE: Log naar console EN naar de app
+    // HELPER: Log to console AND app UI
     private func log(_ message: String) {
         print(message)
         debugLog += message + "\n"
     }
     
-    // --- 4. FUNCTIES ---
+    // --- 4. FUNCTIONS ---
     
     func connect() async {
         self.isLoading = true
-        self.statusMessage = "Diagnose draaien..."
-        self.debugLog = "--- START DIAGNOSE ---\n" // Reset log bij nieuwe poging
+        self.statusMessage = "Running diagnostics..."
+        self.debugLog = "--- START DIAGNOSTICS ---\n"
         
-        // Checken of Secrets.swift wel gevuld is (geen standaard placeholders)
-        if privateKey.contains("PLAK_HIER") || privateKey.isEmpty {
-            let msg = "❌ Vul je Private Key in Secrets.swift!"
-            self.statusMessage = msg
-            log(msg)
-            self.isLoading = false
-            return
-        }
-        
-        if contractAddressString.contains("PLAK_HIER") {
-            let msg = "❌ Vul het Token Adres in Secrets.swift!"
+        // Check if Secrets are filled
+        if privateKey.contains("PASTE") || privateKey.isEmpty {
+            let msg = "❌ Configure Secrets.swift first!"
             self.statusMessage = msg
             log(msg)
             self.isLoading = false
@@ -85,149 +81,148 @@ class Web3Manager: ObservableObject {
         do {
             let _ = try await getWeb3()
             self.isConnected = true
-            self.statusMessage = "✅ Diagnose voltooid. Zie Log."
+            self.statusMessage = "✅ Connected as Game Treasury"
             self.isLoading = false
         } catch {
-            let msg = "❌ Fout: \(error.localizedDescription)"
+            let msg = "❌ Error: \(error.localizedDescription)"
             self.statusMessage = msg
             log(msg)
             self.isLoading = false
         }
     }
     
-    // --- 5. ROBUUSTE DIAGNOSE FUNCTIE ---
+    // --- 5. ROBUST DIAGNOSTICS FUNCTION ---
     func runDiagnostics() async {
-        log("\n🕵️‍♂️ --- START DIAGNOSE AUTESTME ---")
+        log("\n🕵️‍♂️ --- START DIAGNOSTICS ---")
         
         guard let myAddress = walletAddress(from: privateKey) else {
-            log("❌ FOUT: Kan geen adres maken van Private Key.")
+            log("❌ ERROR: Invalid Private Key.")
             return
         }
         
-        log("🆔 MIJN WALLET ADRES: \(myAddress.address)")
+        log("🆔 SENDER (Game Treasury): \(myAddress.address)")
         
         do {
             let web3 = try await getWeb3()
             
-            // 1. Check POL Saldo (Benzine)
+            // 1. Check POL Balance (Gas)
             let polBalance = try await web3.eth.getBalance(for: myAddress)
             let polDouble = Double(polBalance.description) ?? 0.0
-            let polString = String(format: "%.4f", polDouble / 1_000_000_000_000_000_000.0)
-            log("⛽️ POL SALDO: \(polString) POL")
+            let polString = String(format: "%.4f", polDouble / 1e18)
+            log("⛽️ GAS BALANCE: \(polString) POL")
             
             if polBalance == 0 {
-                log("⚠️ WAARSCHUWING: Je hebt 0 POL. Je kunt geen transacties betalen!")
-            } else {
-                log("✅ Benzine aanwezig.")
+                log("⚠️ WARNING: Treasury has 0 POL for gas!")
             }
             
-            // 2. Check Contract & AUT Saldo
+            // 2. Check AUT Balance (Tokens)
             if let contractAddress = EthereumAddress(contractAddressString),
                let contract = web3.contract(minimalABI, at: contractAddress, abiVersion: 2) {
                 
-                log("📜 CONTRACT ADRES: \(contractAddress.address)")
+                log("📜 CONTRACT: \(contractAddress.address)")
                 
                 let parameters: [Any] = [myAddress]
                 
                 if let readOp = contract.createReadOperation("balanceOf", parameters: parameters) {
                     readOp.transaction.from = myAddress
-                    
                     do {
                         let response = try await readOp.callContractMethod()
-                        
                         var balance: BigUInt?
                         if let b = response["balance"] as? BigUInt { balance = b }
                         else if let b = response["0"] as? BigUInt { balance = b }
                         
                         if let bal = balance {
                             let balDouble = Double(bal.description) ?? 0.0
-                            let autString = String(format: "%.2f", balDouble / 1_000_000_000_000_000_000.0)
-                            log("💰 AUT SALDO: \(autString) AUT")
+                            let autString = String(format: "%.2f", balDouble / 1e18)
+                            log("💰 TOKEN BALANCE: \(autString) AUT")
                             
                             if bal == 0 {
-                                log("⚠️ WAARSCHUWING: Je hebt 0 AUT. Vul deze wallet!")
-                            } else {
-                                log("✅ Munten aanwezig.")
+                                log("⚠️ WARNING: Treasury is empty (0 AUT).")
                             }
-                        } else {
-                            log("⚠️ Kon saldo wel ophalen, maar niet lezen.")
                         }
                     } catch {
-                        log("❌ FOUT bij 'balanceOf': \(error.localizedDescription)")
+                        log("❌ 'balanceOf' failed: \(error.localizedDescription)")
                     }
                 }
             }
             
         } catch {
-            log("❌ DIAGNOSE ERROR: \(error)")
+            log("❌ DIAGNOSTICS ERROR: \(error)")
         }
-        log("🕵️‍♂️ --- EINDE DIAGNOSE ---\n")
+        log("🕵️‍♂️ --- END DIAGNOSTICS ---\n")
     }
     
     func rewardPlayer(amount: Int) async {
-        // Dubbelcheck de keys
-        if privateKey.contains("PLAK_HIER") { return }
+        if privateKey.isEmpty { return }
         
         self.isLoading = true
-        self.statusMessage = "Munten overmaken (\(amount))..."
+        self.statusMessage = "Rewarding Player (\(amount) AUT)..."
         
         do {
             let web3 = try await getWeb3()
-            guard let contractAddress = EthereumAddress(contractAddressString) else { throw Web3Error.inputError(desc: "Adres fout") }
-            guard let contract = web3.contract(minimalABI, at: contractAddress, abiVersion: 2) else { throw Web3Error.inputError(desc: "Contract fout") }
+            guard let contractAddress = EthereumAddress(contractAddressString) else { throw Web3Error.inputError(desc: "Address error") }
+            guard let contract = web3.contract(minimalABI, at: contractAddress, abiVersion: 2) else { throw Web3Error.inputError(desc: "Contract error") }
             
-            let myAddress = web3.provider.url.scheme == "http" ? EthereumAddress("0x0000000000000000000000000000000000000000")! : walletAddress(from: privateKey)!
-            let amountBigInt = BigUInt(amount) * BigUInt(10).power(18)
-            let parameters: [Any] = [myAddress, amountBigInt]
+            // SENDER = Game Treasury (from secrets)
+            let myAddress = walletAddress(from: privateKey)!
             
-            guard let writeOperation = contract.createWriteOperation("transfer", parameters: parameters) else {
-                throw Web3Error.inputError(desc: "Functie niet gevonden")
+            // RECIPIENT = Founder (as test player)
+            // We use the Founder address from Secrets as the destination
+            guard let recipientString = Secrets.FounderWalletAddress as String?,
+                  let recipientAddress = EthereumAddress(recipientString) else {
+                throw Web3Error.inputError(desc: "Invalid Founder Address in Secrets")
             }
             
-            // 1. Zet afzender
+            let amountBigInt = BigUInt(amount) * BigUInt(10).power(18)
+            let parameters: [Any] = [recipientAddress, amountBigInt]
+            
+            log("💸 Sending \(amount) AUT")
+            log("FROM: \(myAddress.address)")
+            log("TO:   \(recipientAddress.address)")
+            
+            guard let writeOperation = contract.createWriteOperation("transfer", parameters: parameters) else {
+                throw Web3Error.inputError(desc: "Function not found")
+            }
+            
+            // 1. Set Sender
             writeOperation.transaction.from = myAddress
             writeOperation.transaction.chainID = chainID
             
-            // 2. CONFIGURATIE MET POLICIES (LEGACY MODE)
-            // We gebruiken een vaste gasprijs in plaats van EIP-1559 tips
-            // Dit is stabieler op testnetten zoals Amoy.
-            
-            let gasPrice = BigUInt(60_000_000_000) // 60 Gwei (Ruim boven minimum)
-            
+            // 2. Legacy Gas Settings (Fixed price)
+            let gasPrice = BigUInt(60_000_000_000) // 60 Gwei
             let policies = Policies(
                 gasLimitPolicy: .automatic,
                 gasPricePolicy: .manual(gasPrice)
             )
             
-            // 3. Verstuur transactie met de legacy policies
+            // 3. Send Transaction
             let transaction = try await writeOperation.writeToChain(password: "", policies: policies)
             
-            self.statusMessage = "✅ \(amount) AC overgemaakt! Hash: \(transaction.hash.prefix(6))..."
-            log("✅ TRANS ACTION SUCCESS: Hash \(transaction.hash)")
+            self.statusMessage = "✅ \(amount) AUT Sent! Hash: \(transaction.hash.prefix(6))..."
+            log("✅ SUCCESS: \(transaction.hash)")
             self.isLoading = false
             
         } catch {
-            // Betere foutmeldingen
-            let msg = "❌ TRANSACTIE FOUT: \(error.localizedDescription)"
+            let msg = "❌ TRANSACTION ERROR: \(error.localizedDescription)"
             log(msg)
             
             if error.localizedDescription.contains("insufficient funds") {
-                self.statusMessage = "❌ Te weinig POL op deze wallet."
+                self.statusMessage = "❌ Rejected: Insufficient POL (Gas)."
             } else if error.localizedDescription.contains("reverted") {
-                self.statusMessage = "❌ Geweigerd: Waarschijnlijk te weinig AUT."
+                self.statusMessage = "❌ Rejected: Check Treasury AUT Balance."
             } else {
-                self.statusMessage = msg // Toon de echte fout, niet "Check Policy"
+                self.statusMessage = msg
             }
             self.isLoading = false
         }
     }
     
-    // --- HELPER FUNCTIES ---
+    // --- HELPERS ---
     private func getWeb3() async throws -> Web3 {
-        guard let url = URL(string: rpcURL) else { throw Web3Error.inputError(desc: "URL Fout") }
+        guard let url = URL(string: rpcURL) else { throw Web3Error.inputError(desc: "URL Error") }
         let provider = try await Web3HttpProvider(url: url, network: .Custom(networkID: chainID))
         let web3 = Web3(provider: provider)
-        guard let keyData = Data.fromHex(privateKey) else { throw Web3Error.inputError(desc: "Key Fout") }
+        guard let keyData = Data.fromHex(privateKey) else { throw Web3Error.inputError(desc: "Key Error") }
         let keystore = try! EthereumKeystoreV3(privateKey: keyData, password: "")!
         web3.addKeystoreManager(KeystoreManager([keystore]))
         return web3

@@ -1,16 +1,25 @@
 // Secrets.example.swift
-// DIT BESTAND MAG WEL OP GITHUB
-// Instructie voor nieuwe ontwikkelaars:
-// 1. Kopieer dit bestand en noem het 'Secrets.swift'
-// 2. Vul je eigen test-keys in
-// 3. Zorg dat 'Secrets.swift' in je .gitignore staat
+// THIS FILE IS SAFE TO COMMIT TO GITHUB
+// Instructions for new developers:
+// 1. Copy this file and rename it to 'Secrets.swift'
+// 2. Fill in your own test keys
+// 3. Ensure 'Secrets.swift' is listed in your .gitignore
 
 import Foundation
 
-struct SecretsExemple {
-    // Het adres van je AutestCoin token
-    static let contractAddress = "PLAK_HIER_JE_TOKEN_ADRES"
+struct SecretsExample {
+    // 1. The address of the Token Contract
+    static let contractAddress = "PASTE_TOKEN_ADDRESS_HERE"
     
-    // De Private Key van je wallet
-    static let privateKey = "PLAK_HIER_JE_PRIVATE_KEY"
+    // 2. The Private Keys (The keys to the vaults)
+    static let privateKeyAutestme = "PASTE_KEY_HERE"
+    static let privateKeyFounder = "PASTE_KEY_HERE"
+    static let privateKeyDAOTreasury = "PASTE_KEY_HERE"
+    static let privateKeyGameTreasury = "PASTE_KEY_HERE" // <-- This will be the 'Bank'
+    
+    // 3. The addresses of the Wallets (To send funds to)
+    static let AutestmeWalletAddress = "PASTE_ADDRESS_HERE" // Fixed spelling here
+    static let FounderWalletAddress = "PASTE_ADDRESS_HERE" // <-- This will be the 'Player'
+    static let DAOTreasuryWalletAddress = "PASTE_ADDRESS_HERE"
+    static let GameTreasuryWalletAddress = "PASTE_ADDRESS_HERE"
 }

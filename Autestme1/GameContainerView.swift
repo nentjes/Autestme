@@ -5,7 +5,7 @@ import AVFoundation
 struct GameContainerView: View {
     private let shapeDisplayRate: Int
     @StateObject private var gameTimer: GameTimer
-    @ObservedObject private var gameLogic: GameLogic // <-- Correcte @ObservedObject
+    @ObservedObject private var gameLogic: GameLogic // <-- Correct @ObservedObject
     @State private var shapeCounts: [ShapeType: Int]
     @State private var colorMode: ColorMode
     @State private var currentShape: ShapeType?
@@ -17,7 +17,7 @@ struct GameContainerView: View {
     @Binding var navigationPath: NavigationPath
 
     init(gameLogic: GameLogic, navigationPath: Binding<NavigationPath>) {
-        self.gameLogic = gameLogic // <-- Correcte init
+        self.gameLogic = gameLogic // <-- Correct init
         self.shapeDisplayRate = gameLogic.displayRate
         self._gameTimer = StateObject(wrappedValue: GameTimer(gameTime: gameLogic.gameTime, displayRate: gameLogic.displayRate))
         self._shapeCounts = State(initialValue: Dictionary(uniqueKeysWithValues: ShapeType.allCases.map { ($0, 0) }))
@@ -27,11 +27,11 @@ struct GameContainerView: View {
 
     var body: some View {
         VStack {
-            Text("game_screen_title") // <-- Gelokaliseerd
+            Text("game_screen_title") // <-- Localized
                 .font(.largeTitle)
                 .padding()
 
-            Text(String(format: NSLocalizedString("game_screen_time_left", comment: ""), "\(gameTimer.remainingTime)")) // <-- Gelokaliseerd
+            Text(String(format: NSLocalizedString("game_screen_time_left", comment: ""), "\(gameTimer.remainingTime)")) // <-- Localized
                 .font(.title2)
                 .padding()
 
@@ -115,7 +115,7 @@ struct GameContainerView: View {
                     shapeCounts: $shapeCounts,
                     dismissAction: { navigationPath.removeLast() },
                     restartAction: { navigationPath.removeLast() },
-                    gameLogic: gameLogic, // <-- Correct (geen $)
+                    gameLogic: gameLogic, // <-- Correct (no $)
                     navigationPath: $navigationPath
                 )
             }
@@ -124,7 +124,7 @@ struct GameContainerView: View {
     
     func playCommonClick() {
         guard let url = Bundle.main.url(forResource: "click", withExtension: "mp3") else {
-            print("Geluid niet gevonden")
+            print("Sound not found")
             return
         }
         do {
@@ -135,21 +135,21 @@ struct GameContainerView: View {
             audioPlayer?.currentTime = 0
             audioPlayer?.play()
         } catch {
-            print("Fout bij afspelen: \(error)")
+            print("Error playing sound: \(error)")
         }
     }
 
     func playShapeSound(for shape: ShapeType) {
         let filename = shape.soundFileName
         guard let url = Bundle.main.url(forResource: filename, withExtension: "mp3") else {
-            print("Geluid voor \(shape.displayName) niet gevonden")
+            print("Sound for \(shape.displayName) not found")
             return
         }
         do {
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             audioPlayer?.play()
         } catch {
-            print("Fout bij afspelen geluid voor \(shape.displayName): \(error)")
+            print("Error playing sound for \(shape.displayName): \(error)")
         }
     }
 }

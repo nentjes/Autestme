@@ -11,9 +11,9 @@ enum ColorMode: String, CaseIterable, Identifiable {
     var displayName: String {
         switch self {
         case .fixed:
-            return "Vaste kleur per vorm"
+            return "Fixed color per shape"
         case .random:
-            return "Willekeurige kleur"
+            return "Random color"
         }
     }
 }
@@ -73,7 +73,7 @@ class GameLogic: ObservableObject, Equatable, Hashable {
         self.player = player
         self.numberOfItems = numberOfShapes
 
-        self.shapeType = GameLogic.generateShapes(numberOfShapes: numberOfShapes) // <-- Gebruikt de GECORRIGEERDE functie
+        self.shapeType = GameLogic.generateShapes(numberOfShapes: numberOfShapes)
         self.score = 0
 
         setupShapeColors()
@@ -81,8 +81,6 @@ class GameLogic: ObservableObject, Equatable, Hashable {
         resetCounts()
     }
 
-    
-    // HIER IS DE HIGHSCORE RESET FIX
     func reset() {
         gameTime = 10
         shapeCounts = [:]
@@ -92,7 +90,6 @@ class GameLogic: ObservableObject, Equatable, Hashable {
         letterSequence = []
         numberSequence = []
         remainingTime = gameTime
-        // player = "Player1" // <-- DEZE REGEL IS VERWIJDERD
         score = 0
     }
     
@@ -141,12 +138,10 @@ class GameLogic: ObservableObject, Equatable, Hashable {
     
     static func == (lhs: GameLogic, rhs: GameLogic) -> Bool {
         return lhs.gameID == rhs.gameID
-        // ... (de rest van je == implementatie)
     }
 
     func hash(into hasher: inout Hasher) {
         hasher.combine(gameID)
-        // ... (de rest van je hash implementatie)
     }
 
     static func getRandomShape(shapes: [ShapeType], excluding lastShape: ShapeType? = nil, lastShapes: [ShapeType] = []) -> ShapeType {
@@ -174,9 +169,7 @@ class GameLogic: ObservableObject, Equatable, Hashable {
         return availableShapes[randomIndex]
     }
 
-    // HIER IS DE GENERATESHAPES FIX
     static func generateShapes(numberOfShapes: Int) -> [ShapeType] {
-        // Zorgt voor UNIEKE vormen
         return Array(ShapeType.allCases.shuffled().prefix(numberOfShapes))
     }
 }

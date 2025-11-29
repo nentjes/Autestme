@@ -16,7 +16,7 @@ struct StartScreen: View {
     @State private var playerName: String = ""
     @State private var currentHighscore: Int = 0
     
-    // Wallet address of the player (Polygon Amoy)
+    // Wallet address of the player (Polygon Mainnet)
     @State private var playerWalletAddress: String = ""
     
     // NEW: State for conditional crypto visibility
@@ -84,12 +84,9 @@ struct StartScreen: View {
         .onAppear {
             updateHighscore()
             if !web3Manager.isConnected {
-                web3Manager.statusMessage = NSLocalizedString("Klaar om te verbinden", comment: "Ready to connect")
-            }
-            
-            // Attempt to connect treasury on launch
-            if web3Manager.defaultRecipientAddress.isEmpty {
+                // We gebruiken de connect() methode nu om verbinding te maken en de status op te halen
                 Task {
+                    // Start de connectie/diagnose
                     await web3Manager.connect()
                 }
             }
@@ -99,14 +96,18 @@ struct StartScreen: View {
         .sheet(isPresented: $showDebugLog) {
             debugLogSheet
         }
-        // MODIFIED: Combine the two info strings into one message
+        // CORRECTED: Ensure Text concatenation works by explicitly combining them
         .alert(Text(NSLocalizedString("info_title", comment: "Alert Title")), isPresented: $showInfoAlert) {
             Button(NSLocalizedString("alert_button_ok", comment: "OK button")) { }
         } message: {
             // Combine the standard game info and the crypto info here
+            // We gebruiken String(localized:...) om de fouten in de Canvas te omzeilen
             Text(NSLocalizedString("info_body", comment: "Game rules")) +
-            Text("\n\n") + // Add two newlines for separation
-            Text(NSLocalizedString("info_body_crypto", comment: "Crypto info"))
+            Text("\n\n") +
+            Text(NSLocalizedString("info_crypto_title", comment: "Crypto Rewards Title"))
+                .fontWeight(.bold) +
+            Text("\n") +
+            Text(NSLocalizedString("info_crypto_explanation", comment: "Crypto info"))
         }
         .navigationDestination(for: GameLogic.self) { logic in
             GameContainerView(gameLogic: logic, navigationPath: $navigationPath)
@@ -398,4 +399,12 @@ struct StartScreen: View {
                 .padding()
         }
     }
+}
+
+// MARK: - Preview Provider
+#Preview {
+    // Om de @Binding correct te initialiseren, gebruiken we .constant()
+    // De Web3Manager.shared wordt automatisch gebruikt.
+    StartScreen(navigationPath: .constant(NavigationPath()))
+        .preferredColorScheme(.light) // Optioneel: Standaard licht thema in de preview
 }

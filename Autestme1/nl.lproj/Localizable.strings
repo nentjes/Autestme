@@ -1,12 +1,12 @@
 /* Localizable.strings (Dutch) */
 
-/* MARK: - Info Alert (Game Explanation) */
+/* MARK: - Info Alert (Speluitleg) */
 "info_title" = "Speluitleg";
 "alert_button_ok" = "OK";
 "info_body" = "Welkom bij Autestme!\n\nIn dit spel worden verschillende vormen, letters of cijfers getoond.\nJouw taak is om te onthouden hoe vaak je elk item hebt gezien.\n\nSpeltypes:\n• Vormen – cirkels, vierkanten, lijnen, enz.\n• Letters – willekeurige hoofdletters (A t/m Z)\n• Nummers – willekeurige cijfers (0 t/m 9)\n\nInstellingen:\n• Spelduur – hoe lang het spel duurt\n• Tempo – hoe snel de items verschijnen\n• Aantal items – voor vormen: hoeveel verschillende vormen, voor letters/cijfers: hoeveel verschillende opties worden gekozen\n• Kleurmodus – vaste kleuren per item of willekeurige kleuren.";
 
 "info_crypto_title" = "Crypto Beloningen";
-"info_crypto_explanation" = "De Autestme app maakt gebruik van de Polygon Mainnet Blockchain om spelers te belonen met $SFR Tokens (Safari Token). Je hebt de keuze uit twee opties:\n\n1. Mijn Wallet: De beloning wordt direct naar jouw persoonlijke wallet-adres gestuurd.\n2. Schatkist: De beloning gaat naar de centrale Schatkist van de app. Je spaart zo mee voor een grotere gezamenlijke prijzenpot.\n\nVeeg rechts-links om je keuze te maken. Jouw adres moet een geldig Polygon Mainnet adres zijn.";
+"info_crypto_explanation" = "De Autestme app maakt gebruik van de Polygon Mainnet Blockchain om spelers te belonen met AUteste Tokens. Je hebt de keuze uit twee opties:\n\n1. Mijn Wallet: De beloning wordt direct naar jouw persoonlijke wallet-adres gestuurd.\n2. Schatkist: De beloning gaat naar de centrale Schatkist van de app. Je spaart zo mee voor een grotere gezamenlijke prijzenpot.\n\nVeeg rechts-links om je keuze te maken. Jouw adres moet een geldig Polygon Mainnet adres zijn.";
 
 /* MARK: - StartScreen UI */
 "app_title" = "Autestme";
@@ -45,13 +45,15 @@
 "end_screen_score_label" = "Score: %@";
 "end_screen_back_button" = "Terug naar Start";
 "end_screen_restart_button" = "Speel opnieuw";
-"end_screen_item_label" = "Aantal gezien: %@";
+"end_screen_item_label" = "%@:";
 "end_screen_result_format" = "Ingevuld: %@ | Werkelijk: %@";
 "end_screen_input_placeholder" = "Aantal";
 "end_screen_reward_title" = "Beloning";
 "end_screen_reward_pending" = "Beloning wordt verwerkt...";
 "end_screen_reward_success" = "✅ Beloning verstuurd!";
 "end_screen_reward_error" = "❌ Fout bij verzenden beloning.";
+"end_screen_input_prompt" = "Hoeveel items heb je gezien:";
+"end_screen_show_results_button" = "Toon resultaten";
 
 /* MARK: - Wallet / Crypto */
 "wallet_address_label" = "Jouw Wallet Adres (Polygon Mainnet)";
@@ -60,3 +62,22 @@
 "crypto_mode_game_treasury" = "Schatkist";
 "crypto_mode_info" = "Waar moeten je beloningen naartoe?";
 "address_placeholder" = "0x... (Polygon Wallet Adres)";
+
+/* MARK: - Shape Names (CRUCIAAL voor eindscherm) */
+"shape_dot" = "Stip";
+"shape_line" = "Lijn";
+"shape_circle" = "Cirkel";
+"shape_oval" = "Ovaal";
+"shape_square" = "Vierkant";
+"shape_rectangle" = "Rechthoek";
+
+/* MARK: - NEW CRYPTO STRINGS (Voor swipe instructies) */
+"swipe_instruction_bold" = "Veeg naar links om AUteste te verdienen.";
+"swipe_instruction_body" = "Als je Autestme-tokens wilt ontvangen, veeg dan over het scherm van rechts naar links om de wallet-verbindingsopties te tonen.";
+"default_recipient_label" = "Standaard Ontvanger:";
+"use_default_button" = "Gebruik Standaard";
+"connect_treasury_button" = "Verbind Schatkist";
+"crypto_rewards_disabled" = "Crypto-beloningen uitgeschakeld.";
+"default_wallet_configured" = "Gebruik van de standaard wallet van de app.";
+"invalid_wallet_address" = "❌ Ongeldige wallet-adresindeling.";
+"default_wallet_error" = "❌ Standaard wallet is niet geconfigureerd. Wacht op diagnose of geef een adres op.";

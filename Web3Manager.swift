@@ -4,31 +4,31 @@ import web3swift
 import Web3Core
 import SwiftUI
 
-// @MainActor ensures updates are safely propagated to the UI
 @MainActor
 class Web3Manager: ObservableObject {
     static let shared = Web3Manager()
     
     // --- 1. CONFIGURATION ---
-    private let rpcURL = "https://polygon-amoy-bor-rpc.publicnode.com"
-    private let chainID = BigUInt(80002) // Polygon Amoy testnet
+    // 🔹 VAN TESTNET ➜ PRODUCTIE
+    private let rpcURL = "https://polygon-rpc.com"              // <- mainnet i.p.v. Amoy
+    private let chainID = BigUInt(137)                          // <- 137 = Polygon mainnet
     
-    // Sensitive data from Secrets.swift
+    // Gevoelige data uit Secrets.swift
     private let contractAddressString = Secrets.contractAddress
-    private let privateKey = Secrets.privateKeyGameTreasury   // Key of your "Game Treasury" wallet
+    private let privateKey = Secrets.privateKeyGameTreasury   // Key van je "Game Treasury" wallet
     
     // --- 2. STATUS ---
     @Published var statusMessage: String = "Ready to connect"
     @Published var isLoading: Bool = false
     @Published var isConnected: Bool = false
     
-    // This address is set from StartScreen (player's wallet)
+    // Dit adres wordt vanuit StartScreen gezet (wallet speler)
     @Published var recipientAddress: String = ""
     
-    // The App's own default wallet address (Game Treasury)
-    @Published var defaultRecipientAddress: String = "" // <-- NEW: Default address
+    // Eigen default wallet (Game Treasury)
+    @Published var defaultRecipientAddress: String = ""
     
-    // Log for UI (debug sheet)
+    // Log voor debug-sheet
     @Published var debugLog: String = ""
     
     // --- 3. Simple ERC-20 ABI ---
@@ -56,7 +56,7 @@ class Web3Manager: ObservableObject {
     
     private init() {}
     
-    // Logging helper function
+    // Logging helper
     private func log(_ message: String) {
         print(message)
         debugLog += message + "\n"
@@ -101,10 +101,9 @@ class Web3Manager: ObservableObject {
             return
         }
         
-        // Set the default address here
+        // Default adres = treasury-adres
         defaultRecipientAddress = myAddress.address
         log("🏠 DEFAULT RECIPIENT (App Treasury): \(defaultRecipientAddress)")
-
         log("🆔 SENDER (Game Treasury): \(myAddress.address)")
         
         do {
@@ -120,7 +119,7 @@ class Web3Manager: ObservableObject {
                 log("⚠️ Game Treasury has 0 POL (no gas).")
             }
             
-            // 2. Check token balance of the Treasury
+            // 2. Check token balance Treasury
             if let contractAddress = EthereumAddress(contractAddressString),
                let contract = web3.contract(minimalABI, at: contractAddress, abiVersion: 2) {
                 
@@ -172,14 +171,12 @@ class Web3Manager: ObservableObject {
         isLoading = true
         statusMessage = "Sending reward (\(amount) AUT)..."
         
-        // Address must be set by StartScreen
         guard !recipientAddress.isEmpty else {
             statusMessage = "❌ No player address known. (This should not happen.)"
             isLoading = false
             return
         }
         
-        // Extra check address format
         guard recipientAddress.hasPrefix("0x"),
               recipientAddress.count == 42 else {
             statusMessage = "❌ Invalid player address format."
@@ -219,7 +216,6 @@ class Web3Manager: ObservableObject {
             writeOperation.transaction.from = treasuryAddress
             writeOperation.transaction.chainID = chainID
             
-            // Simple gas setting (legacy)
             let gasPrice = BigUInt(60_000_000_000) // 60 Gwei
             let policies = Policies(
                 gasLimitPolicy: .automatic,

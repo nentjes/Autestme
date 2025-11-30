@@ -7,7 +7,7 @@ struct EndScreen: View {
     @ObservedObject var gameLogic: GameLogic
     @Binding var navigationPath: NavigationPath
 
-    // WEB3 ADDITION
+    // WEB3
     @StateObject private var web3Manager = Web3Manager.shared
 
     @State private var enteredShapes: [ShapeType: Int] = [:]
@@ -17,6 +17,7 @@ struct EndScreen: View {
     @State private var textInputs: [AnyHashable: String] = [:]
     @FocusState private var focusedField: AnyHashable?
 
+    // Totaal aantal correcte antwoorden
     private var totalCorrect: Int {
         switch gameLogic.gameVersion {
         case .shapes:
@@ -25,15 +26,19 @@ struct EndScreen: View {
                 return acc + (entered == pair.value ? 1 : 0)
             }
         case .letters:
-            return gameLogic.letterCounts.filter { $0.value > 0 }.reduce(0) { acc, pair in
-                let entered = enteredLetters[pair.key] ?? 0
-                return acc + (entered == pair.value ? 1 : 0)
-            }
+            return gameLogic.letterCounts
+                .filter { $0.value > 0 }
+                .reduce(0) { acc, pair in
+                    let entered = enteredLetters[pair.key] ?? 0
+                    return acc + (entered == pair.value ? 1 : 0)
+                }
         case .numbers:
-            return gameLogic.numberCounts.filter { $0.value > 0 }.reduce(0) { acc, pair in
-                let entered = enteredNumbers[pair.key] ?? 0
-                return acc + (entered == pair.value ? 1 : 0)
-            }
+            return gameLogic.numberCounts
+                .filter { $0.value > 0 }
+                .reduce(0) { acc, pair in
+                    let entered = enteredNumbers[pair.key] ?? 0
+                    return acc + (entered == pair.value ? 1 : 0)
+                }
         }
     }
 
@@ -63,20 +68,35 @@ struct EndScreen: View {
 
                 switch gameLogic.gameVersion {
                 case .shapes:
-                    resultList(data: shapeCounts.map { ($0.key.displayName, enteredShapes[$0.key] ?? 0, $0.value) })
+                    resultList(
+                        data: shapeCounts.map {
+                            ($0.key.displayName, enteredShapes[$0.key] ?? 0, $0.value)
+                        }
+                    )
                 case .letters:
-                    resultList(data: gameLogic.letterCounts.filter { $0.value > 0 }
-                        .sorted(by: {$0.key < $1.key})
-                        .map { (String($0.key), enteredLetters[$0.key] ?? 0, $0.value) })
+                    resultList(
+                        data: gameLogic.letterCounts
+                            .filter { $0.value > 0 }
+                            .sorted { $0.key < $1.key }
+                            .map { (String($0.key), enteredLetters[$0.key] ?? 0, $0.value) }
+                    )
                 case .numbers:
-                    resultList(data: gameLogic.numberCounts.filter { $0.value > 0 }
-                        .sorted(by: {$0.key < $1.key})
-                        .map { (String($0.key), enteredNumbers[$0.key] ?? 0, $0.value) })
+                    resultList(
+                        data: gameLogic.numberCounts
+                            .filter { $0.value > 0 }
+                            .sorted { $0.key < $1.key }
+                            .map { (String($0.key), enteredNumbers[$0.key] ?? 0, $0.value) }
+                    )
                 }
 
-                Text(String(format: NSLocalizedString("end_screen_score_label", comment: ""), "\(totalCorrect)"))
-                    .font(.title2)
-                    .padding()
+                Text(
+                    String(
+                        format: NSLocalizedString("end_screen_score_label", comment: ""),
+                        "\(totalCorrect)"
+                    )
+                )
+                .font(.title2)
+                .padding()
 
                 Button("end_screen_back_button") {
                     gameLogic.reset()
@@ -87,6 +107,7 @@ struct EndScreen: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)
+
             } else {
                 Text("end_screen_input_prompt")
                     .font(.title2)
@@ -103,7 +124,10 @@ struct EndScreen: View {
                     )
                 case .letters:
                     entryList(
-                        items: gameLogic.letterCounts.filter { $0.value > 0 }.map { $0.key }.sorted(),
+                        items: gameLogic.letterCounts
+                            .filter { $0.value > 0 }
+                            .map { $0.key }
+                            .sorted(),
                         getValue: { enteredLetters[$0] ?? 0 },
                         setValue: { enteredLetters[$0] = $1 },
                         label: { String($0) },
@@ -111,7 +135,10 @@ struct EndScreen: View {
                     )
                 case .numbers:
                     entryList(
-                        items: gameLogic.numberCounts.filter { $0.value > 0 }.map { $0.key }.sorted(),
+                        items: gameLogic.numberCounts
+                            .filter { $0.value > 0 }
+                            .map { $0.key }
+                            .sorted(),
                         getValue: { enteredNumbers[$0] ?? 0 },
                         setValue: { enteredNumbers[$0] = $1 },
                         label: { String($0) },
@@ -121,23 +148,26 @@ struct EndScreen: View {
 
                 Button("end_screen_show_results_button") {
                     isShowingResults = true
-                    
-                    // Highscore logic
-                    if totalCorrect > GameLogic.getHighScore(for: gameLogic.player, gameVersion: gameLogic.gameVersion) {
-                        GameLogic.setHighScore(totalCorrect, for: gameLogic.player, gameVersion: gameLogic.gameVersion)
+
+                    // Highscore
+                    if totalCorrect > GameLogic.getHighScore(
+                        for: gameLogic.player,
+                        gameVersion: gameLogic.gameVersion
+                    ) {
+                        GameLogic.setHighScore(
+                            totalCorrect,
+                            for: gameLogic.player,
+                            gameVersion: gameLogic.gameVersion
+                        )
                     }
-                    
-                    // WEB3 TRIGGER: Reward the player
-                    // Check if an address was provided (either user's or app's default)
+
+                    // WEB3: echte reward
                     if totalCorrect > 0 && !web3Manager.recipientAddress.isEmpty {
+                        let rewardAmount = totalCorrect   // 1 AUT per goed antwoord
                         Task {
-                            // Note: totalCorrect must be converted to BigUInt and scaled for transfer
-                            // Mocking the call for preview
-                            // await web3Manager.rewardPlayer(amount: totalCorrect)
-                            web3Manager.statusMessage = "Reward ready to be sent (Preview mode)."
+                            await web3Manager.rewardPlayer(amount: rewardAmount)
                         }
                     } else if web3Manager.recipientAddress.isEmpty {
-                        // User chose to play without enabling crypto rewards (recipientAddress is intentionally set to "")
                         web3Manager.statusMessage = "Rewards were disabled for this game."
                     } else {
                         web3Manager.statusMessage = "No tokens earned (score 0)"
@@ -158,11 +188,19 @@ struct EndScreen: View {
                 case .shapes:
                     firstItem = shapeCounts.map { $0.key }.first
                 case .letters:
-                    firstItem = gameLogic.letterCounts.filter { $0.value > 0 }.map { $0.key }.sorted().first
+                    firstItem = gameLogic.letterCounts
+                        .filter { $0.value > 0 }
+                        .map { $0.key }
+                        .sorted()
+                        .first
                 case .numbers:
-                    firstItem = gameLogic.numberCounts.filter { $0.value > 0 }.map { $0.key }.sorted().first
+                    firstItem = gameLogic.numberCounts
+                        .filter { $0.value > 0 }
+                        .map { $0.key }
+                        .sorted()
+                        .first
                 }
-                
+
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
                     focusedField = firstItem
                 }
@@ -170,7 +208,8 @@ struct EndScreen: View {
         }
     }
 
-    // 🔧 Input fields
+    // MARK: - Input-lijst
+
     func entryList<T: Hashable>(
         items: [T],
         getValue: @escaping (T) -> Int,
@@ -180,24 +219,28 @@ struct EndScreen: View {
     ) -> some View {
         List(items, id: \.self) { item in
             HStack {
-                // Corrected localization usage (already handled in previous step)
-                Text(String(format: NSLocalizedString("end_screen_item_label", comment: ""), label(item)))
+                Text(
+                    String(
+                        format: NSLocalizedString("end_screen_item_label", comment: ""),
+                        label(item)
+                    )
+                )
                 Spacer()
-                
-                TextField("end_screen_input_placeholder", text: Binding(
-                    get: {
-                        let value = getValue(item)
-                        if value != 0 {
-                            return "\(value)"
+
+                TextField(
+                    "end_screen_input_placeholder",
+                    text: Binding(
+                        get: {
+                            let value = getValue(item)
+                            return value == 0 ? "" : "\(value)"
+                        },
+                        set: { newText in
+                            let filtered = newText.filter { $0.isNumber }
+                            textInputs[item] = filtered
+                            setValue(item, Int(filtered) ?? 0)
                         }
-                        return ""
-                    },
-                    set: { newText in
-                        let filtered = newText.filter { $0.isNumber }
-                        textInputs[item] = filtered
-                        setValue(item, Int(filtered) ?? 0)
-                    }
-                ))
+                    )
+                )
                 .keyboardType(.numberPad)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .frame(width: 60)
@@ -207,51 +250,57 @@ struct EndScreen: View {
         }
     }
 
-    // 📊 Results
+    // MARK: - Result-lijst
+
     func resultList(data: [(String, Int, Int)]) -> some View {
         List(data, id: \.0) { label, entered, actual in
             let correct = entered == actual
             let skipped = entered == 0 && actual == 0
-            let color: Color = correct || skipped ? .green : .red
+            let color: Color = (correct || skipped) ? .green : .red
 
             HStack {
-                Text(String(format: NSLocalizedString("end_screen_item_label", comment: ""), label))
+                Text(
+                    String(
+                        format: NSLocalizedString("end_screen_item_label", comment: ""),
+                        label
+                    )
+                )
                 Spacer()
-                Text(String(format: NSLocalizedString("end_screen_result_format", comment: ""), "\(entered)", "\(actual)"))
-                    .foregroundColor(color)
+                Text(
+                    String(
+                        format: NSLocalizedString("end_screen_result_format", comment: ""),
+                        "\(entered)", "\(actual)"
+                    )
+                )
+                .foregroundColor(color)
             }
         }
     }
 }
 
-// MARK: - Preview Provider
+// MARK: - Preview
+
 #Preview {
-    // 1. Mock GameLogic with some results
     let mockLogic = GameLogic(
         gameTime: 10,
-        gameVersion: .shapes, // Use shapes for the easiest mock
+        gameVersion: .shapes,
         colorMode: .fixed,
         displayRate: 3,
         player: "MockPlayer",
         numberOfShapes: 3
     )
-    
-    // Set actual counts for shapes
-    // NOTE: GameLogic uses internal counts, but EndScreen uses shapeCounts from GameContainerView.
-    // For a simple preview, we mock the shapeCounts Binding state.
+
     let mockShapeCounts: [ShapeType: Int] = [
         .dot: 5,
         .line: 2,
         .circle: 0
     ]
-    
-    // Mock the Web3Manager status for visibility
+
     Web3Manager.shared.statusMessage = "Wallet is ready for Mainnet."
     Web3Manager.shared.recipientAddress = "0xAutestmeTreasuryAddress"
-    
-    // 2. Mock NavigationPath
+
     @State var path = NavigationPath()
-    
+
     return EndScreen(
         shapeCounts: .constant(mockShapeCounts),
         dismissAction: {},
@@ -260,3 +309,4 @@ struct EndScreen: View {
         navigationPath: $path
     )
 }
+

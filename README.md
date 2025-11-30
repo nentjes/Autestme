@@ -1,4 +1,3 @@
-# Autestme
 Autestme: Neurodiverse Talent Ecosystem
 
 Autestme is a pioneering "Develop-to-Earn" (D2E) platform designed to empower neurodiverse programming talent. By combining cognitive training games with blockchain technology, we are building a sovereign digital economy where talent is recognized, verified, and directly rewarded.

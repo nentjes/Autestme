@@ -1,4 +1,5 @@
-# CONTRIBUTING: Autestme Contribution Guide – Build the Neurodiverse Talent Ecosystem
+# CONTRIBUTING: 
+Autestme Contribution Guide – Build the Neurodiverse Talent Ecosystem
 
 Welcome, and thanks for your interest in contributing to **Autestme**.  
 Autestme is a "Develop-to-Earn" (D2E) platform built **by and for neurodiverse talent**.  

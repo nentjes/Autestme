@@ -52,6 +52,11 @@
 "end_screen_reward_pending" = "Procesando recompensa...";
 "end_screen_reward_success" = "✅ ¡Recompensa enviada!";
 "end_screen_reward_error" = "❌ Error al enviar recompensa.";
+"end_screen_rewards_disabled" = "Las recompensas estaban desactivadas para esta partida.";
+"end_screen_no_tokens_earned" = "No se obtuvieron tokens (puntuación 0).";
+"end_screen_reward_sent" = "¡Recompensa enviada correctamente!";
+"end_screen_reward_failed" = "Error al enviar la recompensa.";
+
 
 /* MARK: - Wallet / Crypto */
 "wallet_address_label" = "Tu Dirección de Billetera (Polygon Mainnet)";

@@ -17,7 +17,7 @@ struct EndScreen: View {
     @State private var textInputs: [AnyHashable: String] = [:]
     @FocusState private var focusedField: AnyHashable?
 
-    // Totaal aantal correcte antwoorden
+    // Total number of correct answers
     private var totalCorrect: Int {
         switch gameLogic.gameVersion {
         case .shapes:
@@ -107,6 +107,8 @@ struct EndScreen: View {
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)
+                .accessibilityLabel("Back to start")
+                .accessibilityHint("Return to the start screen to play again")
 
             } else {
                 Text("end_screen_input_prompt")
@@ -161,23 +163,33 @@ struct EndScreen: View {
                         )
                     }
 
-                    // WEB3: echte reward
+                    // WEB3: actual reward
                     if totalCorrect > 0 && !web3Manager.recipientAddress.isEmpty {
-                        let rewardAmount = totalCorrect   // 1 AUT per goed antwoord
+                        let rewardAmount = totalCorrect   // 1 AUT per correct answer
                         Task {
                             await web3Manager.rewardPlayer(amount: rewardAmount)
                         }
                     } else if web3Manager.recipientAddress.isEmpty {
-                        web3Manager.statusMessage = "Rewards were disabled for this game."
+                    } else if web3Manager.recipientAddress.isEmpty {
+                        web3Manager.statusMessage = NSLocalizedString(
+                            "end_screen_rewards_disabled",
+                            comment: "Status when token rewards are disabled for this game"
+                        )
                     } else {
-                        web3Manager.statusMessage = "No tokens earned (score 0)"
+                        web3Manager.statusMessage = NSLocalizedString(
+                            "end_screen_no_tokens_earned",
+                            comment: "Status when no tokens were earned (score 0)"
+                        )
                     }
+
                 }
                 .font(.title2)
                 .padding()
                 .background(Color.blue)
                 .foregroundColor(.white)
                 .cornerRadius(10)
+                .accessibilityLabel("Show results")
+                .accessibilityHint("Submit your answers and see how many you got correct")
             }
         }
         .padding()
@@ -208,7 +220,7 @@ struct EndScreen: View {
         }
     }
 
-    // MARK: - Input-lijst
+    // MARK: - Input list
 
     func entryList<T: Hashable>(
         items: [T],
@@ -246,11 +258,13 @@ struct EndScreen: View {
                 .frame(width: 60)
                 .multilineTextAlignment(.trailing)
                 .focused(focusState, equals: item)
+                .accessibilityLabel("Count for \(label(item))")
+                .accessibilityHint("Enter how many times you saw this item")
             }
         }
     }
 
-    // MARK: - Result-lijst
+    // MARK: - Result list
 
     func resultList(data: [(String, Int, Int)]) -> some View {
         List(data, id: \.0) { label, entered, actual in
@@ -274,6 +288,8 @@ struct EndScreen: View {
                 )
                 .foregroundColor(color)
             }
+            .accessibilityElement(children: .combine)
+            .accessibilityLabel("\(label): \(correct ? "correct" : "incorrect"), you entered \(entered), actual was \(actual)")
         }
     }
 }

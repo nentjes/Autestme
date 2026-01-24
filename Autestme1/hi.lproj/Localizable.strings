@@ -52,6 +52,11 @@
 "end_screen_reward_pending" = "पुरस्कार संसाधित हो रहा है...";
 "end_screen_reward_success" = "✅ पुरस्कार भेजा गया!";
 "end_screen_reward_error" = "❌ पुरस्कार भेजने में त्रुटि।";
+"end_screen_rewards_disabled" = "इस खेल के लिए इनाम बंद था।";
+"end_screen_no_tokens_earned" = "कोई टोकन नहीं मिला (स्कोर 0)।";
+"end_screen_reward_sent" = "इनाम सफलतापूर्वक भेजा गया!";
+"end_screen_reward_failed" = "इनाम भेजने में त्रुटि हुई।";
+
 
 /* MARK: - Wallet / Crypto */
 "wallet_address_label" = "आपका वॉलेट पता (पॉलीगॉन मेननेट)";

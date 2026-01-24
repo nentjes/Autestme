@@ -34,6 +34,8 @@ struct GameContainerView: View {
             Text(String(format: NSLocalizedString("game_screen_time_left", comment: ""), "\(gameTimer.remainingTime)")) // <-- Localized
                 .font(.title2)
                 .padding()
+                .accessibilityLabel("Time remaining")
+                .accessibilityValue("\(gameTimer.remainingTime) seconds")
 
             switch gameLogic.gameVersion {
             case .shapes:
@@ -41,18 +43,24 @@ struct GameContainerView: View {
                     shape.shapeView()
                         .foregroundColor(colorMode == .random ? .random() : shape.color)
                         .frame(width: 100, height: 100)
+                        .accessibilityLabel(shape.displayName)
+                        .accessibilityAddTraits(.updatesFrequently)
                 }
             case .letters:
                 if let letter = currentLetter {
                     Text(String(letter))
                         .font(.system(size: 100))
                         .foregroundColor(colorMode == .random ? .random() : gameLogic.letterColors[letter] ?? .blue)
+                        .accessibilityLabel("Letter \(letter)")
+                        .accessibilityAddTraits(.updatesFrequently)
                 }
             case .numbers:
                 if let number = currentNumber {
                     Text("\(number)")
                         .font(.system(size: 100))
                         .foregroundColor(colorMode == .random ? .random() : gameLogic.numberColors[number] ?? .orange)
+                        .accessibilityLabel("Number \(number)")
+                        .accessibilityAddTraits(.updatesFrequently)
                 }
             }
 

@@ -5,7 +5,7 @@ import Foundation // <-- Important for localization
 enum ShapeType: Int, CaseIterable {
     case dot, line, circle, oval, square, rectangle
 
-    // CORRECTIE: We gebruiken NSLocalizedString om de korte namen op te halen uit de .strings files
+    // Using NSLocalizedString to retrieve display names from .strings files
     var displayName: String {
         let key: String
         switch self {

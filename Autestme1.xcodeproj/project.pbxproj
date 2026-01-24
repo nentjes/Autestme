@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8BTEST0012EF0000000000001 /* GameLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000011 /* GameLogicTests.swift */; };
+		8BTEST0012EF0000000000002 /* GameTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000012 /* GameTimerTests.swift */; };
+		8BTEST0012EF0000000000003 /* Web3ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */; };
 		8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */; };
 		8B4AABD02ED9028700EE7D58 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B4AABCF2ED9028700EE7D58 /* web3swift */; };
 		8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */; };
@@ -102,6 +105,9 @@
 		BCCCABC62A0BA55E006CB6EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BCCCABCC2A0BA55E006CB6EF /* Autestme1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Autestme1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABD02A0BA55E006CB6EF /* Autestme1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1Tests.swift; sourceTree = "<group>"; };
+		8BTEST0012EF0000000000011 /* GameLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicTests.swift; sourceTree = "<group>"; };
+		8BTEST0012EF0000000000012 /* GameTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerTests.swift; sourceTree = "<group>"; };
+		8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3ManagerTests.swift; sourceTree = "<group>"; };
 		BCCCABD62A0BA55E006CB6EF /* Autestme1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Autestme1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITests.swift; sourceTree = "<group>"; };
 		BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -217,6 +223,9 @@
 			isa = PBXGroup;
 			children = (
 				BCCCABD02A0BA55E006CB6EF /* Autestme1Tests.swift */,
+				8BTEST0012EF0000000000011 /* GameLogicTests.swift */,
+				8BTEST0012EF0000000000012 /* GameTimerTests.swift */,
+				8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */,
 			);
 			path = Autestme1Tests;
 			sourceTree = "<group>";
@@ -405,6 +414,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCCCABD12A0BA55E006CB6EF /* Autestme1Tests.swift in Sources */,
+				8BTEST0012EF0000000000001 /* GameLogicTests.swift in Sources */,
+				8BTEST0012EF0000000000002 /* GameTimerTests.swift in Sources */,
+				8BTEST0012EF0000000000003 /* Web3ManagerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -580,14 +592,14 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Memory Game";
+				INFOPLIST_KEY_CFBundleDisplayName = "Memory Game (Autestme)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -604,7 +616,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 2.0;
-				"MARKETING_VERSION[sdk=iphoneos*]" = 2.0;
+				"MARKETING_VERSION[sdk=iphoneos*]" = 3;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -624,14 +636,14 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Memory Game";
+				INFOPLIST_KEY_CFBundleDisplayName = "Memory Game (Autestme)";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -648,7 +660,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 2.0;
-				"MARKETING_VERSION[sdk=iphoneos*]" = 2.0;
+				"MARKETING_VERSION[sdk=iphoneos*]" = 3;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -679,7 +691,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Autestme1.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Autestme1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Autestme.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Autestme";
 			};
 			name = Debug;
 		};
@@ -702,7 +714,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Autestme1.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Autestme1";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Autestme.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Autestme";
 			};
 			name = Release;
 		};

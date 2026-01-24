@@ -52,6 +52,9 @@
 "end_screen_reward_pending" = "Reward processing...";
 "end_screen_reward_success" = "✅ Reward sent!";
 "end_screen_reward_error" = "❌ Error sending reward.";
+"end_screen_rewards_disabled" = "Rewards were disabled for this game.";
+"end_screen_no_tokens_earned" = "No tokens earned (score 0).";
+
 
 /* MARK: - Wallet / Crypto */
 "wallet_address_label" = "Your Wallet Address (Polygon Mainnet)";

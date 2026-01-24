@@ -46,7 +46,7 @@
 "end_screen_back_button" = "Terug naar Start";
 "end_screen_restart_button" = "Speel opnieuw";
 "end_screen_item_label" = "%@:";
-"end_screen_result_format" = "Ingevuld: %@ | Werkelijk: %@";
+"end_screen_result_format" = "%@ | %@";
 "end_screen_input_placeholder" = "Aantal";
 "end_screen_reward_title" = "Beloning";
 "end_screen_reward_pending" = "Beloning wordt verwerkt...";
@@ -54,6 +54,9 @@
 "end_screen_reward_error" = "❌ Fout bij verzenden beloning.";
 "end_screen_input_prompt" = "Hoeveel items heb je gezien:";
 "end_screen_show_results_button" = "Toon resultaten";
+"end_screen_rewards_disabled" = "Beloningen waren uitgeschakeld voor dit potje.";
+"end_screen_no_tokens_earned" = "Geen tokens verdiend (score 0).";
+
 
 /* MARK: - Wallet / Crypto */
 "wallet_address_label" = "Jouw Wallet Adres (Polygon Mainnet)";
@@ -72,7 +75,7 @@
 "shape_rectangle" = "Rechthoek";
 
 /* MARK: - NEW CRYPTO STRINGS (Voor swipe instructies) */
-"swipe_instruction_bold" = "Veeg naar links om AUteste te verdienen.";
+"swipe_instruction_bold" = "Veeg naar links om $AUT te verdienen.";
 "swipe_instruction_body" = "Als je Autestme-tokens wilt ontvangen, veeg dan over het scherm van rechts naar links om de wallet-verbindingsopties te tonen.";
 "default_recipient_label" = "Standaard Ontvanger:";
 "use_default_button" = "Gebruik Standaard";

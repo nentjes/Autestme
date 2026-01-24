@@ -83,10 +83,9 @@ struct StartScreen: View {
         }
         .onAppear {
             updateHighscore()
-            if !web3Manager.isConnected {
-                // We gebruiken de connect() methode nu om verbinding te maken en de status op te halen
+            // Connect to Web3 in background - don't block UI
+            if !web3Manager.isConnected && !web3Manager.isLoading {
                 Task {
-                    // Start de connectie/diagnose
                     await web3Manager.connect()
                 }
             }
@@ -101,7 +100,7 @@ struct StartScreen: View {
             Button(NSLocalizedString("alert_button_ok", comment: "OK button")) { }
         } message: {
             // Combine the standard game info and the crypto info here
-            // We gebruiken String(localized:...) om de fouten in de Canvas te omzeilen
+            // Using String(localized:...) to avoid Canvas preview errors
             Text(NSLocalizedString("info_body", comment: "Game rules")) +
             Text("\n\n") +
             Text(NSLocalizedString("info_crypto_title", comment: "Crypto Rewards Title"))
@@ -112,20 +111,25 @@ struct StartScreen: View {
         .navigationDestination(for: GameLogic.self) { logic in
             GameContainerView(gameLogic: logic, navigationPath: $navigationPath)
         }
-        // MODIFIED: Swipe Gesture Implementation now handles both directions
-        .gesture(
-            DragGesture(minimumDistance: 50, coordinateSpace: .local)
+        // MODIFIED: Swipe Gesture - use simultaneousGesture to not block scrolling/taps
+        .simultaneousGesture(
+            DragGesture(minimumDistance: 100, coordinateSpace: .local)
                 .onEnded { value in
+                    // Only trigger on horizontal swipes (not vertical scrolling)
+                    let horizontalAmount = abs(value.translation.width)
+                    let verticalAmount = abs(value.translation.height)
+                    guard horizontalAmount > verticalAmount else { return }
+
                     withAnimation {
                         // Swipe right-to-left (to enable crypto)
-                        if value.translation.width < -50 {
+                        if value.translation.width < -100 {
                             isCryptoEnabled = true
                             showSwipeTip = false
                             // Mark as seen once the user successfully performs the swipe
                             hasSeenCryptoSwipe = true
                         }
                         // Swipe left-to-right (to disable crypto)
-                        else if value.translation.width > 50 && isCryptoEnabled {
+                        else if value.translation.width > 100 && isCryptoEnabled {
                             isCryptoEnabled = false
                             showSwipeTip = true
                             playerWalletAddress = "" // Clear address when hiding
@@ -183,6 +187,8 @@ struct StartScreen: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
                 .disableAutocorrection(true)
+                .accessibilityLabel("Wallet address")
+                .accessibilityHint("Enter your Polygon wallet address for rewards")
             
             // Default Wallet Information
             HStack {
@@ -201,6 +207,8 @@ struct StartScreen: View {
                         .background(Color.blue.opacity(0.1))
                         .cornerRadius(6)
                 }
+                .accessibilityLabel("Use default wallet")
+                .accessibilityHint("Fill in the default treasury wallet address")
             }
 
 
@@ -224,6 +232,8 @@ struct StartScreen: View {
                     Image(systemName: "doc.text.magnifyingglass")
                         .foregroundColor(.blue)
                 }
+                .accessibilityLabel("Show debug log")
+                .accessibilityHint("View blockchain connection diagnostics")
                 .padding(.trailing, 5)
                 
                 // Treasury Connection Button (only visible if not connected)
@@ -241,6 +251,8 @@ struct StartScreen: View {
                             .foregroundColor(.white)
                             .cornerRadius(8)
                     }
+                    .accessibilityLabel("Connect to treasury")
+                    .accessibilityHint("Connect to the blockchain treasury wallet")
                 }
             }
         }
@@ -262,6 +274,8 @@ struct StartScreen: View {
                     .foregroundColor(.blue)
                     .font(.title2)
             }
+            .accessibilityLabel("Game information")
+            .accessibilityHint("Show game rules and crypto rewards information")
         }
     }
 
@@ -272,6 +286,8 @@ struct StartScreen: View {
             
             TextField(NSLocalizedString("player_name_placeholder", comment: "Name Placeholder"), text: $playerName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .accessibilityLabel("Player name")
+                .accessibilityHint("Enter your name to track high scores")
             
             if currentHighscore > 0 {
                 Text(
@@ -296,6 +312,8 @@ struct StartScreen: View {
                 )
             )
             Slider(value: $gameDuration, in: 5...30)
+                .accessibilityLabel("Game duration")
+                .accessibilityValue("\(Int(gameDuration)) seconds")
 
             Text(
                 String(
@@ -304,23 +322,27 @@ struct StartScreen: View {
                 )
             )
             Slider(value: $shapeDisplayRate, in: 1...10)
+                .accessibilityLabel("Display speed")
+                .accessibilityValue("\(Int(shapeDisplayRate)) items per second")
 
             Text(NSLocalizedString("color_mode_label", comment: "Color Mode Label"))
-            Picker(NSLocalizedString("Kleurmodus", comment: "Color Mode Picker Label"), selection: $selectedColorMode)
+            Picker(NSLocalizedString("Color mode", comment: "Color Mode Picker Label"), selection: $selectedColorMode)
             {
                 Text(NSLocalizedString("color_mode_fixed", comment: "Fixed")).tag(ColorMode.fixed)
                 Text(NSLocalizedString("color_mode_random", comment: "Random")).tag(ColorMode.random)
             }
             .pickerStyle(SegmentedPickerStyle())
+            .accessibilityLabel("Color mode")
 
             Text(NSLocalizedString("game_type_label", comment: "Game Type Label"))
-            Picker(NSLocalizedString("Speltype", comment: "Game Type Picker Label"), selection: $selectedGameVersion)
+            Picker(NSLocalizedString("Game type", comment: "Game Type Picker Label"), selection: $selectedGameVersion)
             {
                 Text(NSLocalizedString("game_type_shapes", comment: "Shapes")).tag(GameVersion.shapes)
                 Text(NSLocalizedString("game_type_letters", comment: "Letters")).tag(GameVersion.letters)
                 Text(NSLocalizedString("game_type_numbers", comment: "Numbers")).tag(GameVersion.numbers)
             }
             .pickerStyle(SegmentedPickerStyle())
+            .accessibilityLabel("Game type")
 
             Text(
                 String(
@@ -330,9 +352,11 @@ struct StartScreen: View {
                 )
             )
             Slider(value: $numberOfShapes, in: rangeForType, step: 1)
+                .accessibilityLabel("Number of items")
+                .accessibilityValue("\(Int(numberOfShapes)) \(labelForType)")
         }
     }
-    
+
     // 5. Start button
     private var startButtonSection: some View {
         Button(action: {
@@ -379,12 +403,14 @@ struct StartScreen: View {
                 .foregroundColor(.white)
                 .cornerRadius(10)
         }
+        .accessibilityLabel("Start game")
+        .accessibilityHint("Begin the memory game with current settings")
     }
 
     // 6. Debug sheet
     private var debugLogSheet: some View {
         VStack {
-            Text(NSLocalizedString("Diagnose Logboek", comment: "Diagnostics Log Title"))
+            Text(NSLocalizedString("Diagnostics Log", comment: "Diagnostics Log Title"))
                 .font(.headline)
                 .padding()
             
@@ -395,7 +421,7 @@ struct StartScreen: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             
-            Button(NSLocalizedString("Sluit", comment: "Close Button")) { showDebugLog = false }
+            Button(NSLocalizedString("Close", comment: "Close Button")) { showDebugLog = false }
                 .padding()
         }
     }
@@ -403,8 +429,8 @@ struct StartScreen: View {
 
 // MARK: - Preview Provider
 #Preview {
-    // Om de @Binding correct te initialiseren, gebruiken we .constant()
-    // De Web3Manager.shared wordt automatisch gebruikt.
+    // To initialize @Binding correctly, we use .constant()
+    // Web3Manager.shared is used automatically.
     StartScreen(navigationPath: .constant(NavigationPath()))
-        .preferredColorScheme(.light) // Optioneel: Standaard licht thema in de preview
+        .preferredColorScheme(.light) // Optional: Default light theme in preview
 }

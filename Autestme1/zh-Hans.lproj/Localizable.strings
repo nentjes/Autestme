@@ -52,6 +52,11 @@
 "end_screen_reward_pending" = "奖励正在处理中...";
 "end_screen_reward_success" = "✅ 奖励已发送!";
 "end_screen_reward_error" = "❌ 发送奖励时出错。";
+"end_screen_rewards_disabled" = "本局游戏已关闭奖励功能。";
+"end_screen_no_tokens_earned" = "本局未获得代币（得分 0）。";
+"end_screen_reward_sent" = "奖励发送成功！";
+"end_screen_reward_failed" = "奖励发送失败。";
+
 
 /* MARK: - Wallet / Crypto */
 "wallet_address_label" = "您的钱包地址 (Polygon 主网)";

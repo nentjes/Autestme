@@ -9,26 +9,26 @@ class Web3Manager: ObservableObject {
     static let shared = Web3Manager()
     
     // --- 1. CONFIGURATION ---
-    // 🔹 VAN TESTNET ➜ PRODUCTIE
-    private let rpcURL = "https://polygon-rpc.com"              // <- mainnet i.p.v. Amoy
+    // 🔹 FROM TESTNET ➜ PRODUCTION
+    private let rpcURL = "https://polygon-rpc.com"              // <- mainnet instead of Amoy
     private let chainID = BigUInt(137)                          // <- 137 = Polygon mainnet
-    
-    // Gevoelige data uit Secrets.swift
+
+    // Sensitive data from Secrets.swift
     private let contractAddressString = Secrets.contractAddress
-    private let privateKey = Secrets.privateKeyGameTreasury   // Key van je "Game Treasury" wallet
+    private let privateKey = Secrets.privateKeyGameTreasury   // Key for "Game Treasury" wallet
     
     // --- 2. STATUS ---
     @Published var statusMessage: String = "Ready to connect"
     @Published var isLoading: Bool = false
     @Published var isConnected: Bool = false
     
-    // Dit adres wordt vanuit StartScreen gezet (wallet speler)
+    // This address is set from StartScreen (player wallet)
     @Published var recipientAddress: String = ""
-    
-    // Eigen default wallet (Game Treasury)
+
+    // Own default wallet (Game Treasury)
     @Published var defaultRecipientAddress: String = ""
-    
-    // Log voor debug-sheet
+
+    // Log for debug sheet
     @Published var debugLog: String = ""
     
     // --- 3. Simple ERC-20 ABI ---
@@ -68,7 +68,7 @@ class Web3Manager: ObservableObject {
         isLoading = true
         statusMessage = "Running diagnostics..."
         debugLog = "--- START DIAGNOSTICS ---\n"
-        
+
         // Check Secrets
         if privateKey.isEmpty || privateKey.contains("PASTE") {
             let msg = "❌ Please configure Secrets.swift first (privateKeyGameTreasury)."
@@ -77,19 +77,36 @@ class Web3Manager: ObservableObject {
             isLoading = false
             return
         }
-        
-        await runDiagnostics()
-        
+
+        // Run connection with timeout to prevent UI freeze
         do {
-            _ = try await getWeb3()
+            try await withThrowingTaskGroup(of: Void.self) { group in
+                group.addTask {
+                    await self.runDiagnostics()
+                    _ = try await self.getWeb3()
+                }
+
+                group.addTask {
+                    try await Task.sleep(for: .seconds(10)) // 10 second timeout
+                    throw CancellationError()
+                }
+
+                // Wait for first to complete, cancel the other
+                try await group.next()
+                group.cancelAll()
+            }
             isConnected = true
             statusMessage = "✅ Connected as Game Treasury"
+        } catch is CancellationError {
+            let msg = "⏱️ Connection timeout - check your internet"
+            statusMessage = msg
+            log(msg)
         } catch {
             let msg = "❌ Connection error: \(error.localizedDescription)"
             statusMessage = msg
             log(msg)
         }
-        
+
         isLoading = false
     }
     
@@ -101,7 +118,7 @@ class Web3Manager: ObservableObject {
             return
         }
         
-        // Default adres = treasury-adres
+        // Default address = treasury address
         defaultRecipientAddress = myAddress.address
         log("🏠 DEFAULT RECIPIENT (App Treasury): \(defaultRecipientAddress)")
         log("🆔 SENDER (Game Treasury): \(myAddress.address)")
@@ -256,7 +273,9 @@ class Web3Manager: ObservableObject {
             throw Web3Error.inputError(desc: "Private key hex error")
         }
         
-        let keystore = try EthereumKeystoreV3(privateKey: keyData, password: "")!
+        guard let keystore = try EthereumKeystoreV3(privateKey: keyData, password: "") else {
+            throw Web3Error.inputError(desc: "Failed to create keystore")
+        }
         web3.addKeystoreManager(KeystoreManager([keystore]))
         return web3
     }

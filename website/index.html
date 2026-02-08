@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autestme - Train Your Brain, Earn $AUT</title>
+    <meta name="description" content="Autestme is a memory training game where neurodiverse talent can earn cryptocurrency ($AUT) by playing and contributing code.">
+    <link rel="icon" type="image/png" href="images/logo.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="images/logo.png" alt="Autestme Logo" class="logo-img">
+                <span>Autestme</span>
+            </a>
+            <div class="nav-links">
+                <a href="#play" data-i18n="nav_play">How to Play</a>
+                <a href="#wallet" data-i18n="nav_wallet">Get a Wallet</a>
+                <a href="#earn" data-i18n="nav_earn">Earn $AUT</a>
+                <a href="#buy" data-i18n="nav_buy">Buy $AUT</a>
+                <a href="#developers" data-i18n="nav_dev">Developers</a>
+                <div class="lang-selector">
+                    <button class="lang-toggle" onclick="toggleLangMenu()">EN ▼</button>
+                    <div class="lang-menu" id="langMenu">
+                        <button onclick="setLanguage('en')">🇬🇧 English</button>
+                        <button onclick="setLanguage('nl')">🇳🇱 Nederlands</button>
+                        <button onclick="setLanguage('es')">🇪🇸 Español</button>
+                        <button onclick="setLanguage('zh')">🇨🇳 中文</button>
+                        <button onclick="setLanguage('hi')">🇮🇳 हिन्दी</button>
+                    </div>
+                </div>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#play" data-i18n="nav_play" onclick="toggleMobileMenu()">How to Play</a>
+        <a href="#wallet" data-i18n="nav_wallet" onclick="toggleMobileMenu()">Get a Wallet</a>
+        <a href="#earn" data-i18n="nav_earn" onclick="toggleMobileMenu()">Earn $AUT</a>
+        <a href="#buy" data-i18n="nav_buy" onclick="toggleMobileMenu()">Buy $AUT</a>
+        <a href="#developers" data-i18n="nav_dev" onclick="toggleMobileMenu()">Developers</a>
+        <div class="mobile-lang-buttons">
+            <button onclick="setLanguage('en'); toggleMobileMenu();">🇬🇧</button>
+            <button onclick="setLanguage('nl'); toggleMobileMenu();">🇳🇱</button>
+            <button onclick="setLanguage('es'); toggleMobileMenu();">🇪🇸</button>
+            <button onclick="setLanguage('zh'); toggleMobileMenu();">🇨🇳</button>
+            <button onclick="setLanguage('hi'); toggleMobileMenu();">🇮🇳</button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 data-i18n="hero_title">Train Your Brain, Earn Crypto</h1>
+            <p class="hero-subtitle" data-i18n="hero_subtitle">A memory game designed for neurodiverse talent. Play, improve your cognitive skills, and earn $AUT tokens on the Polygon network.</p>
+            <div class="hero-buttons">
+                <a href="https://apps.apple.com/app/autestme/id6664068147" target="_blank" class="btn btn-primary">
+                    <svg class="apple-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+                    <span data-i18n="hero_download">Download on App Store</span>
+                </a>
+                <a href="#play" class="btn btn-secondary" data-i18n="hero_learn">Learn More</a>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img src="images/logo.png" alt="Autestme App">
+        </div>
+    </section>
+
+    <!-- How to Play Section -->
+    <section id="play" class="section">
+        <div class="container">
+            <h2 data-i18n="play_title">How to Play</h2>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-icon">1</div>
+                    <h3 data-i18n="play_step1_title">Choose Your Game</h3>
+                    <p data-i18n="play_step1_desc">Select from three game modes: Shapes, Letters, or Numbers. Adjust the duration, speed, and number of items to match your skill level.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">2</div>
+                    <h3 data-i18n="play_step2_title">Watch and Remember</h3>
+                    <p data-i18n="play_step2_desc">Items will appear one by one on screen. Your task is to count how many times each item appears. Stay focused!</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">3</div>
+                    <h3 data-i18n="play_step3_title">Enter Your Answers</h3>
+                    <p data-i18n="play_step3_desc">After the timer ends, enter how many times you saw each item. Get them right and earn $AUT tokens!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wallet Section -->
+    <section id="wallet" class="section section-alt">
+        <div class="container">
+            <h2 data-i18n="wallet_title">Get a Crypto Wallet</h2>
+            <p class="section-intro" data-i18n="wallet_intro">To receive $AUT tokens, you need a crypto wallet that supports the Polygon network. Here's how to set one up:</p>
+
+            <div class="wallet-steps">
+                <div class="wallet-step">
+                    <h3 data-i18n="wallet_step1_title">Step 1: Download MetaMask</h3>
+                    <p data-i18n="wallet_step1_desc">Install the MetaMask app on your phone (iOS or Android) or as a browser extension.</p>
+                    <a href="https://metamask.io/download/" target="_blank" class="btn btn-outline" data-i18n="wallet_step1_btn">Download MetaMask</a>
+                </div>
+
+                <div class="wallet-step">
+                    <h3 data-i18n="wallet_step2_title">Step 2: Create Your Wallet</h3>
+                    <p data-i18n="wallet_step2_desc">Follow the setup instructions. Write down your 12-word recovery phrase and keep it safe - never share it with anyone!</p>
+                </div>
+
+                <div class="wallet-step">
+                    <h3 data-i18n="wallet_step3_title">Step 3: Add Polygon Network</h3>
+                    <p data-i18n="wallet_step3_desc">In MetaMask, go to Settings → Networks → Add Network → Select 'Polygon Mainnet' from the list.</p>
+                </div>
+
+                <div class="wallet-step">
+                    <h3 data-i18n="wallet_step4_title">Step 4: Add $AUT Token</h3>
+                    <p data-i18n="wallet_step4_desc">Import the $AUT token using the contract address below:</p>
+                    <div class="contract-address">
+                        <code id="contractAddress">0x3a0DCDFf06f9a0Ad20f212224a5162F6fc0e344c</code>
+                        <button onclick="copyContract()" class="copy-btn" data-i18n="copy_btn">Copy</button>
+                    </div>
+                </div>
+
+                <div class="wallet-step">
+                    <h3 data-i18n="wallet_step5_title">Step 5: Copy Your Wallet Address</h3>
+                    <p data-i18n="wallet_step5_desc">Copy your wallet address from MetaMask and paste it in the Autestme app to start earning!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Earn Section -->
+    <section id="earn" class="section">
+        <div class="container">
+            <h2 data-i18n="earn_title">Earn $AUT Tokens</h2>
+            <div class="earn-grid">
+                <div class="earn-card">
+                    <div class="earn-icon">🎮</div>
+                    <h3 data-i18n="earn_play_title">Play the Game</h3>
+                    <p data-i18n="earn_play_desc">Earn 1 $AUT for every correct answer. The better you get, the more you earn!</p>
+                </div>
+                <div class="earn-card highlight">
+                    <div class="earn-icon">💻</div>
+                    <h3 data-i18n="earn_code_title">Contribute Code</h3>
+                    <p data-i18n="earn_code_desc">Developers can earn $AUT by contributing to the project. Fix bugs, add features, and get rewarded!</p>
+                    <span class="badge" data-i18n="earn_badge">Best Rewards!</span>
+                </div>
+                <div class="earn-card">
+                    <div class="earn-icon">🌍</div>
+                    <h3 data-i18n="earn_share_title">Spread the Word</h3>
+                    <p data-i18n="earn_share_desc">Help us grow the community. Referral rewards coming soon!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Buy $AUT Section -->
+    <section id="buy" class="section section-alt">
+        <div class="container">
+            <h2 data-i18n="buy_title">Buy $AUT Tokens</h2>
+            <p class="section-intro" data-i18n="buy_intro">You can now buy $AUT tokens directly on QuickSwap, a decentralized exchange on the Polygon network.</p>
+
+            <div class="buy-container">
+                <div class="buy-info">
+                    <h3 data-i18n="buy_how_title">How to Buy</h3>
+                    <ol>
+                        <li data-i18n="buy_step1">Connect your MetaMask wallet (Polygon network)</li>
+                        <li data-i18n="buy_step2">Make sure you have USDC or MATIC in your wallet</li>
+                        <li data-i18n="buy_step3">Click the button below to swap for $AUT</li>
+                    </ol>
+
+                    <div class="buy-buttons">
+                        <a href="https://quickswap.exchange/#/swap?currency0=0x2791Bca1f2de4661ED88A30C99A7a9449Aa84174&currency1=0x3a0DCDFf06f9a0Ad20f212224a5162F6fc0e344c&swapIndex=0"
+                           target="_blank"
+                           class="btn btn-primary btn-large"
+                           onclick="trackBuyClick()">
+                            <span data-i18n="buy_button">Buy $AUT on QuickSwap</span>
+                        </a>
+                    </div>
+
+                    <div class="token-info">
+                        <h4 data-i18n="buy_token_info">Token Information</h4>
+                        <div class="token-details">
+                            <div class="token-detail">
+                                <span class="label" data-i18n="buy_network">Network:</span>
+                                <span class="value">Polygon (MATIC)</span>
+                            </div>
+                            <div class="token-detail">
+                                <span class="label" data-i18n="buy_contract">Contract:</span>
+                                <code class="value contract-code">0x3a0DCDFf06...e344c</code>
+                                <button onclick="copyBuyContract()" class="copy-btn-small" data-i18n="copy_btn">Copy</button>
+                            </div>
+                            <div class="token-detail">
+                                <span class="label" data-i18n="buy_supply">Total Supply:</span>
+                                <span class="value">21,000,000 AUT</span>
+                            </div>
+                            <div class="token-detail">
+                                <span class="label" data-i18n="buy_dex">Exchange:</span>
+                                <span class="value">QuickSwap</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-widget">
+                    <div class="price-card">
+                        <h4 data-i18n="buy_current_price">Current Price</h4>
+                        <div class="price-display" id="autPrice">
+                            <span class="price-loading" data-i18n="buy_loading">Loading...</span>
+                        </div>
+                        <a href="https://dexscreener.com/polygon/0x3a0DCDFf06f9a0Ad20f212224a5162F6fc0e344c"
+                           target="_blank"
+                           class="chart-link"
+                           data-i18n="buy_view_chart">View Chart on DexScreener →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Developers Section -->
+    <section id="developers" class="section">
+        <div class="container">
+            <h2 data-i18n="dev_title">For Developers</h2>
+            <p class="section-intro" data-i18n="dev_intro">Autestme is a Develop-to-Earn (D2E) platform. We believe in rewarding contributors who help make the app better.</p>
+
+            <div class="tech-stack">
+                <h3 data-i18n="dev_tech">Tech Stack</h3>
+                <div class="tech-badges">
+                    <span class="tech-badge">Swift</span>
+                    <span class="tech-badge">SwiftUI</span>
+                    <span class="tech-badge">iOS 16.4+</span>
+                    <span class="tech-badge">Polygon</span>
+                    <span class="tech-badge">Web3Swift</span>
+                </div>
+            </div>
+
+            <div class="contribute-info">
+                <h3 data-i18n="dev_how">How to Contribute</h3>
+                <ol>
+                    <li data-i18n="dev_step1">Contact us to get access to the repository</li>
+                    <li data-i18n="dev_step2">Pick an issue or propose a new feature</li>
+                    <li data-i18n="dev_step3">Submit a pull request with your changes</li>
+                    <li data-i18n="dev_step4">Get your PR reviewed and merged</li>
+                    <li data-i18n="dev_step5">Receive $AUT tokens as reward!</li>
+                </ol>
+            </div>
+
+            <a href="mailto:hello@autestme.com" class="btn btn-primary" data-i18n="dev_contact">Contact Us to Contribute</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <img src="images/logo.png" alt="Autestme" class="footer-logo">
+                    <p data-i18n="footer_tagline">Training minds, rewarding talent.</p>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer_quick">Quick Links</h4>
+                    <a href="#play" data-i18n="nav_play">How to Play</a>
+                    <a href="#wallet" data-i18n="nav_wallet">Get a Wallet</a>
+                    <a href="#earn" data-i18n="nav_earn">Earn $AUT</a>
+                    <a href="#developers" data-i18n="nav_dev">Developers</a>
+                </div>
+                <div class="footer-links">
+                    <h4 data-i18n="footer_resources">Resources</h4>
+                    <a href="https://polygonscan.com/token/0x3a0DCDFf06f9a0Ad20f212224a5162F6fc0e344c" target="_blank" data-i18n="footer_polygonscan">Token on PolygonScan</a>
+                    <a href="https://apps.apple.com/app/autestme/id6504378527" target="_blank">App Store</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Autestme. <span data-i18n="footer_made">Made by</span> 1Roel & Nimco.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

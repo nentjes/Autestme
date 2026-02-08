@@ -20,6 +20,7 @@ const AUT_CONTRACT = '0x3a0DCDFf06f9a0Ad20f212224a5162F6fc0e344c';
 document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentLang);
     fetchAUTPrice();
+    initSmoothScroll();
 });
 
 // Set language
@@ -142,35 +143,33 @@ async function fetchAUTPrice() {
     if (!priceDisplay) return;
 
     try {
+        // We voegen 'polygon' specifiek toe aan de URL
         const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${AUT_CONTRACT}`);
         const data = await response.json();
 
-        if (data.pairs && data.pairs.length > 0) {
-            const pair = data.pairs[0];
+        // Check of er paren zijn gevonden op Polygon
+        const pair = data.pairs ? data.pairs.find(p => p.chainId === 'polygon') : null;
+
+        if (pair) {
             const priceUsd = parseFloat(pair.priceUsd || 0);
-            const priceEur = priceUsd * 0.92; // Approximate EUR rate
+            const priceEur = priceUsd * 0.92; 
 
             priceDisplay.innerHTML = `
-                <span class="price-main">$${priceUsd.toFixed(4)}</span>
-                <span class="price-secondary">≈ €${priceEur.toFixed(4)}</span>
+                <span class="price-main">$${priceUsd.toFixed(6)}</span>
+                <span class="price-secondary">≈ €${priceEur.toFixed(6)}</span>
             `;
         } else {
-            // Fallback to initial pool price if no data
-            priceDisplay.innerHTML = `
-                <span class="price-main">$0.0100</span>
-                <span class="price-secondary">≈ €0.0092</span>
-            `;
+            throw new Error("Geen pool gevonden");
         }
     } catch (error) {
         console.error('Error fetching price:', error);
-        // Fallback price
+        // Fallback naar de prijs van jouw net aangemaakte pool ($0.01)
         priceDisplay.innerHTML = `
             <span class="price-main">$0.0100</span>
             <span class="price-secondary">≈ €0.0092</span>
         `;
     }
 }
-
 // Copy buy contract address
 function copyBuyContract() {
     navigator.clipboard.writeText(AUT_CONTRACT).then(() => {

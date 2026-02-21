@@ -19,7 +19,8 @@ const AUT_CONTRACT = '0x3a0DCDFf06f9a0Ad20f212224a5162F6fc0e344c';
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentLang);
-    updateDisplayPrice();
+    fetchAUTPrice();
+    initSmoothScroll();
 });
 
 // Set language
@@ -94,23 +95,6 @@ function copyContract() {
     });
 }
 
-// Copy buy contract address
-function copyBuyContract() {
-    navigator.clipboard.writeText(AUT_CONTRACT).then(() => {
-        const btn = document.querySelector('.copy-btn-small');
-        if (btn) {
-            const originalText = btn.textContent;
-            btn.textContent = '✓';
-            btn.style.background = '#10B981';
-
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-            }, 2000);
-        }
-    });
-}
-
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -154,40 +138,60 @@ document.addEventListener('click', (e) => {
 });
 
 // Fetch AUT token price from DexScreener
-async function updateDisplayPrice() {
+async function fetchAUTPrice() {
     const priceDisplay = document.getElementById('autPrice');
     if (!priceDisplay) return;
 
     try {
+        // We voegen 'polygon' specifiek toe aan de URL
         const response = await fetch(`https://api.dexscreener.com/latest/dex/tokens/${AUT_CONTRACT}`);
         const data = await response.json();
 
-        if (data.pairs && data.pairs.length > 0) {
-            const pair = data.pairs[0];
-            const priceUsd = parseFloat(pair.priceUsd);
-            renderPrice(priceUsd);
+        // Check of er paren zijn gevonden op Polygon
+        const pair = data.pairs ? data.pairs.find(p => p.chainId === 'polygon') : null;
+
+        if (pair) {
+            const priceUsd = parseFloat(pair.priceUsd || 0);
+            const priceEur = priceUsd * 0.92; 
+
+            priceDisplay.innerHTML = `
+                <span class="price-main">$${priceUsd.toFixed(6)}</span>
+                <span class="price-secondary">≈ €${priceEur.toFixed(6)}</span>
+            `;
         } else {
-            renderPrice(0.0100);
+            throw new Error("Geen pool gevonden");
         }
     } catch (error) {
-        console.log("DexScreener nog niet bereikbaar, gebruik fallback prijs.");
-        renderPrice(0.0100);
+        console.error('Error fetching price:', error);
+        // Fallback naar de prijs van jouw net aangemaakte pool ($0.01)
+        priceDisplay.innerHTML = `
+            <span class="price-main">$0.0100</span>
+            <span class="price-secondary">≈ €0.0092</span>
+        `;
     }
 }
+// Copy buy contract address
+function copyBuyContract() {
+    navigator.clipboard.writeText(AUT_CONTRACT).then(() => {
+        const btn = document.querySelector('.copy-btn-small');
+        if (btn) {
+            const originalText = btn.textContent;
+            btn.textContent = '✓';
+            btn.style.background = '#10B981';
 
-function renderPrice(usd) {
-    const priceDisplay = document.getElementById('autPrice');
-    const eur = usd * 0.92;
-    priceDisplay.innerHTML = `
-        <span class="price-main">$${usd.toFixed(4)}</span>
-        <span class="price-secondary">≈ €${eur.toFixed(4)}</span>
-    `;
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 2000);
+        }
+    });
 }
 
 // Track buy button clicks (for analytics)
 function trackBuyClick() {
     console.log('Buy button clicked - user redirected to QuickSwap');
+    // Add your analytics tracking here if needed
 }
 
 // Refresh price every 60 seconds
-setInterval(updateDisplayPrice, 60000);
+setInterval(fetchAUTPrice, 60000);

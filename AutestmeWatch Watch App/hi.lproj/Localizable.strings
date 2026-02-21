@@ -1,0 +1,35 @@
+/* Localizable.strings (Hindi) - Watch App */
+
+/* MARK: - StartScreen */
+"app_title" = "Autestme";
+"start_game_button" = "खेल शुरू करें";
+"highscore_display" = "उच्च स्कोर: %@";
+
+/* MARK: - Game Settings */
+"game_duration_label" = "अवधि: %@ सेकंड";
+"game_speed_label" = "गति: %@";
+"color_mode_label" = "रंग मोड";
+"color_mode_fixed" = "निश्चित";
+"color_mode_random" = "यादृच्छिक";
+"item_count_label" = "%@: %@";
+"item_type_shapes" = "आकृतियाँ";
+
+/* MARK: - Game Screen */
+"game_screen_time_left" = "समय: %@ सेकंड";
+
+/* MARK: - End Screen */
+"end_screen_input_prompt" = "आपने कितने देखे?";
+"end_screen_show_results_button" = "परिणाम दिखाएं";
+"end_screen_results_title" = "परिणाम";
+"end_screen_score_label" = "स्कोर: %@";
+"end_screen_back_button" = "शुरुआत पर वापस";
+"end_screen_item_label" = "%@:";
+"end_screen_result_format" = "%@ / %@";
+
+/* MARK: - Shape Names */
+"shape_dot" = "बिंदु";
+"shape_line" = "रेखा";
+"shape_circle" = "वृत्त";
+"shape_oval" = "अंडाकार";
+"shape_square" = "वर्ग";
+"shape_rectangle" = "आयत";

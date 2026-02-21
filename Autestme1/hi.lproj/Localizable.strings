@@ -65,3 +65,26 @@
 "crypto_mode_game_treasury" = "खजाना";
 "crypto_mode_info" = "आपके पुरस्कार कहाँ जाने चाहिए?";
 "address_placeholder" = "0x... (पॉलीगॉन वॉलेट पता)";
+
+/* MARK: - Shape Names (अंतिम स्क्रीन के लिए महत्वपूर्ण) */
+"shape_dot" = "बिंदु";
+"shape_line" = "रेखा";
+"shape_circle" = "वृत्त";
+"shape_oval" = "अंडाकार";
+"shape_square" = "वर्ग";
+"shape_rectangle" = "आयत";
+
+/* MARK: - New Crypto Strings (स्वाइप निर्देश) */
+"swipe_instruction_bold" = "$AUT कमाने के लिए बाईं ओर स्वाइप करें।";
+"swipe_instruction_body" = "यदि आप Autestme टोकन प्राप्त करना चाहते हैं, तो वॉलेट कनेक्शन विकल्प दिखाने के लिए दाएं से बाएं स्वाइप करें।";
+"default_recipient_label" = "डिफ़ॉल्ट प्राप्तकर्ता:";
+"use_default_button" = "डिफ़ॉल्ट उपयोग करें";
+"connect_treasury_button" = "खजाना जोड़ें";
+"crypto_rewards_disabled" = "क्रिप्टो पुरस्कार अक्षम।";
+"default_wallet_configured" = "ऐप के डिफ़ॉल्ट वॉलेट का उपयोग किया जा रहा है।";
+"invalid_wallet_address" = "❌ अमान्य वॉलेट पता प्रारूप।";
+"default_wallet_error" = "❌ डिफ़ॉल्ट वॉलेट कॉन्फ़िगर नहीं है। निदान की प्रतीक्षा करें या पता दर्ज करें।";
+
+/* MARK: - End Screen (अतिरिक्त) */
+"end_screen_input_prompt" = "आपने कितने आइटम देखे:";
+"end_screen_show_results_button" = "परिणाम दिखाएं";

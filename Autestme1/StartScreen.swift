@@ -26,6 +26,10 @@ struct StartScreen: View {
     // NEW: Persistent state to track if user has ever swiped to show the full instruction only once
     @AppStorage("hasSeenCryptoSwipe") private var hasSeenCryptoSwipe: Bool = false
 
+    // Keyboard auto-dismiss
+    @FocusState private var isPlayerNameFocused: Bool
+    @State private var keyboardTimer: Timer?
+
 
     // Label for slider
     var labelForType: String {
@@ -50,6 +54,15 @@ struct StartScreen: View {
     private func updateHighscore() {
         let name = playerName.isEmpty ? NSLocalizedString("Naam speler:", comment: "Player Name Label") : playerName
         currentHighscore = GameLogic.getHighScore(for: name, gameVersion: selectedGameVersion)
+    }
+
+    private func resetKeyboardTimer() {
+        keyboardTimer?.invalidate()
+        keyboardTimer = Timer.scheduledTimer(withTimeInterval: 3.0, repeats: false) { _ in
+            DispatchQueue.main.async {
+                isPlayerNameFocused = false
+            }
+        }
     }
 
     private func createGameLogic() -> GameLogic {
@@ -286,6 +299,10 @@ struct StartScreen: View {
             
             TextField(NSLocalizedString("player_name_placeholder", comment: "Name Placeholder"), text: $playerName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
+                .focused($isPlayerNameFocused)
+                .onChange(of: playerName) { _ in
+                    resetKeyboardTimer()
+                }
                 .accessibilityLabel("Player name")
                 .accessibilityHint("Enter your name to track high scores")
             

@@ -65,3 +65,26 @@
 "crypto_mode_game_treasury" = "Tesorería";
 "crypto_mode_info" = "¿A dónde deben ir tus recompensas?";
 "address_placeholder" = "0x... (Dirección de Billetera Polygon)";
+
+/* MARK: - Shape Names (crucial para pantalla final) */
+"shape_dot" = "Punto";
+"shape_line" = "Línea";
+"shape_circle" = "Círculo";
+"shape_oval" = "Óvalo";
+"shape_square" = "Cuadrado";
+"shape_rectangle" = "Rectángulo";
+
+/* MARK: - New Crypto Strings (instrucciones de deslizar) */
+"swipe_instruction_bold" = "Desliza a la izquierda para ganar $AUT.";
+"swipe_instruction_body" = "Si deseas recibir tokens de Autestme, desliza de derecha a izquierda para mostrar las opciones de conexión de billetera.";
+"default_recipient_label" = "Destinatario predeterminado:";
+"use_default_button" = "Usar predeterminado";
+"connect_treasury_button" = "Conectar Tesorería";
+"crypto_rewards_disabled" = "Recompensas de cripto desactivadas.";
+"default_wallet_configured" = "Usando la billetera predeterminada de la aplicación.";
+"invalid_wallet_address" = "❌ Formato de dirección de billetera inválido.";
+"default_wallet_error" = "❌ La billetera predeterminada no está configurada. Espera el diagnóstico o ingresa una dirección.";
+
+/* MARK: - End Screen (adicional) */
+"end_screen_input_prompt" = "¿Cuántos elementos has visto?:";
+"end_screen_show_results_button" = "Mostrar resultados";

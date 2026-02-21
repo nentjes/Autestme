@@ -19,7 +19,7 @@ const AUT_CONTRACT = '0x3a0DCDFf06f9a0Ad20f212224a5162F6fc0e344c';
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentLang);
-    fetchAUTPrice();
+    updateDisplayPrice();
 });
 
 // Set language
@@ -94,6 +94,23 @@ function copyContract() {
     });
 }
 
+// Copy buy contract address
+function copyBuyContract() {
+    navigator.clipboard.writeText(AUT_CONTRACT).then(() => {
+        const btn = document.querySelector('.copy-btn-small');
+        if (btn) {
+            const originalText = btn.textContent;
+            btn.textContent = '✓';
+            btn.style.background = '#10B981';
+
+            setTimeout(() => {
+                btn.textContent = originalText;
+                btn.style.background = '';
+            }, 2000);
+        }
+    });
+}
+
 // Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function(e) {
@@ -137,7 +154,7 @@ document.addEventListener('click', (e) => {
 });
 
 // Fetch AUT token price from DexScreener
-async function fetchAUTPrice() {
+async function updateDisplayPrice() {
     const priceDisplay = document.getElementById('autPrice');
     if (!priceDisplay) return;
 
@@ -147,52 +164,30 @@ async function fetchAUTPrice() {
 
         if (data.pairs && data.pairs.length > 0) {
             const pair = data.pairs[0];
-            const priceUsd = parseFloat(pair.priceUsd || 0);
-            const priceEur = priceUsd * 0.92; // Approximate EUR rate
-
-            priceDisplay.innerHTML = `
-                <span class="price-main">$${priceUsd.toFixed(4)}</span>
-                <span class="price-secondary">≈ €${priceEur.toFixed(4)}</span>
-            `;
+            const priceUsd = parseFloat(pair.priceUsd);
+            renderPrice(priceUsd);
         } else {
-            // Fallback to initial pool price if no data
-            priceDisplay.innerHTML = `
-                <span class="price-main">$0.0100</span>
-                <span class="price-secondary">≈ €0.0092</span>
-            `;
+            renderPrice(0.0100);
         }
     } catch (error) {
-        console.error('Error fetching price:', error);
-        // Fallback price
-        priceDisplay.innerHTML = `
-            <span class="price-main">$0.0100</span>
-            <span class="price-secondary">≈ €0.0092</span>
-        `;
+        console.log("DexScreener nog niet bereikbaar, gebruik fallback prijs.");
+        renderPrice(0.0100);
     }
 }
 
-// Copy buy contract address
-function copyBuyContract() {
-    navigator.clipboard.writeText(AUT_CONTRACT).then(() => {
-        const btn = document.querySelector('.copy-btn-small');
-        if (btn) {
-            const originalText = btn.textContent;
-            btn.textContent = '✓';
-            btn.style.background = '#10B981';
-
-            setTimeout(() => {
-                btn.textContent = originalText;
-                btn.style.background = '';
-            }, 2000);
-        }
-    });
+function renderPrice(usd) {
+    const priceDisplay = document.getElementById('autPrice');
+    const eur = usd * 0.92;
+    priceDisplay.innerHTML = `
+        <span class="price-main">$${usd.toFixed(4)}</span>
+        <span class="price-secondary">≈ €${eur.toFixed(4)}</span>
+    `;
 }
 
 // Track buy button clicks (for analytics)
 function trackBuyClick() {
     console.log('Buy button clicked - user redirected to QuickSwap');
-    // Add your analytics tracking here if needed
 }
 
 // Refresh price every 60 seconds
-setInterval(fetchAUTPrice, 60000);
+setInterval(updateDisplayPrice, 60000);

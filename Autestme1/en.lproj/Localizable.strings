@@ -63,3 +63,26 @@
 "crypto_mode_game_treasury" = "Treasury";
 "crypto_mode_info" = "Where should your rewards go?";
 "address_placeholder" = "0x... (Polygon Wallet Address)";
+
+/* MARK: - Shape Names (crucial for end screen) */
+"shape_dot" = "Dot";
+"shape_line" = "Line";
+"shape_circle" = "Circle";
+"shape_oval" = "Oval";
+"shape_square" = "Square";
+"shape_rectangle" = "Rectangle";
+
+/* MARK: - New Crypto Strings (swipe instructions) */
+"swipe_instruction_bold" = "Swipe left to earn $AUT.";
+"swipe_instruction_body" = "If you want to receive Autestme tokens, swipe from right to left to show the wallet connection options.";
+"default_recipient_label" = "Default Recipient:";
+"use_default_button" = "Use Default";
+"connect_treasury_button" = "Connect Treasury";
+"crypto_rewards_disabled" = "Crypto rewards disabled.";
+"default_wallet_configured" = "Using the app's default wallet.";
+"invalid_wallet_address" = "❌ Invalid wallet address format.";
+"default_wallet_error" = "❌ Default wallet is not configured. Wait for diagnostics or enter an address.";
+
+/* MARK: - End Screen (additional) */
+"end_screen_input_prompt" = "How many items did you see:";
+"end_screen_show_results_button" = "Show results";

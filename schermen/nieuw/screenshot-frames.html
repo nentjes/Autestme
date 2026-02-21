@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autestme App Store Screenshots</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: #1a1a1a;
+            padding: 40px;
+        }
+
+        h1 {
+            color: white;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .instructions {
+            color: #888;
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 14px;
+        }
+
+        .screenshots-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .screenshot-frame {
+            width: 1290px;
+            height: 2796px;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 80px 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Different gradient backgrounds */
+        .frame-1 { background: linear-gradient(160deg, #0D6B5D 0%, #1A4D45 100%); }
+        .frame-2 { background: linear-gradient(160deg, #7B5EA7 0%, #5D4580 100%); }
+        .frame-3 { background: linear-gradient(160deg, #E85A5A 0%, #D14545 100%); }
+        .frame-4 { background: linear-gradient(160deg, #007AFF 0%, #0055CC 100%); }
+        .frame-5 { background: linear-gradient(160deg, #F5A623 0%, #E09000 100%); }
+
+        .marketing-text {
+            color: white;
+            text-align: center;
+            margin-bottom: 60px;
+            z-index: 2;
+        }
+
+        .marketing-text h2 {
+            font-size: 72px;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .marketing-text p {
+            font-size: 36px;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+
+        .phone-container {
+            position: relative;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .phone-mockup {
+            width: 420px;
+            height: auto;
+            max-height: 900px;
+            border-radius: 50px;
+            box-shadow: 0 50px 100px rgba(0,0,0,0.4);
+            object-fit: contain;
+        }
+
+        .badge {
+            position: absolute;
+            bottom: 100px;
+            background: white;
+            color: #0D6B5D;
+            padding: 16px 32px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 28px;
+        }
+
+        /* Thumbnail preview for easier viewing */
+        .preview-section {
+            margin-top: 60px;
+        }
+
+        .preview-section h2 {
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .preview-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .preview-item {
+            width: 200px;
+            text-align: center;
+        }
+
+        .preview-item img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .preview-item p {
+            color: #888;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        /* Scaled versions for viewing */
+        .scaled-frame {
+            transform: scale(0.25);
+            transform-origin: top left;
+            margin-bottom: -2100px;
+            margin-right: -970px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Autestme App Store Screenshots</h1>
+    <p class="instructions">
+        Open each screenshot in a new tab and use your browser's screenshot function (or press Cmd+Shift+4 on Mac) to capture at 1290x2796px.<br>
+        For best results, zoom to 100% (Cmd+0) before capturing.
+    </p>
+
+    <div class="screenshots-grid">
+        <!-- Screenshot 1: Hero/Start -->
+        <div class="screenshot-frame frame-1 scaled-frame" id="frame1">
+            <div class="marketing-text">
+                <h2>Train Your Brain<br>Earn Crypto</h2>
+                <p>Memory game with $AUT rewards</p>
+            </div>
+            <div class="phone-container">
+                <img src="start.jpeg" alt="Start Screen" class="phone-mockup">
+            </div>
+        </div>
+
+        <!-- Screenshot 2: Gameplay -->
+        <div class="screenshot-frame frame-2 scaled-frame" id="frame2">
+            <div class="marketing-text">
+                <h2>Remember<br>& Count</h2>
+                <p>Track shapes, letters, or numbers</p>
+            </div>
+            <div class="phone-container">
+                <img src="speel.jpeg" alt="Gameplay" class="phone-mockup">
+            </div>
+        </div>
+
+        <!-- Screenshot 3: Crypto Wallet -->
+        <div class="screenshot-frame frame-3 scaled-frame" id="frame3">
+            <div class="marketing-text">
+                <h2>Connect Your<br>Wallet</h2>
+                <p>Polygon network supported</p>
+            </div>
+            <div class="phone-container">
+                <img src="crypto.jpeg" alt="Crypto Wallet" class="phone-mockup">
+            </div>
+        </div>
+
+        <!-- Screenshot 4: Results -->
+        <div class="screenshot-frame frame-4 scaled-frame" id="frame4">
+            <div class="marketing-text">
+                <h2>See Your<br>Progress</h2>
+                <p>Detailed score breakdown</p>
+            </div>
+            <div class="phone-container">
+                <img src="eind.jpeg" alt="Results" class="phone-mockup">
+            </div>
+        </div>
+
+        <!-- Screenshot 5: Crypto Rewards -->
+        <div class="screenshot-frame frame-5 scaled-frame" id="frame5">
+            <div class="marketing-text">
+                <h2>Earn $AUT<br>Tokens</h2>
+                <p>Real crypto rewards for playing</p>
+            </div>
+            <div class="phone-container">
+                <img src="eind en crypto.jpeg" alt="Crypto Rewards" class="phone-mockup">
+            </div>
+        </div>
+    </div>
+
+    <div class="preview-section">
+        <h2>Preview (click to open full size)</h2>
+        <div class="preview-grid">
+            <div class="preview-item">
+                <img src="start.jpeg" alt="1">
+                <p>1. Start Screen</p>
+            </div>
+            <div class="preview-item">
+                <img src="speel.jpeg" alt="2">
+                <p>2. Gameplay</p>
+            </div>
+            <div class="preview-item">
+                <img src="crypto.jpeg" alt="3">
+                <p>3. Wallet Setup</p>
+            </div>
+            <div class="preview-item">
+                <img src="eind.jpeg" alt="4">
+                <p>4. Results</p>
+            </div>
+            <div class="preview-item">
+                <img src="eind en crypto.jpeg" alt="5">
+                <p>5. Crypto Rewards</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Click to open individual frames full-size
+        document.querySelectorAll('.scaled-frame').forEach((frame, index) => {
+            frame.style.cursor = 'pointer';
+            frame.addEventListener('click', () => {
+                const win = window.open('', '_blank');
+                win.document.write(`
+                    <!DOCTYPE html>
+                    <html>
+                    <head>
+                        <title>Screenshot ${index + 1}</title>
+                        <style>
+                            body { margin: 0; background: #1a1a1a; display: flex; justify-content: center; }
+                        </style>
+                        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+                    </head>
+                    <body>
+                        ${frame.outerHTML.replace('scaled-frame', '')}
+                    </body>
+                    </html>
+                `);
+            });
+        });
+    </script>
+</body>
+</html>

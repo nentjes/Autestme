@@ -2,7 +2,7 @@
 //  AutestmeWatchApp.swift
 //  AutestmeWatch Watch App
 //
-//  Created by Markus Moritz on 02/11/2025.
+//  Created by Markus Moritz on 21/02/2026.
 //
 
 import SwiftUI
@@ -11,7 +11,7 @@ import SwiftUI
 struct AutestmeWatch_Watch_AppApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WatchStartScreen()
         }
     }
 }

@@ -65,3 +65,26 @@
 "crypto_mode_game_treasury" = "金库";
 "crypto_mode_info" = "您的奖励应该去哪里？";
 "address_placeholder" = "0x... (Polygon 钱包地址)";
+
+/* MARK: - Shape Names (结束屏幕关键) */
+"shape_dot" = "点";
+"shape_line" = "线";
+"shape_circle" = "圆形";
+"shape_oval" = "椭圆形";
+"shape_square" = "正方形";
+"shape_rectangle" = "长方形";
+
+/* MARK: - New Crypto Strings (滑动说明) */
+"swipe_instruction_bold" = "向左滑动以赚取 $AUT。";
+"swipe_instruction_body" = "如果您想接收 Autestme 代币，请从右向左滑动以显示钱包连接选项。";
+"default_recipient_label" = "默认接收者:";
+"use_default_button" = "使用默认";
+"connect_treasury_button" = "连接金库";
+"crypto_rewards_disabled" = "加密货币奖励已禁用。";
+"default_wallet_configured" = "使用应用程序的默认钱包。";
+"invalid_wallet_address" = "❌ 钱包地址格式无效。";
+"default_wallet_error" = "❌ 默认钱包未配置。请等待诊断或输入地址。";
+
+/* MARK: - End Screen (附加) */
+"end_screen_input_prompt" = "你看到了多少个项目:";
+"end_screen_show_results_button" = "显示结果";

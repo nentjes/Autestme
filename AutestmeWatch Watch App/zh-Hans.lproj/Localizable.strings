@@ -1,0 +1,35 @@
+/* Localizable.strings (Chinese Simplified) - Watch App */
+
+/* MARK: - StartScreen */
+"app_title" = "Autestme";
+"start_game_button" = "开始游戏";
+"highscore_display" = "最高分: %@";
+
+/* MARK: - Game Settings */
+"game_duration_label" = "时长: %@秒";
+"game_speed_label" = "速度: %@";
+"color_mode_label" = "颜色模式";
+"color_mode_fixed" = "固定";
+"color_mode_random" = "随机";
+"item_count_label" = "%@: %@";
+"item_type_shapes" = "形状";
+
+/* MARK: - Game Screen */
+"game_screen_time_left" = "时间: %@秒";
+
+/* MARK: - End Screen */
+"end_screen_input_prompt" = "你看到了多少个?";
+"end_screen_show_results_button" = "显示结果";
+"end_screen_results_title" = "结果";
+"end_screen_score_label" = "分数: %@";
+"end_screen_back_button" = "返回开始";
+"end_screen_item_label" = "%@:";
+"end_screen_result_format" = "%@ / %@";
+
+/* MARK: - Shape Names */
+"shape_dot" = "点";
+"shape_line" = "线";
+"shape_circle" = "圆形";
+"shape_oval" = "椭圆形";
+"shape_square" = "正方形";
+"shape_rectangle" = "长方形";

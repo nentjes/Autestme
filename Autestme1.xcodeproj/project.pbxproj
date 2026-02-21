@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8BTEST0012EF0000000000001 /* GameLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000011 /* GameLogicTests.swift */; };
-		8BTEST0012EF0000000000002 /* GameTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000012 /* GameTimerTests.swift */; };
-		8BTEST0012EF0000000000003 /* Web3ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */; };
 		8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */; };
 		8B4AABD02ED9028700EE7D58 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B4AABCF2ED9028700EE7D58 /* web3swift */; };
 		8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */; };
 		8B4D32702EDB355A00E0BFFD /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D326F2EDB355A00E0BFFD /* Secrets.swift */; };
 		8B4D32722EDB39F700E0BFFD /* Secrets.exemples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */; };
+		8B79A63A2F4A2DCA0054734C /* AutestmeWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8B79A61A2F4A2DC80054734C /* AutestmeWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
 		8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF32DFEB900003B628F /* circle.mp3 */; };
 		8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF52DFEB910003B628F /* oval.mp3 */; };
@@ -27,6 +25,9 @@
 		8BC9EF042DFEDE62003B628F /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EF032DFEDE62003B628F /* click.mp3 */; };
 		8BE673272EB6B25C009F7596 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BE673262EB6B25C009F7596 /* beep.mp3 */; };
 		8BE6736D2EB7569A009F7596 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BE6736B2EB7569A009F7596 /* Localizable.strings */; };
+		8BTEST0012EF0000000000001 /* GameLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000011 /* GameLogicTests.swift */; };
+		8BTEST0012EF0000000000002 /* GameTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000012 /* GameTimerTests.swift */; };
+		8BTEST0012EF0000000000003 /* Web3ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */; };
 		BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA976D32A13B075004EC58D /* ShapeType.swift */; };
 		BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */; };
 		BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */; };
@@ -41,6 +42,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8B79A6272F4A2DCA0054734C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCCCABB32A0BA55C006CB6EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B79A6192F4A2DC80054734C;
+			remoteInfo = "AutestmeWatch Watch App";
+		};
+		8B79A6312F4A2DCA0054734C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCCCABB32A0BA55C006CB6EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B79A6192F4A2DC80054734C;
+			remoteInfo = "AutestmeWatch Watch App";
+		};
+		8B79A6382F4A2DCA0054734C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCCCABB32A0BA55C006CB6EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8B79A6192F4A2DC80054734C;
+			remoteInfo = "AutestmeWatch Watch App";
+		};
 		BCCCABCD2A0BA55E006CB6EF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BCCCABB32A0BA55C006CB6EF /* Project object */;
@@ -64,6 +86,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
+				8B79A63A2F4A2DCA0054734C /* AutestmeWatch Watch App.app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -75,6 +98,9 @@
 		8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3Manager.swift; sourceTree = "<group>"; };
 		8B4D326F2EDB355A00E0BFFD /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.exemples.swift; sourceTree = "<group>"; };
+		8B79A61A2F4A2DC80054734C /* AutestmeWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AutestmeWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B79A6262F4A2DCA0054734C /* AutestmeWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutestmeWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B79A6302F4A2DCA0054734C /* AutestmeWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutestmeWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewWrapper.swift; sourceTree = "<group>"; };
 		8BC9EEF32DFEB900003B628F /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
 		8BC9EEF52DFEB910003B628F /* oval.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oval.mp3; sourceTree = "<group>"; };
@@ -97,6 +123,9 @@
 		8BE6736F2EB75704009F7596 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		8BE673702EB75705009F7596 /* hi */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = hi; path = hi.lproj/Localizable.strings; sourceTree = "<group>"; };
 		8BE673712EB75706009F7596 /* es-US */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "es-US"; path = "es-US.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8BTEST0012EF0000000000011 /* GameLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicTests.swift; sourceTree = "<group>"; };
+		8BTEST0012EF0000000000012 /* GameTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerTests.swift; sourceTree = "<group>"; };
+		8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3ManagerTests.swift; sourceTree = "<group>"; };
 		BCA976D32A13B075004EC58D /* ShapeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
 		BCCCABBB2A0BA55C006CB6EF /* Autestme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autestme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutestmeApp.swift; sourceTree = "<group>"; };
@@ -105,9 +134,6 @@
 		BCCCABC62A0BA55E006CB6EF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BCCCABCC2A0BA55E006CB6EF /* Autestme1Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Autestme1Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABD02A0BA55E006CB6EF /* Autestme1Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1Tests.swift; sourceTree = "<group>"; };
-		8BTEST0012EF0000000000011 /* GameLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicTests.swift; sourceTree = "<group>"; };
-		8BTEST0012EF0000000000012 /* GameTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerTests.swift; sourceTree = "<group>"; };
-		8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3ManagerTests.swift; sourceTree = "<group>"; };
 		BCCCABD62A0BA55E006CB6EF /* Autestme1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Autestme1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITests.swift; sourceTree = "<group>"; };
 		BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -119,9 +145,33 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		8B4D32732EDB4D7200E0BFFD /* Documentation */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Documentation; sourceTree = "<group>"; };
+		8B79A61B2F4A2DC80054734C /* AutestmeWatch Watch App */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "AutestmeWatch Watch App"; sourceTree = "<group>"; };
+		8B79A6292F4A2DCA0054734C /* AutestmeWatch Watch AppTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "AutestmeWatch Watch AppTests"; sourceTree = "<group>"; };
+		8B79A6332F4A2DCA0054734C /* AutestmeWatch Watch AppUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "AutestmeWatch Watch AppUITests"; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8B79A6172F4A2DC80054734C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B79A6232F4A2DCA0054734C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B79A62D2F4A2DCA0054734C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCCCABB82A0BA55C006CB6EF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -166,6 +216,9 @@
 				BCCCABBD2A0BA55C006CB6EF /* Autestme1 */,
 				BCCCABCF2A0BA55E006CB6EF /* Autestme1Tests */,
 				BCCCABD92A0BA55E006CB6EF /* Autestme1UITests */,
+				8B79A61B2F4A2DC80054734C /* AutestmeWatch Watch App */,
+				8B79A6292F4A2DCA0054734C /* AutestmeWatch Watch AppTests */,
+				8B79A6332F4A2DCA0054734C /* AutestmeWatch Watch AppUITests */,
 				8BE673122EB6A3FA009F7596 /* Frameworks */,
 				BCCCABBC2A0BA55C006CB6EF /* Products */,
 				8B4D32732EDB4D7200E0BFFD /* Documentation */,
@@ -178,6 +231,9 @@
 				BCCCABBB2A0BA55C006CB6EF /* Autestme.app */,
 				BCCCABCC2A0BA55E006CB6EF /* Autestme1Tests.xctest */,
 				BCCCABD62A0BA55E006CB6EF /* Autestme1UITests.xctest */,
+				8B79A61A2F4A2DC80054734C /* AutestmeWatch Watch App.app */,
+				8B79A6262F4A2DCA0054734C /* AutestmeWatch Watch AppTests.xctest */,
+				8B79A6302F4A2DCA0054734C /* AutestmeWatch Watch AppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -242,6 +298,74 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8B79A6192F4A2DC80054734C /* AutestmeWatch Watch App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B79A6412F4A2DCA0054734C /* Build configuration list for PBXNativeTarget "AutestmeWatch Watch App" */;
+			buildPhases = (
+				8B79A6162F4A2DC80054734C /* Sources */,
+				8B79A6172F4A2DC80054734C /* Frameworks */,
+				8B79A6182F4A2DC80054734C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				8B79A61B2F4A2DC80054734C /* AutestmeWatch Watch App */,
+			);
+			name = "AutestmeWatch Watch App";
+			packageProductDependencies = (
+			);
+			productName = "AutestmeWatch Watch App";
+			productReference = 8B79A61A2F4A2DC80054734C /* AutestmeWatch Watch App.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8B79A6252F4A2DCA0054734C /* AutestmeWatch Watch AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B79A6422F4A2DCA0054734C /* Build configuration list for PBXNativeTarget "AutestmeWatch Watch AppTests" */;
+			buildPhases = (
+				8B79A6222F4A2DCA0054734C /* Sources */,
+				8B79A6232F4A2DCA0054734C /* Frameworks */,
+				8B79A6242F4A2DCA0054734C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B79A6282F4A2DCA0054734C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8B79A6292F4A2DCA0054734C /* AutestmeWatch Watch AppTests */,
+			);
+			name = "AutestmeWatch Watch AppTests";
+			packageProductDependencies = (
+			);
+			productName = "AutestmeWatch Watch AppTests";
+			productReference = 8B79A6262F4A2DCA0054734C /* AutestmeWatch Watch AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8B79A62F2F4A2DCA0054734C /* AutestmeWatch Watch AppUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8B79A6432F4A2DCA0054734C /* Build configuration list for PBXNativeTarget "AutestmeWatch Watch AppUITests" */;
+			buildPhases = (
+				8B79A62C2F4A2DCA0054734C /* Sources */,
+				8B79A62D2F4A2DCA0054734C /* Frameworks */,
+				8B79A62E2F4A2DCA0054734C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8B79A6322F4A2DCA0054734C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				8B79A6332F4A2DCA0054734C /* AutestmeWatch Watch AppUITests */,
+			);
+			name = "AutestmeWatch Watch AppUITests";
+			packageProductDependencies = (
+			);
+			productName = "AutestmeWatch Watch AppUITests";
+			productReference = 8B79A6302F4A2DCA0054734C /* AutestmeWatch Watch AppUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		BCCCABBA2A0BA55C006CB6EF /* Autestme */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BCCCABE02A0BA55E006CB6EF /* Build configuration list for PBXNativeTarget "Autestme" */;
@@ -254,6 +378,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				8B79A6392F4A2DCA0054734C /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
 				8B4D32732EDB4D7200E0BFFD /* Documentation */,
@@ -306,9 +431,20 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1640;
-				LastUpgradeCheck = 1540;
+				LastSwiftUpdateCheck = 2620;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
+					8B79A6192F4A2DC80054734C = {
+						CreatedOnToolsVersion = 26.2;
+					};
+					8B79A6252F4A2DCA0054734C = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 8B79A6192F4A2DC80054734C;
+					};
+					8B79A62F2F4A2DCA0054734C = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 8B79A6192F4A2DC80054734C;
+					};
 					BCCCABBA2A0BA55C006CB6EF = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -349,11 +485,35 @@
 				BCCCABBA2A0BA55C006CB6EF /* Autestme */,
 				BCCCABCB2A0BA55E006CB6EF /* Autestme1Tests */,
 				BCCCABD52A0BA55E006CB6EF /* Autestme1UITests */,
+				8B79A6192F4A2DC80054734C /* AutestmeWatch Watch App */,
+				8B79A6252F4A2DCA0054734C /* AutestmeWatch Watch AppTests */,
+				8B79A62F2F4A2DCA0054734C /* AutestmeWatch Watch AppUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8B79A6182F4A2DC80054734C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B79A6242F4A2DCA0054734C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B79A62E2F4A2DCA0054734C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCCCABB92A0BA55C006CB6EF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -391,6 +551,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8B79A6162F4A2DC80054734C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B79A6222F4A2DCA0054734C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8B79A62C2F4A2DCA0054734C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BCCCABB72A0BA55C006CB6EF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -432,6 +613,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8B79A6282F4A2DCA0054734C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B79A6192F4A2DC80054734C /* AutestmeWatch Watch App */;
+			targetProxy = 8B79A6272F4A2DCA0054734C /* PBXContainerItemProxy */;
+		};
+		8B79A6322F4A2DCA0054734C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B79A6192F4A2DC80054734C /* AutestmeWatch Watch App */;
+			targetProxy = 8B79A6312F4A2DCA0054734C /* PBXContainerItemProxy */;
+		};
+		8B79A6392F4A2DCA0054734C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8B79A6192F4A2DC80054734C /* AutestmeWatch Watch App */;
+			targetProxy = 8B79A6382F4A2DCA0054734C /* PBXContainerItemProxy */;
+		};
 		BCCCABCE2A0BA55E006CB6EF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BCCCABBA2A0BA55C006CB6EF /* Autestme */;
@@ -471,10 +667,189 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8B79A63B2F4A2DCA0054734C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = AutestmeWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = autestme.nl.nentjes.Autestme1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 10.6;
+			};
+			name = Debug;
+		};
+		8B79A63C2F4A2DCA0054734C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = AutestmeWatch;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = autestme.nl.nentjes.Autestme1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 10.6;
+			};
+			name = Release;
+		};
+		8B79A63D2F4A2DCA0054734C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-Roel.AutestmeWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutestmeWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AutestmeWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		8B79A63E2F4A2DCA0054734C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-Roel.AutestmeWatch-Watch-AppTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AutestmeWatch Watch App.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AutestmeWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
+		8B79A63F2F4A2DCA0054734C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-Roel.AutestmeWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "AutestmeWatch Watch App";
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Debug;
+		};
+		8B79A6402F4A2DCA0054734C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RZGT4526W3;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-Roel.AutestmeWatch-Watch-AppUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				TEST_TARGET_NAME = "AutestmeWatch Watch App";
+				VALIDATE_PRODUCT = YES;
+				WATCHOS_DEPLOYMENT_TARGET = 26.2;
+			};
+			name = Release;
+		};
 		BCCCABDE2A0BA55E006CB6EF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -506,6 +881,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -526,6 +902,7 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -535,6 +912,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -566,6 +944,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = RZGT4526W3;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -579,6 +958,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 			};
@@ -592,14 +972,15 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
-				DEVELOPMENT_TEAM = RZGT4526W3;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Memory Game (Autestme)";
+				INFOPLIST_KEY_CFBundleDisplayName = Autestme;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -616,7 +997,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 2.0;
-				"MARKETING_VERSION[sdk=iphoneos*]" = 3;
+				"MARKETING_VERSION[sdk=*]" = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -636,14 +1017,15 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
-				DEVELOPMENT_TEAM = RZGT4526W3;
+				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = "Memory Game (Autestme)";
+				INFOPLIST_KEY_CFBundleDisplayName = Autestme;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.games";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -660,7 +1042,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
 				MARKETING_VERSION = 2.0;
-				"MARKETING_VERSION[sdk=iphoneos*]" = 3;
+				"MARKETING_VERSION[sdk=*]" = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -679,7 +1061,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -702,7 +1083,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -724,7 +1104,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -746,7 +1125,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = RZGT4526W3;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
@@ -765,6 +1143,33 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8B79A6412F4A2DCA0054734C /* Build configuration list for PBXNativeTarget "AutestmeWatch Watch App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B79A63B2F4A2DCA0054734C /* Debug */,
+				8B79A63C2F4A2DCA0054734C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B79A6422F4A2DCA0054734C /* Build configuration list for PBXNativeTarget "AutestmeWatch Watch AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B79A63D2F4A2DCA0054734C /* Debug */,
+				8B79A63E2F4A2DCA0054734C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8B79A6432F4A2DCA0054734C /* Build configuration list for PBXNativeTarget "AutestmeWatch Watch AppUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8B79A63F2F4A2DCA0054734C /* Debug */,
+				8B79A6402F4A2DCA0054734C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		BCCCABB62A0BA55C006CB6EF /* Build configuration list for PBXProject "Autestme1" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

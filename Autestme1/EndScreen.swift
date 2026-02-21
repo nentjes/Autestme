@@ -170,7 +170,6 @@ struct EndScreen: View {
                             await web3Manager.rewardPlayer(amount: rewardAmount)
                         }
                     } else if web3Manager.recipientAddress.isEmpty {
-                    } else if web3Manager.recipientAddress.isEmpty {
                         web3Manager.statusMessage = NSLocalizedString(
                             "end_screen_rewards_disabled",
                             comment: "Status when token rewards are disabled for this game"
@@ -240,7 +239,7 @@ struct EndScreen: View {
                 Spacer()
 
                 TextField(
-                    "end_screen_input_placeholder",
+                    "0",
                     text: Binding(
                         get: {
                             let value = getValue(item)

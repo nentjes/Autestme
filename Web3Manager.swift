@@ -10,7 +10,7 @@ class Web3Manager: ObservableObject {
     
     // --- 1. CONFIGURATION ---
     // 🔹 FROM TESTNET ➜ PRODUCTION
-    private let rpcURL = "https://polygon-rpc.com"              // <- mainnet instead of Amoy
+    private let rpcURL = "https://polygon-bor-rpc.publicnode.com" // <- free public Polygon mainnet RPC
     private let chainID = BigUInt(137)                          // <- 137 = Polygon mainnet
 
     // Sensitive data from Secrets.swift

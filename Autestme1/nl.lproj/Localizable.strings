@@ -54,6 +54,15 @@
 "end_screen_reward_error" = "❌ Fout bij verzenden beloning.";
 "end_screen_input_prompt" = "Hoeveel items heb je gezien:";
 "end_screen_show_results_button" = "Toon resultaten";
+
+/* MARK: - Leaderboard */
+"leaderboard_title" = "Leaderboard";
+"leaderboard_button" = "Leaderboard bekijken";
+"leaderboard_loading" = "Scores laden...";
+"leaderboard_empty" = "Nog geen scores. Wees de eerste!";
+"leaderboard_submitting" = "Score opslaan...";
+"leaderboard_submitted" = "Score opgeslagen!";
+"leaderboard_submit_failed" = "Score niet opgeslagen (check verbinding).";
 "end_screen_rewards_disabled" = "Beloningen waren uitgeschakeld voor dit potje.";
 "end_screen_no_tokens_earned" = "Geen tokens verdiend (score 0).";
 

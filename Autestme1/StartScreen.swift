@@ -296,7 +296,7 @@ struct StartScreen: View {
     private var playerSection: some View {
         Group {
             Text(NSLocalizedString("player_name_label", comment: "Player Name Label"))
-            
+
             TextField(NSLocalizedString("player_name_placeholder", comment: "Name Placeholder"), text: $playerName)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .focused($isPlayerNameFocused)
@@ -305,7 +305,7 @@ struct StartScreen: View {
                 }
                 .accessibilityLabel("Player name")
                 .accessibilityHint("Enter your name to track high scores")
-            
+
             if currentHighscore > 0 {
                 Text(
                     String(
@@ -316,6 +316,13 @@ struct StartScreen: View {
             } else {
                 Text(NSLocalizedString("no_highscore", comment: "No Highscore"))
             }
+
+            NavigationLink(destination: LeaderboardView()) {
+                Label("leaderboard_button", systemImage: "list.number")
+                    .font(.subheadline)
+            }
+            .accessibilityLabel("Leaderboard")
+            .accessibilityHint("View the global top 50 scores")
         }
     }
     

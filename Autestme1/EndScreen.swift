@@ -10,6 +10,9 @@ struct EndScreen: View {
     // WEB3
     @StateObject private var web3Manager = Web3Manager.shared
 
+    // FIREBASE
+    @StateObject private var firebaseManager = FirebaseManager.shared
+
     @State private var enteredShapes: [ShapeType: Int] = [:]
     @State private var enteredLetters: [Character: Int] = [:]
     @State private var enteredNumbers: [Int: Int] = [:]
@@ -64,6 +67,19 @@ struct EndScreen: View {
                         .font(.headline)
                         .foregroundColor(.blue)
                         .padding(.bottom, 10)
+                }
+
+                // FIREBASE STATUS MESSAGE
+                if firebaseManager.isSubmitting {
+                    ProgressView()
+                    Text(firebaseManager.statusMessage)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                } else if !firebaseManager.statusMessage.isEmpty {
+                    Text(firebaseManager.statusMessage)
+                        .font(.caption)
+                        .foregroundColor(.secondary)
+                        .padding(.bottom, 4)
                 }
 
                 switch gameLogic.gameVersion {
@@ -160,6 +176,17 @@ struct EndScreen: View {
                             totalCorrect,
                             for: gameLogic.player,
                             gameVersion: gameLogic.gameVersion
+                        )
+                    }
+
+                    // FIREBASE: submit score to global leaderboard
+                    Task {
+                        await firebaseManager.submitScore(
+                            playerName: gameLogic.player,
+                            score: totalCorrect,
+                            gameType: gameLogic.gameVersion,
+                            gameTime: gameLogic.gameTime,
+                            numberOfItems: gameLogic.numberOfItems
                         )
                     }
 

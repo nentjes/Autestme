@@ -233,10 +233,16 @@ class Web3Manager: ObservableObject {
             writeOperation.transaction.from = treasuryAddress
             writeOperation.transaction.chainID = chainID
             
-            let gasPrice = BigUInt(60_000_000_000) // 60 Gwei
+            // Polygon EIP-1559: fetch base fee + set minimum 30 Gwei priority tip
+            let baseFee = try await web3.eth.gasPrice()
+            let priorityFee = BigUInt(30_000_000_000) // 30 Gwei tip (Polygon minimum is 25)
+            let maxFee = baseFee + priorityFee
+            writeOperation.transaction.maxPriorityFeePerGas = priorityFee
+            writeOperation.transaction.maxFeePerGas = maxFee
+            log("⛽️ Base fee: \(baseFee / BigUInt(1_000_000_000)) Gwei | Tip: 30 Gwei | Max: \(maxFee / BigUInt(1_000_000_000)) Gwei")
             let policies = Policies(
                 gasLimitPolicy: .automatic,
-                gasPricePolicy: .manual(gasPrice)
+                gasPricePolicy: .manual(maxFee)
             )
             
             let tx = try await writeOperation.writeToChain(password: "", policies: policies)

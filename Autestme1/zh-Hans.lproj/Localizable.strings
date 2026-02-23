@@ -88,3 +88,12 @@
 /* MARK: - End Screen (附加) */
 "end_screen_input_prompt" = "你看到了多少个项目:";
 "end_screen_show_results_button" = "显示结果";
+
+/* MARK: - Leaderboard */
+"leaderboard_title" = "排行榜";
+"leaderboard_button" = "查看排行榜";
+"leaderboard_loading" = "加载分数中...";
+"leaderboard_empty" = "暂无分数，来成为第一个吧！";
+"leaderboard_submitting" = "保存分数中...";
+"leaderboard_submitted" = "分数已保存！";
+"leaderboard_submit_failed" = "分数未保存（请检查网络连接）.";

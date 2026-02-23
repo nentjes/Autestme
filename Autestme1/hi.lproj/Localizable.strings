@@ -88,3 +88,12 @@
 /* MARK: - End Screen (अतिरिक्त) */
 "end_screen_input_prompt" = "आपने कितने आइटम देखे:";
 "end_screen_show_results_button" = "परिणाम दिखाएं";
+
+/* MARK: - Leaderboard */
+"leaderboard_title" = "लीडरबोर्ड";
+"leaderboard_button" = "लीडरबोर्ड देखें";
+"leaderboard_loading" = "स्कोर लोड हो रहे हैं...";
+"leaderboard_empty" = "अभी तक कोई स्कोर नहीं। पहले बनें!";
+"leaderboard_submitting" = "स्कोर सहेजा जा रहा है...";
+"leaderboard_submitted" = "स्कोर सहेजा गया!";
+"leaderboard_submit_failed" = "स्कोर सहेजा नहीं गया (कनेक्शन जांचें).";

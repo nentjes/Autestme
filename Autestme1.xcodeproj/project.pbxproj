@@ -13,6 +13,11 @@
 		8B4D32702EDB355A00E0BFFD /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D326F2EDB355A00E0BFFD /* Secrets.swift */; };
 		8B4D32722EDB39F700E0BFFD /* Secrets.exemples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */; };
 		8B79A63A2F4A2DCA0054734C /* AutestmeWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8B79A61A2F4A2DC80054734C /* AutestmeWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8B7F8B9D2F4CD12D00860E32 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8B9C2F4CD12D00860E32 /* FirebaseManager.swift */; };
+		8B7F8B9F2F4CD13A00860E32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F8B9E2F4CD13A00860E32 /* GoogleService-Info.plist */; };
+		8B7F8BA12F4CD15900860E32 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8BA02F4CD15900860E32 /* LeaderboardView.swift */; };
+		8B7F8BA42F4CD4E900860E32 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F8BA32F4CD4E900860E32 /* FirebaseCore */; };
+		8B7F8BA62F4CD4F100860E32 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F8BA52F4CD4F100860E32 /* FirebaseFirestore */; };
 		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
 		8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF32DFEB900003B628F /* circle.mp3 */; };
 		8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF52DFEB910003B628F /* oval.mp3 */; };
@@ -101,6 +106,9 @@
 		8B79A61A2F4A2DC80054734C /* AutestmeWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "AutestmeWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B79A6262F4A2DCA0054734C /* AutestmeWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutestmeWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B79A6302F4A2DCA0054734C /* AutestmeWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutestmeWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8B7F8B9C2F4CD12D00860E32 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		8B7F8B9E2F4CD13A00860E32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8B7F8BA02F4CD15900860E32 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewWrapper.swift; sourceTree = "<group>"; };
 		8BC9EEF32DFEB900003B628F /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
 		8BC9EEF52DFEB910003B628F /* oval.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oval.mp3; sourceTree = "<group>"; };
@@ -176,7 +184,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7F8BA42F4CD4E900860E32 /* FirebaseCore in Frameworks */,
 				8B4AABD02ED9028700EE7D58 /* web3swift in Frameworks */,
+				8B7F8BA62F4CD4F100860E32 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,15 +251,7 @@
 		BCCCABBD2A0BA55C006CB6EF /* Autestme1 */ = {
 			isa = PBXGroup;
 			children = (
-				BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */,
-				BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */,
-				BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */,
-				BCA976D32A13B075004EC58D /* ShapeType.swift */,
-				BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */,
-				8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */,
-				BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */,
-				8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */,
-				8BE673262EB6B25C009F7596 /* beep.mp3 */,
+				BCCCABC42A0BA55E006CB6EF /* Autestme1.entitlements */,
 				8BC9EEFF2DFEC714003B628F /* cijfer.mp3 */,
 				8BC9EEF32DFEB900003B628F /* circle.mp3 */,
 				8BC9EF032DFEDE62003B628F /* click.mp3 */,
@@ -259,8 +261,19 @@
 				8BC9EEF52DFEB910003B628F /* oval.mp3 */,
 				8BC9EEF72DFEB918003B628F /* rectangle.mp3 */,
 				8BC9EEFD2DFEB933003B628F /* square.mp3 */,
+				8B7F8B9E2F4CD13A00860E32 /* GoogleService-Info.plist */,
+				BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */,
+				BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */,
+				8B7F8B9C2F4CD12D00860E32 /* FirebaseManager.swift */,
+				BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */,
+				BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */,
+				8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */,
+				8B7F8BA02F4CD15900860E32 /* LeaderboardView.swift */,
+				8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */,
+				BCA976D32A13B075004EC58D /* ShapeType.swift */,
+				BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */,
 				BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */,
-				BCCCABC42A0BA55E006CB6EF /* Autestme1.entitlements */,
+				8BE673262EB6B25C009F7596 /* beep.mp3 */,
 				8BE6736B2EB7569A009F7596 /* Localizable.strings */,
 				BCCCABC52A0BA55E006CB6EF /* Preview Content */,
 			);
@@ -477,6 +490,7 @@
 			mainGroup = BCCCABB22A0BA55C006CB6EF;
 			packageReferences = (
 				8B4AABCE2ED9028700EE7D58 /* XCRemoteSwiftPackageReference "web3swift" */,
+				8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = BCCCABBC2A0BA55C006CB6EF /* Products */;
 			projectDirPath = "";
@@ -527,6 +541,7 @@
 				BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */,
 				8BC9EEFC2DFEB928003B628F /* dot.mp3 in Resources */,
 				8BC9EF022DFEC71F003B628F /* letter.mp3 in Resources */,
+				8B7F8B9F2F4CD13A00860E32 /* GoogleService-Info.plist in Resources */,
 				8BC9EEFA2DFEB921003B628F /* line.mp3 in Resources */,
 				8BC9EF042DFEDE62003B628F /* click.mp3 in Resources */,
 				8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */,
@@ -576,6 +591,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B7F8B9D2F4CD12D00860E32 /* FirebaseManager.swift in Sources */,
 				8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */,
 				8B4D32702EDB355A00E0BFFD /* Secrets.swift in Sources */,
 				8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */,
@@ -587,6 +603,7 @@
 				8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */,
 				BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */,
 				BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */,
+				8B7F8BA12F4CD15900860E32 /* LeaderboardView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1234,14 @@
 				minimumVersion = 3.3.2;
 			};
 		};
+		8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.9.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1224,6 +1249,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8B4AABCE2ED9028700EE7D58 /* XCRemoteSwiftPackageReference "web3swift" */;
 			productName = web3swift;
+		};
+		8B7F8BA32F4CD4E900860E32 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		8B7F8BA52F4CD4F100860E32 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

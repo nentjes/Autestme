@@ -88,3 +88,12 @@
 /* MARK: - End Screen (adicional) */
 "end_screen_input_prompt" = "¿Cuántos elementos has visto?:";
 "end_screen_show_results_button" = "Mostrar resultados";
+
+/* MARK: - Leaderboard */
+"leaderboard_title" = "Tabla de clasificación";
+"leaderboard_button" = "Ver clasificación";
+"leaderboard_loading" = "Cargando puntuaciones...";
+"leaderboard_empty" = "Aún no hay puntuaciones. ¡Sé el primero!";
+"leaderboard_submitting" = "Guardando puntuación...";
+"leaderboard_submitted" = "¡Puntuación guardada!";
+"leaderboard_submit_failed" = "Puntuación no guardada (verifica la conexión).";

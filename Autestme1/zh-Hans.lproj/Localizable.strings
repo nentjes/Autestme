@@ -90,8 +90,8 @@
 "end_screen_show_results_button" = "显示结果";
 
 /* MARK: - Leaderboard */
-"leaderboard_title" = "排行榜";
-"leaderboard_button" = "查看排行榜";
+"leaderboard_title" = "Highscores";
+"leaderboard_button" = "查看Highscores";
 "leaderboard_loading" = "加载分数中...";
 "leaderboard_empty" = "暂无分数，来成为第一个吧！";
 "leaderboard_submitting" = "保存分数中...";

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		521535F2828B4F8DA9FA3D4C /* AppStoreScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548C70BA32A4B2B93452B6E /* AppStoreScreenshots.swift */; };
 		8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */; };
 		8B4AABD02ED9028700EE7D58 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B4AABCF2ED9028700EE7D58 /* web3swift */; };
 		8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */; };
@@ -29,11 +30,12 @@
 		8BC9EF022DFEC71F003B628F /* letter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EF012DFEC71F003B628F /* letter.mp3 */; };
 		8BC9EF042DFEDE62003B628F /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EF032DFEDE62003B628F /* click.mp3 */; };
 		8BE673272EB6B25C009F7596 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BE673262EB6B25C009F7596 /* beep.mp3 */; };
-		B5DD56FF8E5C4C57AB7B6B68 /* beep1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 650EC48A1200424483A4AC10 /* beep1.mp3 */; };
 		8BE6736D2EB7569A009F7596 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BE6736B2EB7569A009F7596 /* Localizable.strings */; };
 		8BTEST0012EF0000000000001 /* GameLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000011 /* GameLogicTests.swift */; };
 		8BTEST0012EF0000000000002 /* GameTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000012 /* GameTimerTests.swift */; };
 		8BTEST0012EF0000000000003 /* Web3ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */; };
+		B2FD738A572745C7B804B66B /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A964CA879F849EBBAEDD63C /* SoundManager.swift */; };
+		B5DD56FF8E5C4C57AB7B6B68 /* beep1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 650EC48A1200424483A4AC10 /* beep1.mp3 */; };
 		BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA976D32A13B075004EC58D /* ShapeType.swift */; };
 		BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */; };
 		BCCCABC32A0BA55E006CB6EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */; };
@@ -41,12 +43,10 @@
 		BCCCABD12A0BA55E006CB6EF /* Autestme1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABD02A0BA55E006CB6EF /* Autestme1Tests.swift */; };
 		BCCCABDB2A0BA55E006CB6EF /* Autestme1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */; };
 		BCCCABDD2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */; };
-		521535F2828B4F8DA9FA3D4C /* AppStoreScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548C70BA32A4B2B93452B6E /* AppStoreScreenshots.swift */; };
 		BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */; };
 		BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */; };
 		BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */; };
 		BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */; };
-		B2FD738A572745C7B804B66B /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A964CA879F849EBBAEDD63C /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +102,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1A964CA879F849EBBAEDD63C /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		650EC48A1200424483A4AC10 /* beep1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep1.mp3; sourceTree = "<group>"; };
 		8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimer.swift; sourceTree = "<group>"; };
 		8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3Manager.swift; sourceTree = "<group>"; };
 		8B4D326F2EDB355A00E0BFFD /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -122,7 +124,6 @@
 		8BC9EEFF2DFEC714003B628F /* cijfer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cijfer.mp3; sourceTree = "<group>"; };
 		8BC9EF012DFEC71F003B628F /* letter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = letter.mp3; sourceTree = "<group>"; };
 		8BC9EF032DFEDE62003B628F /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
-		650EC48A1200424483A4AC10 /* beep1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep1.mp3; sourceTree = "<group>"; };
 		8BE673132EB6A3FB009F7596 /* AVFAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFAudio.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/AVFAudio.framework; sourceTree = DEVELOPER_DIR; };
 		8BE673152EB6A41C009F7596 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		8BE673172EB6A425009F7596 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -149,12 +150,11 @@
 		BCCCABD62A0BA55E006CB6EF /* Autestme1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Autestme1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITests.swift; sourceTree = "<group>"; };
 		BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F548C70BA32A4B2B93452B6E /* AppStoreScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshots.swift; sourceTree = "<group>"; };
 		BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerView.swift; sourceTree = "<group>"; };
 		BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScreen.swift; sourceTree = "<group>"; };
-		1A964CA879F849EBBAEDD63C /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
+		F548C70BA32A4B2B93452B6E /* AppStoreScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshots.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -1001,7 +1001,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -1046,7 +1046,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;

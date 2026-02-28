@@ -57,8 +57,8 @@
 "end_screen_show_results_button" = "Toon resultaten";
 
 /* MARK: - Leaderboard */
-"leaderboard_title" = "Leaderboard";
-"leaderboard_button" = "Leaderboard bekijken";
+"leaderboard_title" = "Highscores";
+"leaderboard_button" = "Highscores bekijken";
 "leaderboard_loading" = "Scores laden...";
 "leaderboard_empty" = "Nog geen scores. Wees de eerste!";
 "leaderboard_submitting" = "Score opslaan...";

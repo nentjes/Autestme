@@ -88,8 +88,8 @@
 "end_screen_show_results_button" = "Show results";
 
 /* MARK: - Leaderboard */
-"leaderboard_title" = "Leaderboard";
-"leaderboard_button" = "View Leaderboard";
+"leaderboard_title" = "Highscores";
+"leaderboard_button" = "View Highscores";
 "leaderboard_loading" = "Loading scores...";
 "leaderboard_empty" = "No scores yet. Be the first!";
 "leaderboard_submitting" = "Saving score...";

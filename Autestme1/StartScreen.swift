@@ -52,8 +52,11 @@ struct StartScreen: View {
     }
 
     private func updateHighscore() {
-        let name = playerName.isEmpty ? NSLocalizedString("Naam speler:", comment: "Player Name Label") : playerName
-        currentHighscore = GameLogic.getHighScore(for: name, gameVersion: selectedGameVersion)
+        guard !playerName.isEmpty else {
+            currentHighscore = 0
+            return
+        }
+        currentHighscore = GameLogic.getHighScore(for: playerName, gameVersion: selectedGameVersion)
     }
 
     private func resetKeyboardTimer() {

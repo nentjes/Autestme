@@ -104,6 +104,7 @@ class FirebaseManager: ObservableObject {
                 let data = doc.data()
                 guard
                     let playerName = data["playerName"] as? String,
+                    !playerName.trimmingCharacters(in: .whitespaces).isEmpty,
                     let score = data["score"] as? Int,
                     let gameType = data["gameType"] as? String,
                     let deviceID = data["deviceID"] as? String,

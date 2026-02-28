@@ -6,7 +6,7 @@
 "info_body" = "Welcome to Autestme!\n\nIn this game, different shapes, letters, or numbers are displayed.\nYour task is to remember how many times you have seen each item.\n\nGame Types:\n• Shapes – circles, squares, lines, etc.\n• Letters – random capital letters (A to Z)\n• Numbers – random numbers (0 to 9)\n\nSettings:\n• Game Duration – how long the game lasts\n• Tempo – how fast the items appear\n• Number of items – for shapes: how many different shapes, for letters/numbers: how many different options are chosen from\n• Color Mode – fixed colors per item or random colors.";
 
 "info_crypto_title" = "Crypto Rewards";
-"info_crypto_explanation" = "The Autestme app uses the Polygon Mainnet Blockchain to reward players with AUteste Tokens. You have a choice of two options:\n\n1. My Wallet: The reward is sent directly to your personal wallet address.\n2. Game Treasury: The reward goes to the app's central Treasury. You save towards a larger joint prize pool this way.\n\nSwipe right-to-left to make your choice. Your address must be a valid Polygon Mainnet address.";
+"info_crypto_explanation" = "The Autestme app uses the Polygon Mainnet Blockchain to reward players with $AUTESTME Tokens. You have a choice of two options:\n\n1. My Wallet: The reward is sent directly to your personal wallet address.\n2. Game Treasury: The reward goes to the app's central Treasury. You save towards a larger joint prize pool this way.\n\nSwipe right-to-left to make your choice. Your address must be a valid Polygon Mainnet address.";
 
 /* MARK: - StartScreen UI */
 "app_title" = "Autestme";

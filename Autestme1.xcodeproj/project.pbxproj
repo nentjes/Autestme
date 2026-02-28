@@ -29,6 +29,7 @@
 		8BC9EF022DFEC71F003B628F /* letter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EF012DFEC71F003B628F /* letter.mp3 */; };
 		8BC9EF042DFEDE62003B628F /* click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EF032DFEDE62003B628F /* click.mp3 */; };
 		8BE673272EB6B25C009F7596 /* beep.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BE673262EB6B25C009F7596 /* beep.mp3 */; };
+		B5DD56FF8E5C4C57AB7B6B68 /* beep1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 650EC48A1200424483A4AC10 /* beep1.mp3 */; };
 		8BE6736D2EB7569A009F7596 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8BE6736B2EB7569A009F7596 /* Localizable.strings */; };
 		8BTEST0012EF0000000000001 /* GameLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000011 /* GameLogicTests.swift */; };
 		8BTEST0012EF0000000000002 /* GameTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000012 /* GameTimerTests.swift */; };
@@ -44,6 +45,7 @@
 		BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */; };
 		BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */; };
 		BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */; };
+		B2FD738A572745C7B804B66B /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A964CA879F849EBBAEDD63C /* SoundManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -119,6 +121,7 @@
 		8BC9EEFF2DFEC714003B628F /* cijfer.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cijfer.mp3; sourceTree = "<group>"; };
 		8BC9EF012DFEC71F003B628F /* letter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = letter.mp3; sourceTree = "<group>"; };
 		8BC9EF032DFEDE62003B628F /* click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = click.mp3; sourceTree = "<group>"; };
+		650EC48A1200424483A4AC10 /* beep1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = beep1.mp3; sourceTree = "<group>"; };
 		8BE673132EB6A3FB009F7596 /* AVFAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFAudio.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/AVFAudio.framework; sourceTree = DEVELOPER_DIR; };
 		8BE673152EB6A41C009F7596 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/SwiftUI.framework; sourceTree = DEVELOPER_DIR; };
 		8BE673172EB6A425009F7596 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.5.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -149,6 +152,7 @@
 		BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerView.swift; sourceTree = "<group>"; };
 		BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScreen.swift; sourceTree = "<group>"; };
+		1A964CA879F849EBBAEDD63C /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -272,8 +276,10 @@
 				8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */,
 				BCA976D32A13B075004EC58D /* ShapeType.swift */,
 				BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */,
+				1A964CA879F849EBBAEDD63C /* SoundManager.swift */,
 				BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */,
 				8BE673262EB6B25C009F7596 /* beep.mp3 */,
+				650EC48A1200424483A4AC10 /* beep1.mp3 */,
 				8BE6736B2EB7569A009F7596 /* Localizable.strings */,
 				BCCCABC52A0BA55E006CB6EF /* Preview Content */,
 			);
@@ -546,6 +552,7 @@
 				8BC9EF042DFEDE62003B628F /* click.mp3 in Resources */,
 				8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */,
 				8BE673272EB6B25C009F7596 /* beep.mp3 in Resources */,
+				B5DD56FF8E5C4C57AB7B6B68 /* beep1.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +611,7 @@
 				BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */,
 				BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */,
 				8B7F8BA12F4CD15900860E32 /* LeaderboardView.swift in Sources */,
+				B2FD738A572745C7B804B66B /* SoundManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,7 +997,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -1013,7 +1021,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 3.0;
 				"MARKETING_VERSION[sdk=*]" = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1034,7 +1042,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 5;
+				CURRENT_PROJECT_VERSION = 6;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -1058,7 +1066,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 2.0;
+				MARKETING_VERSION = 3.0;
 				"MARKETING_VERSION[sdk=*]" = 5;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";

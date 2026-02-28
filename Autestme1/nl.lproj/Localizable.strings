@@ -6,7 +6,8 @@
 "info_body" = "Welkom bij Autestme!\n\nIn dit spel worden verschillende vormen, letters of cijfers getoond.\nJouw taak is om te onthouden hoe vaak je elk item hebt gezien.\n\nSpeltypes:\n• Vormen – cirkels, vierkanten, lijnen, enz.\n• Letters – willekeurige hoofdletters (A t/m Z)\n• Nummers – willekeurige cijfers (0 t/m 9)\n\nInstellingen:\n• Spelduur – hoe lang het spel duurt\n• Tempo – hoe snel de items verschijnen\n• Aantal items – voor vormen: hoeveel verschillende vormen, voor letters/cijfers: hoeveel verschillende opties worden gekozen\n• Kleurmodus – vaste kleuren per item of willekeurige kleuren.";
 
 "info_crypto_title" = "Crypto Beloningen";
-"info_crypto_explanation" = "De Autestme app maakt gebruik van de Polygon Mainnet Blockchain om spelers te belonen met AUteste Tokens. Je hebt de keuze uit twee opties:\n\n1. Mijn Wallet: De beloning wordt direct naar jouw persoonlijke wallet-adres gestuurd.\n2. Schatkist: De beloning gaat naar de centrale Schatkist van de app. Je spaart zo mee voor een grotere gezamenlijke prijzenpot.\n\nVeeg rechts-links om je keuze te maken. Jouw adres moet een geldig Polygon Mainnet adres zijn.";
+"info_crypto_explanation" = "De Autestme app maakt gebruik van de Polygon Mainnet Blockchain om spelers te belonen met 
+ Tokens. Je hebt de keuze uit twee opties:\n\n1. Mijn Wallet: De beloning wordt direct naar jouw persoonlijke wallet-adres gestuurd.\n2. Schatkist: De beloning gaat naar de centrale Schatkist van de app. Je spaart zo mee voor een grotere gezamenlijke prijzenpot.\n\nVeeg rechts-links om je keuze te maken. Jouw adres moet een geldig Polygon Mainnet adres zijn.";
 
 /* MARK: - StartScreen UI */
 "app_title" = "Autestme";

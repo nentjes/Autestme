@@ -1,6 +1,5 @@
 import SwiftUI
 import Combine
-import AVFoundation
 
 struct GameContainerView: View {
     private let shapeDisplayRate: Int
@@ -12,7 +11,7 @@ struct GameContainerView: View {
     @State private var currentLetter: Character?
     @State private var currentNumber: Int?
     @State private var goToEndScreen = false
-    @State private var audioPlayer: AVAudioPlayer?
+    @AppStorage("isSoundEnabled") private var isSoundEnabled: Bool = true
 
     @Binding var navigationPath: NavigationPath
 
@@ -31,11 +30,24 @@ struct GameContainerView: View {
                 .font(.largeTitle)
                 .padding()
 
-            Text(String(format: NSLocalizedString("game_screen_time_left", comment: ""), "\(gameTimer.remainingTime)")) // <-- Localized
-                .font(.title2)
-                .padding()
-                .accessibilityLabel("Time remaining")
-                .accessibilityValue("\(gameTimer.remainingTime) seconds")
+            HStack {
+                Text(String(format: NSLocalizedString("game_screen_time_left", comment: ""), "\(gameTimer.remainingTime)")) // <-- Localized
+                    .font(.title2)
+                    .padding()
+                    .accessibilityLabel("Time remaining")
+                    .accessibilityValue("\(gameTimer.remainingTime) seconds")
+                Spacer()
+                Button {
+                    SoundManager.shared.isSoundEnabled.toggle()
+                    isSoundEnabled = SoundManager.shared.isSoundEnabled
+                } label: {
+                    Image(systemName: isSoundEnabled ? "speaker.wave.2.fill" : "speaker.slash.fill")
+                        .font(.title2)
+                        .foregroundColor(.primary)
+                }
+                .accessibilityLabel(isSoundEnabled ? "Geluid uit" : "Geluid aan")
+                .padding(.trailing)
+            }
 
             switch gameLogic.gameVersion {
             case .shapes:
@@ -75,7 +87,7 @@ struct GameContainerView: View {
             let firstShape = GameLogic.getRandomShape(shapes: gameLogic.shapeType)
             currentShape = firstShape
             shapeCounts[firstShape, default: 0] += 1
-            firstShape.playSound(player: &audioPlayer)
+            SoundManager.shared.playNote(firstShape.midiNote)
 
             gameTimer.reset(gameTime: gameLogic.gameTime, displayRate: gameLogic.displayRate)
 
@@ -87,7 +99,7 @@ struct GameContainerView: View {
                     currentLetter = nil
                     currentNumber = nil
                     shapeCounts[newShape, default: 0] += 1
-                    newShape.playSound(player: &audioPlayer)
+                    SoundManager.shared.playNote(newShape.midiNote)
                 case .letters:
                     let allowedLetters = Array("ABCDEFGHIJKLMNOPQRSTUVWXYZ").prefix(gameLogic.numberOfItems)
                     let letter = allowedLetters.randomElement()!
@@ -95,14 +107,17 @@ struct GameContainerView: View {
                     currentShape = nil
                     currentNumber = nil
                     gameLogic.letterCounts[letter, default: 0] += 1
-                    playCommonClick()
+                    let letterIndex = UInt8(letter.asciiValue.map { Int($0) - Int(Character("A").asciiValue!) } ?? 0)
+                    SoundManager.shared.playNote(48 + letterIndex)
                 case .numbers:
                     let number = Int.random(in: 0..<gameLogic.numberOfItems)
                     currentNumber = number
                     currentShape = nil
                     currentLetter = nil
                     gameLogic.numberCounts[number, default: 0] += 1
-                    playCommonClick()
+                    // Majeur toonladder: C D E F G A B C D E F
+                    let scale: [UInt8] = [60, 62, 64, 65, 67, 69, 71, 72, 74, 76, 77]
+                    SoundManager.shared.playNote(scale[min(number, scale.count - 1)])
                 }
             }
         }
@@ -114,8 +129,6 @@ struct GameContainerView: View {
         .onDisappear {
             gameTimer.stop()
             currentShape = nil
-            audioPlayer?.stop()
-            audioPlayer = nil
         }
         .navigationDestination(for: String.self) { value in
             if value == "endscreen" {
@@ -127,37 +140,6 @@ struct GameContainerView: View {
                     navigationPath: $navigationPath
                 )
             }
-        }
-    }
-    
-    func playCommonClick() {
-        guard let url = Bundle.main.url(forResource: "click", withExtension: "mp3") else {
-            print("Sound not found")
-            return
-        }
-        do {
-            if audioPlayer?.isPlaying == true {
-                audioPlayer?.stop()
-            }
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.currentTime = 0
-            audioPlayer?.play()
-        } catch {
-            print("Error playing sound: \(error)")
-        }
-    }
-
-    func playShapeSound(for shape: ShapeType) {
-        let filename = shape.soundFileName
-        guard let url = Bundle.main.url(forResource: filename, withExtension: "mp3") else {
-            print("Sound for \(shape.displayName) not found")
-            return
-        }
-        do {
-            audioPlayer = try AVAudioPlayer(contentsOf: url)
-            audioPlayer?.play()
-        } catch {
-            print("Error playing sound for \(shape.displayName): \(error)")
         }
     }
 }

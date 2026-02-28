@@ -41,6 +41,17 @@ enum ShapeType: Int, CaseIterable {
         }
     }
 
+    var midiNote: UInt8 {
+        switch self {
+        case .dot:       return 60  // C4
+        case .line:      return 64  // E4
+        case .circle:    return 67  // G4
+        case .oval:      return 72  // C5
+        case .square:    return 76  // E5
+        case .rectangle: return 79  // G5
+        }
+    }
+
     
     func shapeView() -> some View {
         switch self {

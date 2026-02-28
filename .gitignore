@@ -1,2 +1,5 @@
 Secrets.swift
 GoogleService-Info.plist
+.DS_Store
+*.xcuserstate
+.claude/settings.local.json

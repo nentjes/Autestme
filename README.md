@@ -1,89 +1,95 @@
-Autestme: Neurodiverse Talent Ecosystem
+# Autestme: Neurodiverse Talent Ecosystem
 
 Autestme is a pioneering "Develop-to-Earn" (D2E) platform designed to empower neurodiverse programming talent. By combining cognitive training games with blockchain technology, we are building a sovereign digital economy where talent is recognized, verified, and directly rewarded.
 
-🚀 Vision
+## 🚀 Vision
 
 Our mission is to unlock the immense potential of programmers with autism. Autestme provides a platform where:
 
-Talent is Verified: Contributions are tracked on-chain.
+- **Talent is Verified:** Contributions are tracked on-chain.
+- **Work is Rewarded:** Developers earn AutestCoin ($AUT) for every approved pull request.
+- **Community Governs:** The ecosystem is steered by a DAO of token holders.
 
-Work is Rewarded: Developers earn AutestCoin ($AUT) for every approved pull request.
+## 🎮 The App
 
-Community Governs: The ecosystem is steered by a DAO of token holders.
+The iOS + Apple Watch application is the first touchpoint. It is a memory training game that demonstrates the core loop:
 
-🎮 The App (Alpha)
+- **Play:** Users train their memory with shapes, numbers, and letters.
+- **Earn:** High scores trigger real-time blockchain transactions on the Polygon Mainnet.
+- **Compete:** Scores are saved to a global leaderboard visible to all players.
+- **Verify:** Rewards are transparently viewable on-chain via Polygonscan.
 
-The current iOS application serves as the first touchpoint. It is a memory training game that demonstrates the core loop:
+## 🛠 Tech Stack
 
-Play: Users train their memory with shapes, numbers, and letters.
+| Layer | Technology |
+|---|---|
+| Platform | iOS 16.4+ + watchOS (Apple Watch) |
+| Language | Swift 5.9 (SwiftUI) |
+| Blockchain | Polygon Mainnet (EIP-1559, ERC-20) |
+| Database | Firebase Firestore (global leaderboard) |
+| SPM Libraries | web3swift, BigInt, FirebaseCore, FirebaseFirestore |
+| Smart Contracts | Solidity (ERC-20) |
 
-Earn: High scores trigger real-time blockchain transactions on the Polygon network.
+## 📦 Installation for Developers
 
-Verify: Rewards are transparently viewable on-chain.
+### Prerequisites
 
-🛠 Tech Stack
+- Xcode 15+
+- A Polygon Mainnet compatible wallet (MetaMask)
+- Access to the project's Firebase Console (ask a maintainer)
 
-Platform: iOS 16.4+
+### Setup
 
-Language: Swift 5.9 (SwiftUI)
-
-Blockchain: Polygon Amoy Testnet (Proof of Stake)
-
-Libraries:
-
-web3swift (Blockchain interaction)
-
-BigInt (Precise calculations)
-
-Smart Contracts: Solidity (ERC-20, Chainlink Functions)
-
-📦 Installation for Developers
-
-Join us in building the future of neurodiverse employment!
-
-Prerequisites
-
-Xcode 15+
-
-A Polygon Amoy compatible wallet (MetaMask)
-
-Setup
-
-Clone the Repository:
-
-git clone [https://github.com/nentjes/Autestme.git](https://github.com/nentjes/Autestme.git)
+**1. Clone the repository:**
+```bash
+git clone https://github.com/nentjes/Autestme.git
 cd Autestme
+```
 
+**2. Configure blockchain secrets:**
 
-
-Configure Secrets:
-
-Duplicate Secrets.example.swift and rename it to Secrets.swift.
-
-Important: Add Secrets.swift to your .gitignore to protect your keys.
-
-Fill in your testnet keys:
-
+Copy `Secrets.exemples.swift` and rename to `Secrets.swift` (already in `.gitignore`):
+```swift
 struct Secrets {
     static let contractAddress = "YOUR_TOKEN_CONTRACT_ADDRESS"
-    static let privateKey = "YOUR_TEST_WALLET_PRIVATE_KEY"
+    static let privateKeyGameTreasury = "YOUR_TREASURY_WALLET_PRIVATE_KEY"
 }
+```
 
+**3. Configure Firebase:**
 
+- Go to [console.firebase.google.com](https://console.firebase.google.com) → project **Autestme**
+- Go to Project Settings → iOS app → download `GoogleService-Info.plist`
+- Drag the file into Xcode under the `Autestme1` target (already in `.gitignore`)
 
-Install Dependencies:
-Open Autestme.xcodeproj in Xcode. The Swift Package Manager should automatically resolve dependencies (web3swift, BigInt).
+**4. Install dependencies:**
 
-Run:
-Select an iOS Simulator (e.g., iPhone 16) and press Cmd + R.
+Open `Autestme1.xcodeproj` in Xcode. SPM resolves automatically:
+- `web3swift` + `BigInt` (blockchain)
+- `FirebaseCore` + `FirebaseFirestore` (leaderboard)
 
-📄 Documentation
+If packages are missing: *File → Add Package Dependencies* → `https://github.com/firebase/firebase-ios-sdk` → select `FirebaseCore` + `FirebaseFirestore`.
 
-For a deep dive into the project's philosophy, economy, and architecture, please refer to our documentation:
+**5. Run:**
 
-Whitepaper: The vision, D2E model, and DAO structure.
+Select scheme `Autestme` + an iPhone Simulator and press `Cmd+R`.
 
-Technical Documentation: System architecture, smart contracts, and security.
+## 🔐 Security
 
-Autestme - Coding a more inclusive future.
+The following files are git-ignored and must never be committed:
+
+| File | Why |
+|---|---|
+| `Secrets.swift` | Contains treasury wallet private key |
+| `GoogleService-Info.plist` | Contains Firebase API keys |
+
+## 📄 Documentation
+
+For a deep dive into the project's philosophy, economy, and architecture:
+
+- **Whitepaper:** The vision, D2E model, and DAO structure.
+- **Technical Documentation:** System architecture, smart contracts, and security.
+
+---
+
+*Autestme — Coding a more inclusive future.*

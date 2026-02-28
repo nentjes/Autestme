@@ -96,6 +96,7 @@ struct StartScreen: View {
         }
         .onAppear {
             updateHighscore()
+            isPlayerNameFocused = false
             // Connect to Web3 in background - don't block UI
             if !web3Manager.isConnected && !web3Manager.isLoading {
                 Task {
@@ -103,7 +104,18 @@ struct StartScreen: View {
                 }
             }
         }
-        .onChange(of: playerName) { _ in updateHighscore() }
+        .onChange(of: isPlayerNameFocused) { focused in
+            if focused {
+                resetKeyboardTimer()
+            } else {
+                keyboardTimer?.invalidate()
+                keyboardTimer = nil
+            }
+        }
+        .onChange(of: playerName) { _ in
+            updateHighscore()
+            resetKeyboardTimer()
+        }
         .onChange(of: selectedGameVersion) { _ in updateHighscore() }
         .sheet(isPresented: $showDebugLog) {
             debugLogSheet

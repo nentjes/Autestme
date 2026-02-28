@@ -41,6 +41,7 @@
 		BCCCABD12A0BA55E006CB6EF /* Autestme1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABD02A0BA55E006CB6EF /* Autestme1Tests.swift */; };
 		BCCCABDB2A0BA55E006CB6EF /* Autestme1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */; };
 		BCCCABDD2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */; };
+		521535F2828B4F8DA9FA3D4C /* AppStoreScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548C70BA32A4B2B93452B6E /* AppStoreScreenshots.swift */; };
 		BCCCABEA2A0BA6A0006CB6EF /* GameLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */; };
 		BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */; };
 		BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */; };
@@ -148,6 +149,7 @@
 		BCCCABD62A0BA55E006CB6EF /* Autestme1UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Autestme1UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITests.swift; sourceTree = "<group>"; };
 		BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Autestme1UITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F548C70BA32A4B2B93452B6E /* AppStoreScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshots.swift; sourceTree = "<group>"; };
 		BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogic.swift; sourceTree = "<group>"; };
 		BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartScreen.swift; sourceTree = "<group>"; };
 		BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerView.swift; sourceTree = "<group>"; };
@@ -310,6 +312,7 @@
 			children = (
 				BCCCABDA2A0BA55E006CB6EF /* Autestme1UITests.swift */,
 				BCCCABDC2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift */,
+				F548C70BA32A4B2B93452B6E /* AppStoreScreenshots.swift */,
 			);
 			path = Autestme1UITests;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 			files = (
 				BCCCABDD2A0BA55E006CB6EF /* Autestme1UITestsLaunchTests.swift in Sources */,
 				BCCCABDB2A0BA55E006CB6EF /* Autestme1UITests.swift in Sources */,
+				521535F2828B4F8DA9FA3D4C /* AppStoreScreenshots.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1140,7 +1144,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Autestme1;
+				TEST_TARGET_NAME = Autestme;
 			};
 			name = Debug;
 		};
@@ -1161,7 +1165,7 @@
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = Autestme1;
+				TEST_TARGET_NAME = Autestme;
 			};
 			name = Release;
 		};

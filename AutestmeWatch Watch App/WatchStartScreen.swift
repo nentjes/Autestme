@@ -6,7 +6,6 @@ struct WatchStartScreen: View {
     @State private var displayRate: Int = 2
     @State private var colorMode: WatchColorMode = .fixed
     @State private var navigationPath = NavigationPath()
-    @State private var gameLogic: WatchGameLogic?
 
     private var currentHighscore: Int {
         WatchGameLogic.getHighScore()
@@ -73,10 +72,8 @@ struct WatchStartScreen: View {
                     .listItemTint(.blue)
                 }
             }
-            .navigationDestination(for: String.self) { value in
-                if value == "game", let logic = gameLogic {
-                    WatchGameView(gameLogic: logic, navigationPath: $navigationPath)
-                }
+            .navigationDestination(for: WatchGameLogic.self) { logic in
+                WatchGameView(gameLogic: logic, navigationPath: $navigationPath)
             }
         }
     }
@@ -88,8 +85,7 @@ struct WatchStartScreen: View {
             displayRate: displayRate,
             numberOfShapes: numberOfShapes
         )
-        gameLogic = logic
-        navigationPath.append("game")
+        navigationPath.append(logic)
     }
 }
 

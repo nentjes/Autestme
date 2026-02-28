@@ -18,7 +18,14 @@ extension Color {
     }
 }
 
-class WatchGameLogic: ObservableObject {
+class WatchGameLogic: ObservableObject, Hashable {
+    static func == (lhs: WatchGameLogic, rhs: WatchGameLogic) -> Bool {
+        lhs.gameID == rhs.gameID
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(gameID)
+    }
     let gameID = UUID()
     let gameTime: Int
     let colorMode: WatchColorMode

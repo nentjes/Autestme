@@ -15,6 +15,7 @@
 		8B4D32722EDB39F700E0BFFD /* Secrets.exemples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */; };
 		8B79A63A2F4A2DCA0054734C /* AutestmeWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8B79A61A2F4A2DC80054734C /* AutestmeWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8B7F8B9D2F4CD12D00860E32 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8B9C2F4CD12D00860E32 /* FirebaseManager.swift */; };
+		8B7F8BAA2F4CD12D00860E33 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8BAB2F4CD12D00860E33 /* KeychainHelper.swift */; };
 		8B7F8B9F2F4CD13A00860E32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F8B9E2F4CD13A00860E32 /* GoogleService-Info.plist */; };
 		8B7F8BA12F4CD15900860E32 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8BA02F4CD15900860E32 /* LeaderboardView.swift */; };
 		8B7F8BA42F4CD4E900860E32 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F8BA32F4CD4E900860E32 /* FirebaseCore */; };
@@ -112,6 +113,7 @@
 		8B79A6262F4A2DCA0054734C /* AutestmeWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutestmeWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B79A6302F4A2DCA0054734C /* AutestmeWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutestmeWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7F8B9C2F4CD12D00860E32 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
+		8B7F8BAB2F4CD12D00860E33 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		8B7F8B9E2F4CD13A00860E32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B7F8BA02F4CD15900860E32 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
 		8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewWrapper.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */,
 				BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */,
 				8B7F8B9C2F4CD12D00860E32 /* FirebaseManager.swift */,
+				8B7F8BAB2F4CD12D00860E33 /* KeychainHelper.swift */,
 				BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */,
 				BCCCABE92A0BA6A0006CB6EF /* GameLogic.swift */,
 				8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */,
@@ -602,6 +605,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B7F8B9D2F4CD12D00860E32 /* FirebaseManager.swift in Sources */,
+				8B7F8BAA2F4CD12D00860E33 /* KeychainHelper.swift in Sources */,
 				8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */,
 				8B4D32702EDB355A00E0BFFD /* Secrets.swift in Sources */,
 				8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */,

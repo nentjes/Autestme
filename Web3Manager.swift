@@ -13,9 +13,13 @@ class Web3Manager: ObservableObject {
     private let rpcURL = "https://polygon-bor-rpc.publicnode.com" // <- free public Polygon mainnet RPC
     private let chainID = BigUInt(137)                          // <- 137 = Polygon mainnet
 
-    // Sensitive data from Secrets.swift
+    // Contract address (public info)
     private let contractAddressString = Secrets.contractAddress
-    private let privateKey = Secrets.privateKeyGameTreasury   // Key for "Game Treasury" wallet
+
+    // Private key loaded from Keychain (never stored in code after first run)
+    private var privateKey: String {
+        KeychainHelper.shared.retrieve(forKey: "privateKeyGameTreasury") ?? ""
+    }
     
     // --- 2. STATUS ---
     @Published var statusMessage: String = "Ready to connect"
@@ -54,7 +58,16 @@ class Web3Manager: ObservableObject {
     ]
     """
     
-    private init() {}
+    private init() {
+        // One-time migration: move private key from Secrets.swift into Keychain.
+        // After this runs once, Secrets.swift no longer needs the real key.
+        if KeychainHelper.shared.retrieve(forKey: "privateKeyGameTreasury") == nil {
+            let keyFromSecrets = Secrets.privateKeyGameTreasury
+            if !keyFromSecrets.isEmpty && !keyFromSecrets.contains("PASTE") {
+                KeychainHelper.shared.save(keyFromSecrets, forKey: "privateKeyGameTreasury")
+            }
+        }
+    }
     
     // Logging helper
     private func log(_ message: String) {

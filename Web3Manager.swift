@@ -2,52 +2,69 @@ import Foundation
 import BigInt
 import web3swift
 import Web3Core
+import FirebaseFunctions
 import SwiftUI
+
+/// Talks to the `claimReward` Cloud Function to sign and broadcast AUT
+/// reward payouts. Injected into Web3Manager so tests can substitute a
+/// fake claimer instead of hitting the network / Firebase Functions.
+protocol RewardClaiming {
+    func claim(recipient: String, amount: Int, gameId: UUID, deviceId: String) async throws -> RewardClaimResponse
+}
+
+struct RewardClaimResponse {
+    let status: String
+    let txHash: String?
+}
+
+final class FirebaseFunctionsRewardClaimer: RewardClaiming {
+    private let functions = Functions.functions()
+
+    func claim(recipient: String, amount: Int, gameId: UUID, deviceId: String) async throws -> RewardClaimResponse {
+        let result = try await functions.httpsCallable("claimReward").call([
+            "recipientAddress": recipient,
+            "amount": amount,
+            "gameId": gameId.uuidString,
+            "deviceId": deviceId,
+        ])
+        let data = result.data as? [String: Any]
+        return RewardClaimResponse(
+            status: data?["status"] as? String ?? "unknown",
+            txHash: data?["txHash"] as? String
+        )
+    }
+}
 
 @MainActor
 class Web3Manager: ObservableObject {
     static let shared = Web3Manager()
-    
+
     // --- 1. CONFIGURATION ---
-    // 🔹 FROM TESTNET ➜ PRODUCTION
-    private let rpcURL = "https://polygon-bor-rpc.publicnode.com" // <- free public Polygon mainnet RPC
-    private let chainID = BigUInt(137)                          // <- 137 = Polygon mainnet
+    private let rpcURL = "https://polygon-bor-rpc.publicnode.com"
 
     // Contract address (public info)
     private let contractAddressString = Secrets.contractAddress
 
-    // Private key loaded from Keychain (never stored in code after first run)
-    private var privateKey: String {
-        KeychainHelper.shared.retrieve(forKey: "privateKeyGameTreasury") ?? ""
-    }
-    
+    /// The game treasury's public address. Safe to hardcode — it is not a
+    /// secret. Its PRIVATE key never lives in this app: every payout is
+    /// signed server-side by the `claimReward` Cloud Function, which is the
+    /// only place that key is ever loaded (from Secret Manager).
+    let defaultRecipientAddress: String = Secrets.GameTreasuryWalletAddress
+
     // --- 2. STATUS ---
     @Published var statusMessage: String = "Ready to connect"
     @Published var isLoading: Bool = false
     @Published var isConnected: Bool = false
-    
-    // This address is set from StartScreen (player wallet)
-    @Published var recipientAddress: String = ""
 
-    // Own default wallet (Game Treasury)
-    @Published var defaultRecipientAddress: String = ""
+    // Set from StartScreen (player wallet, or the treasury's own address as fallback)
+    @Published var recipientAddress: String = ""
 
     // Log for debug sheet
     @Published var debugLog: String = ""
-    
-    // --- 3. Simple ERC-20 ABI ---
-    private let minimalABI = """
+
+    // --- 3. Read-only ERC-20 ABI — balance checks only, no signing capability lives here ---
+    private let balanceOfABI = """
     [
-        {
-            "constant": false,
-            "inputs": [
-                {"name": "_to", "type": "address"},
-                {"name": "_value", "type": "uint256"}
-            ],
-            "name": "transfer",
-            "outputs": [{"name": "", "type": "bool"}],
-            "type": "function"
-        },
         {
             "constant": true,
             "inputs": [{"name": "_owner", "type": "address"}],
@@ -57,59 +74,38 @@ class Web3Manager: ObservableObject {
         }
     ]
     """
-    
-    private init() {
-        // One-time migration: move private key from Secrets.swift into Keychain.
-        // After this runs once, Secrets.swift no longer needs the real key.
-        if KeychainHelper.shared.retrieve(forKey: "privateKeyGameTreasury") == nil {
-            let keyFromSecrets = Secrets.privateKeyGameTreasury
-            if !keyFromSecrets.isEmpty && !keyFromSecrets.contains("PASTE") {
-                KeychainHelper.shared.save(keyFromSecrets, forKey: "privateKeyGameTreasury")
-            }
-        }
+
+    private let claimer: RewardClaiming
+    private static let pendingClaimDefaultsKey = "com.autestme.pendingRewardClaim"
+
+    init(claimer: RewardClaiming = FirebaseFunctionsRewardClaimer()) {
+        self.claimer = claimer
     }
-    
-    // Logging helper
+
     private func log(_ message: String) {
         print(message)
         debugLog += message + "\n"
     }
-    
-    // --- 4. CONNECT & DIAGNOSTICS ---
-    
+
+    // --- 4. CONNECT & DIAGNOSTICS (read-only, no private key involved) ---
+
     func connect() async {
         isLoading = true
         statusMessage = "Running diagnostics..."
         debugLog = "--- START DIAGNOSTICS ---\n"
 
-        // Check Secrets
-        if privateKey.isEmpty || privateKey.contains("PASTE") {
-            let msg = "❌ Please configure Secrets.swift first (privateKeyGameTreasury)."
-            statusMessage = msg
-            log(msg)
-            isLoading = false
-            return
-        }
-
-        // Run connection with timeout to prevent UI freeze
         do {
             try await withThrowingTaskGroup(of: Void.self) { group in
-                group.addTask {
-                    await self.runDiagnostics()
-                    _ = try await self.getWeb3()
-                }
-
+                group.addTask { await self.runDiagnostics() }
                 group.addTask {
                     try await Task.sleep(for: .seconds(10)) // 10 second timeout
                     throw CancellationError()
                 }
-
-                // Wait for first to complete, cancel the other
                 try await group.next()
                 group.cancelAll()
             }
             isConnected = true
-            statusMessage = "✅ Connected as Game Treasury"
+            statusMessage = "✅ Connected"
         } catch is CancellationError {
             let msg = "⏱️ Connection timeout - check your internet"
             statusMessage = msg
@@ -122,54 +118,38 @@ class Web3Manager: ObservableObject {
 
         isLoading = false
     }
-    
+
     func runDiagnostics() async {
         log("\n🕵️‍♂️ --- START DIAGNOSTICS ---")
-        
-        guard let myAddress = walletAddress(from: privateKey) else {
-            log("❌ ERROR: Invalid private key.")
+        log("🏠 GAME TREASURY (public address): \(defaultRecipientAddress)")
+
+        guard let treasuryAddress = EthereumAddress(defaultRecipientAddress) else {
+            log("❌ ERROR: Configured treasury address is invalid.")
             return
         }
-        
-        // Default address = treasury address
-        defaultRecipientAddress = myAddress.address
-        log("🏠 DEFAULT RECIPIENT (App Treasury): \(defaultRecipientAddress)")
-        log("🆔 SENDER (Game Treasury): \(myAddress.address)")
-        
+
         do {
             let web3 = try await getWeb3()
-            
-            // 1. Check POL (gas)
-            let polBalance = try await web3.eth.getBalance(for: myAddress)
+
+            let polBalance = try await web3.eth.getBalance(for: treasuryAddress)
             let polDouble = Double(polBalance.description) ?? 0.0
-            let polString = String(format: "%.4f", polDouble / 1e18)
-            log("⛽️ GAS BALANCE: \(polString) POL")
-            
+            log("⛽️ GAS BALANCE: \(String(format: "%.4f", polDouble / 1e18)) POL")
             if polBalance == 0 {
                 log("⚠️ Game Treasury has 0 POL (no gas).")
             }
-            
-            // 2. Check token balance Treasury
+
             if let contractAddress = EthereumAddress(contractAddressString),
-               let contract = web3.contract(minimalABI, at: contractAddress, abiVersion: 2) {
-                
+               let contract = web3.contract(balanceOfABI, at: contractAddress, abiVersion: 2) {
                 log("📜 CONTRACT: \(contractAddress.address)")
-                
-                let parameters: [Any] = [myAddress]
-                
-                if let readOp = contract.createReadOperation("balanceOf", parameters: parameters) {
-                    readOp.transaction.from = myAddress
+
+                if let readOp = contract.createReadOperation("balanceOf", parameters: [treasuryAddress]) {
+                    readOp.transaction.from = treasuryAddress
                     do {
                         let response = try await readOp.callContractMethod()
-                        var balance: BigUInt?
-                        if let b = response["balance"] as? BigUInt { balance = b }
-                        else if let b = response["0"] as? BigUInt { balance = b }
-                        
+                        let balance = (response["balance"] as? BigUInt) ?? (response["0"] as? BigUInt)
                         if let bal = balance {
-                            let balDouble = Double(bal.description) ?? 0.0
-                            let autString = String(format: "%.2f", balDouble / 1e18)
-                            log("💰 AUTESTME BALANCE (Treasury): \(autString) AUT")
-                            
+                            let autDouble = Double(bal.description) ?? 0.0
+                            log("💰 AUTESTME BALANCE (Treasury): \(String(format: "%.2f", autDouble / 1e18)) AUT")
                             if bal == 0 {
                                 log("⚠️ Treasury has 0 AUT.")
                             }
@@ -185,123 +165,104 @@ class Web3Manager: ObservableObject {
             } else {
                 log("❌ Invalid contract address or ABI error.")
             }
-            
         } catch {
             log("❌ DIAGNOSTICS ERROR: \(error)")
         }
-        
+
         log("🕵️‍♂️ --- END DIAGNOSTICS ---\n")
     }
-    
-    // --- 5. REWARD FUNCTION ---
-    
-    func rewardPlayer(amount: Int) async {
-        if privateKey.isEmpty { return }
-        
+
+    // --- 5. REWARD CLAIMS (signed server-side by the claimReward Cloud Function) ---
+
+    /// Requests a reward payout for a completed game. `gameId` doubles as
+    /// the server's idempotency key — safe to call more than once for the
+    /// same game (e.g. after a retry), it will never pay out twice.
+    func rewardPlayer(amount: Int, gameId: UUID, deviceId: String) async {
+        guard amount > 0 else { return }
+        guard recipientAddress.hasPrefix("0x"), recipientAddress.count == 42 else {
+            statusMessage = "❌ Invalid player address format."
+            return
+        }
+
         isLoading = true
         statusMessage = "Sending reward (\(amount) AUT)..."
-        
-        guard !recipientAddress.isEmpty else {
-            statusMessage = "❌ No player address known. (This should not happen.)"
-            isLoading = false
-            return
-        }
-        
-        guard recipientAddress.hasPrefix("0x"),
-              recipientAddress.count == 42 else {
-            statusMessage = "❌ Invalid player address format."
-            isLoading = false
-            return
-        }
-        
+        persistPendingClaim(amount: amount, gameId: gameId, recipient: recipientAddress)
+
+        await submitClaim(amount: amount, gameId: gameId, recipient: recipientAddress, deviceId: deviceId)
+
+        isLoading = false
+    }
+
+    /// Retries a reward claim left over from a previous app launch that
+    /// never confirmed (e.g. the app was killed mid-request). Safe to call
+    /// unconditionally on launch — if the claim already succeeded, the
+    /// server's idempotency check makes this a no-op.
+    func retryPendingClaimIfAny(deviceId: String) async {
+        guard let pending = loadPendingClaim() else { return }
+        log("🔁 Retrying a reward claim from a previous session (game \(pending.gameId)).")
+        await submitClaim(amount: pending.amount, gameId: pending.gameId, recipient: pending.recipient, deviceId: deviceId)
+    }
+
+    private func submitClaim(amount: Int, gameId: UUID, recipient: String, deviceId: String) async {
         do {
-            let web3 = try await getWeb3()
-            
-            guard let contractAddress = EthereumAddress(contractAddressString) else {
-                throw Web3Error.inputError(desc: "Contract address error")
-            }
-            guard let contract = web3.contract(minimalABI, at: contractAddress, abiVersion: 2) else {
-                throw Web3Error.inputError(desc: "Contract not found")
-            }
-            
-            guard let treasuryAddress = walletAddress(from: privateKey) else {
-                throw Web3Error.inputError(desc: "Treasury key error")
-            }
-            
-            guard let playerAddress = EthereumAddress(recipientAddress) else {
-                throw Web3Error.inputError(desc: "Invalid player address")
-            }
-            
-            let amountBigInt = BigUInt(amount) * BigUInt(10).power(18)
-            let parameters: [Any] = [playerAddress, amountBigInt]
-            
-            log("💸 Sending \(amount) AUT")
-            log("FROM: \(treasuryAddress.address)")
-            log("TO: \(playerAddress.address)")
-            
-            guard let writeOperation = contract.createWriteOperation("transfer", parameters: parameters) else {
-                throw Web3Error.inputError(desc: "Function 'transfer' not found")
-            }
-            
-            writeOperation.transaction.from = treasuryAddress
-            writeOperation.transaction.chainID = chainID
-            
-            // Polygon EIP-1559: fetch base fee + set minimum 30 Gwei priority tip
-            let baseFee = try await web3.eth.gasPrice()
-            let priorityFee = BigUInt(30_000_000_000) // 30 Gwei tip (Polygon minimum is 25)
-            let maxFee = baseFee + priorityFee
-            writeOperation.transaction.maxPriorityFeePerGas = priorityFee
-            writeOperation.transaction.maxFeePerGas = maxFee
-            log("⛽️ Base fee: \(baseFee / BigUInt(1_000_000_000)) Gwei | Tip: 30 Gwei | Max: \(maxFee / BigUInt(1_000_000_000)) Gwei")
-            let policies = Policies(
-                gasLimitPolicy: .automatic,
-                gasPricePolicy: .manual(maxFee)
-            )
-            
-            let tx = try await writeOperation.writeToChain(password: "", policies: policies)
-            
-            statusMessage = "✅ \(amount) AUT sent! Hash: \(tx.hash.prefix(6))..."
-            log("✅ SUCCESS: \(tx.hash)")
-            isLoading = false
-            
-        } catch {
-            let msg = "❌ TRANSACTION ERROR: \(error.localizedDescription)"
-            log(msg)
-            
-            if error.localizedDescription.contains("insufficient funds") {
-                statusMessage = "❌ Insufficient POL (gas) in Treasury."
-            } else if error.localizedDescription.contains("reverted") {
-                statusMessage = "❌ Transaction reverted (check AUT balance)."
-            } else {
-                statusMessage = msg
-            }
-            isLoading = false
+            let response = try await claimer.claim(recipient: recipient, amount: amount, gameId: gameId, deviceId: deviceId)
+            let hashSuffix = response.txHash.map { " Hash: \(String($0.prefix(10)))..." } ?? ""
+            statusMessage = "✅ \(amount) AUT sent!\(hashSuffix)"
+            log("✅ SUCCESS: \(response.txHash ?? response.status)")
+            clearPendingClaim()
+        } catch let error as NSError {
+            handleClaimError(error)
         }
     }
-    
-    // --- 6. HELPER FUNCTIONS ---
-    
+
+    private func handleClaimError(_ error: NSError) {
+        log("❌ CLAIM ERROR: \(error.localizedDescription)")
+
+        switch FunctionsErrorCode(rawValue: error.code) {
+        case .resourceExhausted:
+            statusMessage = "❌ Daily reward limit reached. Try again tomorrow."
+            clearPendingClaim() // not retryable — resubmitting would just hit the same cap
+        case .invalidArgument:
+            statusMessage = "❌ \(error.localizedDescription)"
+            clearPendingClaim() // the request itself was rejected — retrying won't help
+        case .unauthenticated, .permissionDenied:
+            statusMessage = "❌ Could not verify this app instance. Please update the app."
+            clearPendingClaim()
+        default:
+            // Likely a transient network/server issue — keep the pending
+            // claim on disk so retryPendingClaimIfAny() can try again.
+            statusMessage = "❌ Could not reach the reward server. Will retry automatically."
+        }
+    }
+
+    private struct PendingClaim: Codable {
+        let amount: Int
+        let gameId: UUID
+        let recipient: String
+    }
+
+    private func persistPendingClaim(amount: Int, gameId: UUID, recipient: String) {
+        let claim = PendingClaim(amount: amount, gameId: gameId, recipient: recipient)
+        guard let data = try? JSONEncoder().encode(claim) else { return }
+        UserDefaults.standard.set(data, forKey: Self.pendingClaimDefaultsKey)
+    }
+
+    private func loadPendingClaim() -> PendingClaim? {
+        guard let data = UserDefaults.standard.data(forKey: Self.pendingClaimDefaultsKey) else { return nil }
+        return try? JSONDecoder().decode(PendingClaim.self, from: data)
+    }
+
+    private func clearPendingClaim() {
+        UserDefaults.standard.removeObject(forKey: Self.pendingClaimDefaultsKey)
+    }
+
+    // --- 6. HELPERS ---
+
     private func getWeb3() async throws -> Web3 {
         guard let url = URL(string: rpcURL) else {
             throw Web3Error.inputError(desc: "RPC URL error")
         }
-        let provider = try await Web3HttpProvider(url: url, network: .Custom(networkID: chainID))
-        let web3 = Web3(provider: provider)
-        
-        guard let keyData = Data.fromHex(privateKey) else {
-            throw Web3Error.inputError(desc: "Private key hex error")
-        }
-        
-        guard let keystore = try EthereumKeystoreV3(privateKey: keyData, password: "") else {
-            throw Web3Error.inputError(desc: "Failed to create keystore")
-        }
-        web3.addKeystoreManager(KeystoreManager([keystore]))
-        return web3
-    }
-    
-    private func walletAddress(from privateKeyHex: String) -> EthereumAddress? {
-        guard let data = Data.fromHex(privateKeyHex) else { return nil }
-        let keystore = try? EthereumKeystoreV3(privateKey: data, password: "")
-        return keystore?.addresses?.first
+        let provider = try await Web3HttpProvider(url: url, network: .Custom(networkID: BigUInt(137)))
+        return Web3(provider: provider)
     }
 }

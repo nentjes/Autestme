@@ -1,4 +1,5 @@
 import SwiftUI
+import Web3Core
 
 struct StartScreen: View {
     @Binding var navigationPath: NavigationPath
@@ -105,6 +106,11 @@ struct StartScreen: View {
                 Task {
                     await web3Manager.connect()
                 }
+            }
+            // Resolve any reward claim left over from a previous session
+            // that never confirmed (e.g. the app was killed mid-request).
+            Task {
+                await web3Manager.retryPendingClaimIfAny(deviceId: FirebaseManager.shared.deviceID)
             }
         }
         .onChange(of: isPlayerNameFocused) { focused in
@@ -416,8 +422,12 @@ struct StartScreen: View {
                     recipient = web3Manager.defaultRecipientAddress
                     web3Manager.statusMessage = NSLocalizedString("default_wallet_configured", comment: "Default Wallet Configured")
                 } else {
-                    // Scenario 1: User swiped and entered an address -> validate and use it
-                    guard userAddress.hasPrefix("0x"), userAddress.count == 42 else {
+                    // Scenario 1: User swiped and entered an address -> validate and use it.
+                    // This is a format check only (defense-in-depth): it catches
+                    // non-hex/wrong-length input immediately in the UI. The
+                    // authoritative EIP-55 checksum validation happens
+                    // server-side in the claimReward Cloud Function.
+                    guard EthereumAddress(userAddress) != nil else {
                         web3Manager.statusMessage = NSLocalizedString("invalid_wallet_address", comment: "Invalid Wallet Address")
                         return
                     }

@@ -20,6 +20,12 @@ struct EndScreen: View {
     @State private var textInputs: [AnyHashable: String] = [:]
     @FocusState private var focusedField: AnyHashable?
 
+    // Client-side defense-in-depth only — the authoritative cap is enforced
+    // server-side in functions/src/config.ts (MAX_AUT_PER_CLAIM), which must
+    // be kept in sync with this value and with the real per-round maximum
+    // (26, the letters mode's ShapeType/letter alphabet size).
+    private let maxAutPerClaim = 26
+
     // Total number of correct answers
     private var totalCorrect: Int {
         switch gameLogic.gameVersion {
@@ -190,11 +196,15 @@ struct EndScreen: View {
                         )
                     }
 
-                    // WEB3: actual reward
+                    // WEB3: actual reward, signed server-side by the claimReward Cloud Function
                     if totalCorrect > 0 && !web3Manager.recipientAddress.isEmpty {
-                        let rewardAmount = totalCorrect   // 1 AUT per correct answer
+                        let rewardAmount = min(totalCorrect, maxAutPerClaim)   // 1 AUT per correct answer
                         Task {
-                            await web3Manager.rewardPlayer(amount: rewardAmount)
+                            await web3Manager.rewardPlayer(
+                                amount: rewardAmount,
+                                gameId: gameLogic.gameID,
+                                deviceId: firebaseManager.deviceID
+                            )
                         }
                     } else if web3Manager.recipientAddress.isEmpty {
                         web3Manager.statusMessage = NSLocalizedString(

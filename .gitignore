@@ -4,3 +4,19 @@ GoogleService-Info.plist
 *.xcuserstate
 .claude/
 **/xcuserdata/
+
+# Cloud Functions (functions/) — never commit dependencies, build output,
+# or local secret/env files. TREASURY_PRIVATE_KEY lives in Secret Manager,
+# never on disk in this repo.
+functions/node_modules/
+functions/lib/
+functions/.env
+functions/.env.*
+functions/.secret.local
+
+# Firebase CLI / emulator artifacts
+firebase-debug.log
+firestore-debug.log
+functions/firebase-debug.log
+functions/firestore-debug.log
+.firebase/

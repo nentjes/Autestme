@@ -6,6 +6,8 @@
 //
 
 import XCTest
+import Web3Core
+import FirebaseFunctions
 @testable import Autestme
 
 final class Web3ManagerTests: XCTestCase {
@@ -190,5 +192,106 @@ final class Web3ManagerTests: XCTestCase {
 
         // Restore
         manager.statusMessage = originalMessage
+    }
+
+    // MARK: - EthereumAddress format validation (used by StartScreen)
+    //
+    // This is defense-in-depth only — the authoritative EIP-55 checksum
+    // check lives server-side (functions/src/validation.ts, ethers.getAddress()).
+
+    func testEthereumAddressAcceptsWellFormedHexAddress() {
+        XCTAssertNotNil(EthereumAddress("0x742d35Cc6634C0532925a3b844Bc9e7595f3a1Ac"))
+    }
+
+    func testEthereumAddressRejectsMalformedInput() {
+        XCTAssertNil(EthereumAddress("not-an-address"))
+        XCTAssertNil(EthereumAddress("0x123"))
+        XCTAssertNil(EthereumAddress(""))
+    }
+
+    // MARK: - Reward claiming (server-side signing via claimReward)
+
+    final class MockRewardClaimer: RewardClaiming {
+        var callCount = 0
+        var stubbedError: Error?
+        var stubbedResponse = RewardClaimResponse(status: "sent", txHash: "0xabc123")
+
+        func claim(recipient: String, amount: Int, gameId: UUID, deviceId: String) async throws -> RewardClaimResponse {
+            callCount += 1
+            if let stubbedError { throw stubbedError }
+            return stubbedResponse
+        }
+    }
+
+    private let testAddress = "0x742d35Cc6634C0532925a3b844Bc9e7595f3a1Ac"
+
+    @MainActor
+    func testRewardPlayer_SuccessUpdatesStatusAndLeavesNothingToRetry() async {
+        let mock = MockRewardClaimer()
+        let manager = Web3Manager(claimer: mock)
+        manager.recipientAddress = testAddress
+
+        await manager.rewardPlayer(amount: 5, gameId: UUID(), deviceId: "test-device")
+
+        XCTAssertEqual(mock.callCount, 1)
+        XCTAssertTrue(manager.statusMessage.contains("5 AUT sent"))
+
+        await manager.retryPendingClaimIfAny(deviceId: "test-device")
+        XCTAssertEqual(mock.callCount, 1, "a successful claim should leave nothing for the retry path to resubmit")
+    }
+
+    @MainActor
+    func testRewardPlayer_TransientFailureIsRetriedOnRelaunch() async {
+        let mock = MockRewardClaimer()
+        mock.stubbedError = NSError(domain: NSURLErrorDomain, code: NSURLErrorNetworkConnectionLost)
+        let manager = Web3Manager(claimer: mock)
+        manager.recipientAddress = testAddress
+
+        await manager.rewardPlayer(amount: 5, gameId: UUID(), deviceId: "test-device")
+        XCTAssertEqual(mock.callCount, 1)
+
+        mock.stubbedError = nil // server is reachable again
+        await manager.retryPendingClaimIfAny(deviceId: "test-device")
+        XCTAssertEqual(mock.callCount, 2, "a transient failure should leave a claim to retry on relaunch")
+    }
+
+    @MainActor
+    func testRewardPlayer_ResourceExhaustedIsNotRetried() async {
+        let mock = MockRewardClaimer()
+        mock.stubbedError = NSError(
+            domain: FunctionsErrorDomain,
+            code: FunctionsErrorCode.resourceExhausted.rawValue
+        )
+        let manager = Web3Manager(claimer: mock)
+        manager.recipientAddress = testAddress
+
+        await manager.rewardPlayer(amount: 5, gameId: UUID(), deviceId: "test-device")
+        XCTAssertEqual(mock.callCount, 1)
+        XCTAssertTrue(manager.statusMessage.contains("Daily reward limit"))
+
+        await manager.retryPendingClaimIfAny(deviceId: "test-device")
+        XCTAssertEqual(mock.callCount, 1, "a definitive rejection should not be retried")
+    }
+
+    @MainActor
+    func testRewardPlayer_RejectsMalformedRecipientBeforeCallingRelayer() async {
+        let mock = MockRewardClaimer()
+        let manager = Web3Manager(claimer: mock)
+        manager.recipientAddress = "not-an-address"
+
+        await manager.rewardPlayer(amount: 5, gameId: UUID(), deviceId: "test-device")
+
+        XCTAssertEqual(mock.callCount, 0, "a malformed recipient should be rejected before calling the relayer")
+    }
+
+    @MainActor
+    func testRewardPlayer_IgnoresZeroAmount() async {
+        let mock = MockRewardClaimer()
+        let manager = Web3Manager(claimer: mock)
+        manager.recipientAddress = testAddress
+
+        await manager.rewardPlayer(amount: 0, gameId: UUID(), deviceId: "test-device")
+
+        XCTAssertEqual(mock.callCount, 0)
     }
 }

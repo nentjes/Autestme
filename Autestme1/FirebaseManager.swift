@@ -39,8 +39,9 @@ class FirebaseManager: ObservableObject {
 
     private let db = Firestore.firestore()
 
-    // Persistent device identifier (no UIKit dependency)
-    private let deviceID: String = {
+    // Persistent device identifier (no UIKit dependency). Also used by
+    // Web3Manager as the device half of the reward relayer's per-day caps.
+    let deviceID: String = {
         if let existing = UserDefaults.standard.string(forKey: "autestme_device_id") {
             return existing
         }

@@ -1,0 +1,36 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Public leaderboard: anyone can read, anyone can create a valid entry,
+    // nobody can modify or delete an existing score. Matches CLAUDE.md's
+    // documented rules — versioned here so they're no longer Console-only.
+    match /leaderboard/{entryId} {
+      allow read: if true;
+      allow create: if request.resource.data.score is int
+                    && request.resource.data.score >= 0
+                    && request.resource.data.score <= 100
+                    && request.resource.data.gameType in ['shapes', 'letters', 'numbers'];
+      allow update, delete: if false;
+    }
+
+    // Reward-claim bookkeeping is written exclusively by the claimReward /
+    // reconcileStuckClaims Cloud Functions via the Admin SDK, which bypasses
+    // these rules entirely. No client should ever read or write them
+    // directly, so every path is explicitly denied.
+    match /rewardClaims/{claimId} {
+      allow read, write: if false;
+    }
+    match /rateLimits/{limitId} {
+      allow read, write: if false;
+    }
+    match /treasuryState/{docId} {
+      allow read, write: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

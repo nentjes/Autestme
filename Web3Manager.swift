@@ -29,9 +29,6 @@ class Web3Manager: ObservableObject {
     // This address is set from StartScreen (player wallet)
     @Published var recipientAddress: String = ""
 
-    // Own default wallet (Game Treasury)
-    @Published var defaultRecipientAddress: String = ""
-
     // Log for debug sheet
     @Published var debugLog: String = ""
     
@@ -131,9 +128,6 @@ class Web3Manager: ObservableObject {
             return
         }
         
-        // Default address = treasury address
-        defaultRecipientAddress = myAddress.address
-        log("🏠 DEFAULT RECIPIENT (App Treasury): \(defaultRecipientAddress)")
         log("🆔 SENDER (Game Treasury): \(myAddress.address)")
         
         do {

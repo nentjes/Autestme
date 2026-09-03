@@ -1,10 +1,14 @@
 # Opdracht aan Claude — Autestme iOS in de wereld van The Toy Mint
 
-**Opdrachtgever:** Roel Nentjes  
-**Creative direction:** Codex  
-**Status:** uitvoerbaar ontwerpbesluit  
-**Website-referentie:** <https://www.autestme.com/>  
-**Website-commit:** `314f5aa`  
+**Opdrachtgever:** Roel Nentjes
+
+**Creative direction:** Codex
+
+**Status:** uitvoerbaar ontwerpbesluit
+
+**Website-referentie:** <https://www.autestme.com/>
+
+**Website-commit:** `314f5aa`
 
 ## 1. Opdracht in één zin
 

@@ -77,13 +77,9 @@
 /* MARK: - New Crypto Strings (instrucciones de deslizar) */
 "swipe_instruction_bold" = "Desliza a la izquierda para ganar $AUT.";
 "swipe_instruction_body" = "Si deseas recibir tokens de Autestme, desliza de derecha a izquierda para mostrar las opciones de conexión de billetera.";
-"default_recipient_label" = "Destinatario predeterminado:";
-"use_default_button" = "Usar predeterminado";
 "connect_treasury_button" = "Conectar Tesorería";
 "crypto_rewards_disabled" = "Recompensas de cripto desactivadas.";
-"default_wallet_configured" = "Usando la billetera predeterminada de la aplicación.";
 "invalid_wallet_address" = "❌ Formato de dirección de billetera inválido.";
-"default_wallet_error" = "❌ La billetera predeterminada no está configurada. Espera el diagnóstico o ingresa una dirección.";
 
 /* MARK: - End Screen (adicional) */
 "end_screen_input_prompt" = "¿Cuántos elementos has visto?:";
@@ -97,3 +93,86 @@
 "leaderboard_submitting" = "Guardando puntuación...";
 "leaderboard_submitted" = "¡Puntuación guardada!";
 "leaderboard_submit_failed" = "Puntuación no guardada (verifica la conexión).";
+
+
+/* MARK: - Rediseño Toy Mint (StartScreen) */
+"mint_tagline" = "Juega. Piensa. Pásalo.";
+"mint_wordmark_accessibility" = "Autestme — la Toy Mint";
+"mint_highscore_counter_title" = "Tu mejor puntuación";
+"mint_leaderboard_hint" = "Ver el top 50 mundial";
+"mint_mode_section_title" = "Elige tu tipo de juego";
+"mint_letter_glyph" = "A";
+"mint_digit_glyph" = "3";
+"mint_settings_section_title" = "Ajustes de la máquina";
+"mint_duration_title" = "Duración";
+"mint_seconds_short" = "%ds";
+"mint_seconds_verbose" = "%d segundos";
+"mint_speed_title" = "Velocidad";
+"mint_items_per_second" = "%d elementos por segundo";
+"mint_item_count_title" = "Número de %@";
+"mint_item_count_value" = "%d %@";
+"mint_player_row_title" = "Nombre del jugador";
+"mint_player_hint" = "Se usa para guardar tus puntuaciones máximas";
+"mint_player_optional_hint" = "Opcional — aparece en la clasificación";
+"mint_start_hint" = "Inicia el juego de memoria con estos ajustes";
+"mint_rewards_title" = "Recompensas AUTEST";
+"mint_rewards_subtitle" = "Gana tokens $AUT en Polygon por respuestas correctas.";
+"mint_rewards_toggle_label" = "Recompensas activadas";
+"mint_rewards_toggle_hint" = "Envía tokens $AUT a tu billetera de Polygon";
+"mint_rewards_off_note" = "Las recompensas están desactivadas — puedes jugar sin cripto.";
+"mint_technical_details" = "Detalles técnicos";
+"mint_technical_details_hint" = "Ver diagnóstico de la conexión a la blockchain";
+"mint_wallet_hint" = "Introduce tu dirección de billetera Polygon para recibir $AUT";
+"mint_wallet_optional_note" = "Déjalo vacío para jugar sin recompensa on-chain.";
+"mint_wallet_status_idle" = "Esperando la conexión…";
+"mint_connect_treasury_hint" = "Conéctate con la tesorería en la blockchain";
+"mint_close_button" = "Cerrar";
+"mint_diagnostics_title" = "Diagnóstico";
+"mint_diagnostics_empty" = "Aún no hay diagnóstico disponible.";
+"mint_footer_credo" = "Play. Think. Pass it on.";
+"info_button_accessibility" = "Información del juego";
+"info_button_hint" = "Muestra las reglas y la información de recompensas de cripto";
+"disclosure_hint_expand" = "Toca dos veces para expandir";
+"disclosure_hint_collapse" = "Toca dos veces para contraer";
+"wallet_address_placeholder" = "0x…";
+
+
+/* MARK: - Rediseño Toy Mint (GameContainer) */
+"mint_time_label" = "Tiempo";
+"mint_sound_on_accessibility" = "Sonido activado";
+"mint_sound_off_accessibility" = "Sonido desactivado";
+"mint_sound_toggle_hint" = "Toca dos veces para alternar el sonido del juego";
+"mint_letter_accessibility" = "Letra %@";
+"mint_number_accessibility" = "Número %d";
+
+
+/* MARK: - Rediseño Toy Mint (EndScreen) */
+"mint_end_entry_title" = "Ronda completa";
+"mint_end_entry_prompt" = "Introduce cuántas veces viste cada elemento.";
+"mint_end_show_results_hint" = "Revela tu puntuación y envíala a la clasificación";
+"mint_end_entry_accessibility" = "Cantidad de %@";
+"mint_end_entry_hint" = "Introduce cuántas veces viste este elemento";
+"mint_end_score_title" = "Puntuación";
+"mint_end_score_of" = "de %d";
+"mint_end_score_accessibility" = "Puntuación %d de %d";
+"mint_end_highscore_new" = "Nueva mejor marca";
+"mint_end_highscore_new_accessibility" = "Nueva mejor puntuación personal";
+"mint_end_rule_wait" = "Quien lidera la clasificación espera hasta que alguien más lo supere.";
+"mint_end_correct" = "Correcto";
+"mint_end_incorrect" = "Diferente";
+"mint_end_result_accessibility" = "%1$@: %2$@, tú %3$d, real %4$d";
+"mint_end_status_title" = "Estado de la ronda";
+"mint_end_status_subtitle" = "Recompensa blockchain y envío a la clasificación";
+"mint_end_reward_idle" = "Recompensa: esperando…";
+"mint_end_leaderboard_idle" = "Clasificación: esperando…";
+"mint_end_replay_hint" = "Vuelve a la pantalla de inicio para jugar de nuevo";
+
+
+/* MARK: - Rediseño Toy Mint (LeaderboardView) */
+"mint_leaderboard_rule" = "Quien lidera espera hasta que alguien más ocupe el primer puesto.";
+"mint_leaderboard_row_accessibility" = "Posición %1$d, %2$@, %3$@, puntuación %4$d";
+
+
+/* MARK: - Rediseño Toy Mint (validación inline de billetera) */
+"mint_wallet_valid" = "Dirección Polygon válida";
+"mint_wallet_invalid_inline" = "La dirección debe empezar con 0x y tener 42 caracteres.";

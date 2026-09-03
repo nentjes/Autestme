@@ -77,13 +77,9 @@
 /* MARK: - New Crypto Strings (स्वाइप निर्देश) */
 "swipe_instruction_bold" = "$AUT कमाने के लिए बाईं ओर स्वाइप करें।";
 "swipe_instruction_body" = "यदि आप Autestme टोकन प्राप्त करना चाहते हैं, तो वॉलेट कनेक्शन विकल्प दिखाने के लिए दाएं से बाएं स्वाइप करें।";
-"default_recipient_label" = "डिफ़ॉल्ट प्राप्तकर्ता:";
-"use_default_button" = "डिफ़ॉल्ट उपयोग करें";
 "connect_treasury_button" = "खजाना जोड़ें";
 "crypto_rewards_disabled" = "क्रिप्टो पुरस्कार अक्षम।";
-"default_wallet_configured" = "ऐप के डिफ़ॉल्ट वॉलेट का उपयोग किया जा रहा है।";
 "invalid_wallet_address" = "❌ अमान्य वॉलेट पता प्रारूप।";
-"default_wallet_error" = "❌ डिफ़ॉल्ट वॉलेट कॉन्फ़िगर नहीं है। निदान की प्रतीक्षा करें या पता दर्ज करें।";
 
 /* MARK: - End Screen (अतिरिक्त) */
 "end_screen_input_prompt" = "आपने कितने आइटम देखे:";
@@ -97,3 +93,86 @@
 "leaderboard_submitting" = "स्कोर सहेजा जा रहा है...";
 "leaderboard_submitted" = "स्कोर सहेजा गया!";
 "leaderboard_submit_failed" = "स्कोर सहेजा नहीं गया (कनेक्शन जांचें).";
+
+
+/* MARK: - Toy Mint रीडिज़ाइन (StartScreen) */
+"mint_tagline" = "खेलो। सोचो। आगे बढ़ाओ।";
+"mint_wordmark_accessibility" = "Autestme — Toy Mint";
+"mint_highscore_counter_title" = "आपका सर्वश्रेष्ठ";
+"mint_leaderboard_hint" = "वैश्विक शीर्ष 50 स्कोर देखें";
+"mint_mode_section_title" = "अपना खेल प्रकार चुनें";
+"mint_letter_glyph" = "A";
+"mint_digit_glyph" = "3";
+"mint_settings_section_title" = "मशीन सेटिंग्स";
+"mint_duration_title" = "अवधि";
+"mint_seconds_short" = "%dसे";
+"mint_seconds_verbose" = "%d सेकंड";
+"mint_speed_title" = "गति";
+"mint_items_per_second" = "%d आइटम प्रति सेकंड";
+"mint_item_count_title" = "%@ की संख्या";
+"mint_item_count_value" = "%d %@";
+"mint_player_row_title" = "खिलाड़ी का नाम";
+"mint_player_hint" = "आपके हाई स्कोर ट्रैक करने के लिए उपयोग होता है";
+"mint_player_optional_hint" = "वैकल्पिक — लीडरबोर्ड में दिखाई देगा";
+"mint_start_hint" = "इन सेटिंग्स के साथ मेमोरी गेम शुरू करें";
+"mint_rewards_title" = "AUTEST पुरस्कार";
+"mint_rewards_subtitle" = "सही उत्तरों के लिए Polygon पर $AUT टोकन कमाएं।";
+"mint_rewards_toggle_label" = "पुरस्कार चालू";
+"mint_rewards_toggle_hint" = "$AUT टोकन आपके Polygon वॉलेट पर भेजें";
+"mint_rewards_off_note" = "पुरस्कार बंद हैं — आप बिना क्रिप्टो के भी खेल सकते हैं।";
+"mint_technical_details" = "तकनीकी विवरण";
+"mint_technical_details_hint" = "ब्लॉकचेन कनेक्शन के डायग्नोस्टिक्स देखें";
+"mint_wallet_hint" = "$AUT प्राप्त करने के लिए अपना Polygon वॉलेट पता दर्ज करें";
+"mint_wallet_optional_note" = "बिना ऑन-चेन पुरस्कार खेलने के लिए खाली छोड़ें।";
+"mint_wallet_status_idle" = "कनेक्शन की प्रतीक्षा…";
+"mint_connect_treasury_hint" = "ब्लॉकचेन खज़ाने से कनेक्ट करें";
+"mint_close_button" = "बंद करें";
+"mint_diagnostics_title" = "निदान";
+"mint_diagnostics_empty" = "अभी तक कोई निदान उपलब्ध नहीं।";
+"mint_footer_credo" = "Play. Think. Pass it on.";
+"info_button_accessibility" = "खेल जानकारी";
+"info_button_hint" = "खेल के नियम और क्रिप्टो पुरस्कार की जानकारी दिखाएं";
+"disclosure_hint_expand" = "विस्तार करने के लिए डबल-टैप करें";
+"disclosure_hint_collapse" = "बंद करने के लिए डबल-टैप करें";
+"wallet_address_placeholder" = "0x…";
+
+
+/* MARK: - Toy Mint रीडिज़ाइन (GameContainer) */
+"mint_time_label" = "समय";
+"mint_sound_on_accessibility" = "ध्वनि चालू";
+"mint_sound_off_accessibility" = "ध्वनि बंद";
+"mint_sound_toggle_hint" = "खेल की ध्वनि बदलने के लिए डबल-टैप करें";
+"mint_letter_accessibility" = "अक्षर %@";
+"mint_number_accessibility" = "अंक %d";
+
+
+/* MARK: - Toy Mint रीडिज़ाइन (EndScreen) */
+"mint_end_entry_title" = "राउंड पूरा";
+"mint_end_entry_prompt" = "दर्ज करें कि आपने प्रत्येक आइटम कितनी बार देखा।";
+"mint_end_show_results_hint" = "अपना स्कोर देखें और लीडरबोर्ड में जमा करें";
+"mint_end_entry_accessibility" = "%@ की संख्या";
+"mint_end_entry_hint" = "दर्ज करें कि आपने यह आइटम कितनी बार देखा";
+"mint_end_score_title" = "स्कोर";
+"mint_end_score_of" = "में से %d";
+"mint_end_score_accessibility" = "स्कोर %d में से %d";
+"mint_end_highscore_new" = "नया व्यक्तिगत सर्वश्रेष्ठ";
+"mint_end_highscore_new_accessibility" = "नया व्यक्तिगत सर्वश्रेष्ठ स्कोर";
+"mint_end_rule_wait" = "जो लीडरबोर्ड पर पहला है, वह किसी और के हराने तक इंतज़ार करता है।";
+"mint_end_correct" = "सही";
+"mint_end_incorrect" = "अलग";
+"mint_end_result_accessibility" = "%1$@: %2$@, आप %3$d, वास्तविक %4$d";
+"mint_end_status_title" = "राउंड स्थिति";
+"mint_end_status_subtitle" = "ब्लॉकचेन पुरस्कार और लीडरबोर्ड सबमिशन";
+"mint_end_reward_idle" = "पुरस्कार: प्रतीक्षा में…";
+"mint_end_leaderboard_idle" = "लीडरबोर्ड: प्रतीक्षा में…";
+"mint_end_replay_hint" = "फिर से खेलने के लिए स्टार्ट स्क्रीन पर लौटें";
+
+
+/* MARK: - Toy Mint रीडिज़ाइन (LeaderboardView) */
+"mint_leaderboard_rule" = "जो पहला है, वह किसी और के शीर्ष लेने तक इंतज़ार करता है।";
+"mint_leaderboard_row_accessibility" = "स्थान %1$d, %2$@, %3$@, स्कोर %4$d";
+
+
+/* MARK: - Toy Mint रीडिज़ाइन (वॉलेट इनलाइन जाँच) */
+"mint_wallet_valid" = "मान्य Polygon पता";
+"mint_wallet_invalid_inline" = "पता 0x से शुरू होकर 42 अक्षर का होना चाहिए।";

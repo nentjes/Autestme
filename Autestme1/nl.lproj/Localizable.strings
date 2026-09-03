@@ -87,10 +87,89 @@
 /* MARK: - NEW CRYPTO STRINGS (Voor swipe instructies) */
 "swipe_instruction_bold" = "Veeg naar links om $AUT te verdienen.";
 "swipe_instruction_body" = "Als je Autestme-tokens wilt ontvangen, veeg dan over het scherm van rechts naar links om de wallet-verbindingsopties te tonen.";
-"default_recipient_label" = "Standaard Ontvanger:";
-"use_default_button" = "Gebruik Standaard";
 "connect_treasury_button" = "Verbind Schatkist";
 "crypto_rewards_disabled" = "Crypto-beloningen uitgeschakeld.";
-"default_wallet_configured" = "Gebruik van de standaard wallet van de app.";
 "invalid_wallet_address" = "❌ Ongeldige wallet-adresindeling.";
-"default_wallet_error" = "❌ Standaard wallet is niet geconfigureerd. Wacht op diagnose of geef een adres op.";
+
+
+/* MARK: - Toy Mint redesign (StartScreen) */
+"mint_tagline" = "Speel. Denk. Geef door.";
+"mint_wordmark_accessibility" = "Autestme — de Toy Mint";
+"mint_highscore_counter_title" = "Jouw beste score";
+"mint_leaderboard_hint" = "Bekijk de wereldwijde top 50";
+"mint_mode_section_title" = "Kies je speltype";
+"mint_letter_glyph" = "A";
+"mint_digit_glyph" = "3";
+"mint_settings_section_title" = "Machine-instellingen";
+"mint_duration_title" = "Spelduur";
+"mint_seconds_short" = "%ds";
+"mint_seconds_verbose" = "%d seconden";
+"mint_speed_title" = "Tempo";
+"mint_items_per_second" = "%d items per seconde";
+"mint_item_count_title" = "Aantal %@";
+"mint_item_count_value" = "%d %@";
+"mint_player_row_title" = "Spelersnaam";
+"mint_player_hint" = "Wordt gebruikt om je highscores bij te houden";
+"mint_player_optional_hint" = "Optioneel — verschijnt in de highscores";
+"mint_start_hint" = "Start het geheugenspel met deze instellingen";
+"mint_rewards_title" = "AUTEST-beloningen";
+"mint_rewards_subtitle" = "Verdien $AUT-tokens op Polygon voor correcte antwoorden.";
+"mint_rewards_toggle_label" = "Beloningen aan";
+"mint_rewards_toggle_hint" = "Verstuur $AUT-tokens naar je Polygon-wallet";
+"mint_rewards_off_note" = "Beloningen staan uit — je kunt gewoon spelen zonder crypto.";
+"mint_technical_details" = "Technische details";
+"mint_technical_details_hint" = "Bekijk diagnose van de blockchain-verbinding";
+"mint_wallet_hint" = "Vul je Polygon-walletadres in om $AUT te ontvangen";
+"mint_wallet_optional_note" = "Laat leeg om zonder on-chain beloning te spelen.";
+"mint_wallet_status_idle" = "Wachten op verbinding…";
+"mint_connect_treasury_hint" = "Maak verbinding met de blockchain-schatkist";
+"mint_close_button" = "Sluiten";
+"mint_diagnostics_title" = "Diagnose";
+"mint_diagnostics_empty" = "Nog geen diagnose-informatie beschikbaar.";
+"mint_footer_credo" = "Play. Think. Pass it on.";
+"info_button_accessibility" = "Speluitleg";
+"info_button_hint" = "Toon de spelregels en info over crypto-beloningen";
+"disclosure_hint_expand" = "Dubbeltik om uit te vouwen";
+"disclosure_hint_collapse" = "Dubbeltik om in te klappen";
+"wallet_address_placeholder" = "0x…";
+
+
+/* MARK: - Toy Mint redesign (GameContainer) */
+"mint_time_label" = "Tijd";
+"mint_sound_on_accessibility" = "Geluid aan";
+"mint_sound_off_accessibility" = "Geluid uit";
+"mint_sound_toggle_hint" = "Dubbeltik om spelgeluiden te schakelen";
+"mint_letter_accessibility" = "Letter %@";
+"mint_number_accessibility" = "Cijfer %d";
+
+
+/* MARK: - Toy Mint redesign (EndScreen) */
+"mint_end_entry_title" = "Ronde klaar";
+"mint_end_entry_prompt" = "Voer in hoe vaak je elk item hebt gezien.";
+"mint_end_show_results_hint" = "Toon je score en zet hem op de highscore-lijst";
+"mint_end_entry_accessibility" = "Aantal %@";
+"mint_end_entry_hint" = "Voer in hoe vaak je dit item hebt gezien";
+"mint_end_score_title" = "Score";
+"mint_end_score_of" = "van %d";
+"mint_end_score_accessibility" = "Score %d van %d";
+"mint_end_highscore_new" = "Nieuwe persoonlijke top";
+"mint_end_highscore_new_accessibility" = "Nieuwe persoonlijke topscore";
+"mint_end_rule_wait" = "Wie bovenaan staat, wacht tot iemand anders hem verslaat.";
+"mint_end_correct" = "Goed";
+"mint_end_incorrect" = "Anders";
+"mint_end_result_accessibility" = "%1$@: %2$@, jij %3$d, werkelijk %4$d";
+"mint_end_status_title" = "Rondestatus";
+"mint_end_status_subtitle" = "Blockchain-beloning en highscore-verzending";
+"mint_end_reward_idle" = "Beloning: wachten…";
+"mint_end_leaderboard_idle" = "Highscore: wachten…";
+"mint_end_replay_hint" = "Ga terug naar het startscherm om opnieuw te spelen";
+
+
+/* MARK: - Toy Mint redesign (LeaderboardView) */
+"mint_leaderboard_rule" = "Wie bovenaan staat, wacht tot iemand anders de top overneemt.";
+"mint_leaderboard_row_accessibility" = "Positie %1$d, %2$@, %3$@, score %4$d";
+
+
+/* MARK: - Toy Mint redesign (wallet inline validatie) */
+"mint_wallet_valid" = "Geldig Polygon-adres";
+"mint_wallet_invalid_inline" = "Adres moet beginnen met 0x en 42 tekens lang zijn.";

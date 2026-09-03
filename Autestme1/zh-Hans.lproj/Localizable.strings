@@ -77,13 +77,9 @@
 /* MARK: - New Crypto Strings (滑动说明) */
 "swipe_instruction_bold" = "向左滑动以赚取 $AUT。";
 "swipe_instruction_body" = "如果您想接收 Autestme 代币，请从右向左滑动以显示钱包连接选项。";
-"default_recipient_label" = "默认接收者:";
-"use_default_button" = "使用默认";
 "connect_treasury_button" = "连接金库";
 "crypto_rewards_disabled" = "加密货币奖励已禁用。";
-"default_wallet_configured" = "使用应用程序的默认钱包。";
 "invalid_wallet_address" = "❌ 钱包地址格式无效。";
-"default_wallet_error" = "❌ 默认钱包未配置。请等待诊断或输入地址。";
 
 /* MARK: - End Screen (附加) */
 "end_screen_input_prompt" = "你看到了多少个项目:";
@@ -97,3 +93,86 @@
 "leaderboard_submitting" = "保存分数中...";
 "leaderboard_submitted" = "分数已保存！";
 "leaderboard_submit_failed" = "分数未保存（请检查网络连接）.";
+
+
+/* MARK: - Toy Mint 重设计 (StartScreen) */
+"mint_tagline" = "游戏。思考。传递。";
+"mint_wordmark_accessibility" = "Autestme — Toy Mint";
+"mint_highscore_counter_title" = "你的最佳";
+"mint_leaderboard_hint" = "查看全球前 50 名";
+"mint_mode_section_title" = "选择游戏类型";
+"mint_letter_glyph" = "A";
+"mint_digit_glyph" = "3";
+"mint_settings_section_title" = "机器设置";
+"mint_duration_title" = "时长";
+"mint_seconds_short" = "%d秒";
+"mint_seconds_verbose" = "%d 秒";
+"mint_speed_title" = "速度";
+"mint_items_per_second" = "每秒 %d 项";
+"mint_item_count_title" = "%@数量";
+"mint_item_count_value" = "%d %@";
+"mint_player_row_title" = "玩家名称";
+"mint_player_hint" = "用于记录你的最高分";
+"mint_player_optional_hint" = "可选 — 会显示在排行榜";
+"mint_start_hint" = "使用当前设置开始记忆游戏";
+"mint_rewards_title" = "AUTEST 奖励";
+"mint_rewards_subtitle" = "答对题目可在 Polygon 上赚取 $AUT 代币。";
+"mint_rewards_toggle_label" = "启用奖励";
+"mint_rewards_toggle_hint" = "将 $AUT 代币发送到你的 Polygon 钱包";
+"mint_rewards_off_note" = "奖励已关闭 — 你仍可无需加密货币直接游玩。";
+"mint_technical_details" = "技术详情";
+"mint_technical_details_hint" = "查看区块链连接诊断";
+"mint_wallet_hint" = "输入你的 Polygon 钱包地址以接收 $AUT";
+"mint_wallet_optional_note" = "留空即可以无链上奖励模式游玩。";
+"mint_wallet_status_idle" = "等待连接…";
+"mint_connect_treasury_hint" = "连接区块链金库";
+"mint_close_button" = "关闭";
+"mint_diagnostics_title" = "诊断";
+"mint_diagnostics_empty" = "暂无诊断信息。";
+"mint_footer_credo" = "Play. Think. Pass it on.";
+"info_button_accessibility" = "游戏信息";
+"info_button_hint" = "显示游戏规则与加密奖励信息";
+"disclosure_hint_expand" = "双击展开";
+"disclosure_hint_collapse" = "双击收起";
+"wallet_address_placeholder" = "0x…";
+
+
+/* MARK: - Toy Mint 重设计 (GameContainer) */
+"mint_time_label" = "时间";
+"mint_sound_on_accessibility" = "声音开启";
+"mint_sound_off_accessibility" = "声音关闭";
+"mint_sound_toggle_hint" = "双击切换游戏声音";
+"mint_letter_accessibility" = "字母 %@";
+"mint_number_accessibility" = "数字 %d";
+
+
+/* MARK: - Toy Mint 重设计 (EndScreen) */
+"mint_end_entry_title" = "本轮结束";
+"mint_end_entry_prompt" = "输入你看到每个项目的次数。";
+"mint_end_show_results_hint" = "揭晓分数并提交到排行榜";
+"mint_end_entry_accessibility" = "%@ 的计数";
+"mint_end_entry_hint" = "输入你看到该项目的次数";
+"mint_end_score_title" = "得分";
+"mint_end_score_of" = "／ %d";
+"mint_end_score_accessibility" = "得分 %d／%d";
+"mint_end_highscore_new" = "新的个人最佳";
+"mint_end_highscore_new_accessibility" = "新的个人最佳成绩";
+"mint_end_rule_wait" = "谁登顶排行榜，就要等别人来超越。";
+"mint_end_correct" = "正确";
+"mint_end_incorrect" = "不同";
+"mint_end_result_accessibility" = "%1$@：%2$@，你 %3$d，实际 %4$d";
+"mint_end_status_title" = "本轮状态";
+"mint_end_status_subtitle" = "区块链奖励与排行榜提交";
+"mint_end_reward_idle" = "奖励：等待中…";
+"mint_end_leaderboard_idle" = "排行榜：等待中…";
+"mint_end_replay_hint" = "回到起始界面再玩一局";
+
+
+/* MARK: - Toy Mint 重设计 (LeaderboardView) */
+"mint_leaderboard_rule" = "谁登顶排行榜，就要等别人来接管头名。";
+"mint_leaderboard_row_accessibility" = "第 %1$d 名，%2$@，%3$@，得分 %4$d";
+
+
+/* MARK: - Toy Mint 重设计 (钱包内联验证) */
+"mint_wallet_valid" = "Polygon 地址有效";
+"mint_wallet_invalid_inline" = "地址必须以 0x 开头且为 42 个字符。";

@@ -75,13 +75,9 @@
 /* MARK: - New Crypto Strings (swipe instructions) */
 "swipe_instruction_bold" = "Swipe left to earn $AUT.";
 "swipe_instruction_body" = "If you want to receive Autestme tokens, swipe from right to left to show the wallet connection options.";
-"default_recipient_label" = "Default Recipient:";
-"use_default_button" = "Use Default";
 "connect_treasury_button" = "Connect Treasury";
 "crypto_rewards_disabled" = "Crypto rewards disabled.";
-"default_wallet_configured" = "Using the app's default wallet.";
 "invalid_wallet_address" = "❌ Invalid wallet address format.";
-"default_wallet_error" = "❌ Default wallet is not configured. Wait for diagnostics or enter an address.";
 
 /* MARK: - End Screen (additional) */
 "end_screen_input_prompt" = "How many items did you see:";
@@ -95,3 +91,86 @@
 "leaderboard_submitting" = "Saving score...";
 "leaderboard_submitted" = "Score saved!";
 "leaderboard_submit_failed" = "Score not saved (check connection).";
+
+
+/* MARK: - Toy Mint redesign (StartScreen) */
+"mint_tagline" = "Play. Think. Pass it on.";
+"mint_wordmark_accessibility" = "Autestme — the Toy Mint";
+"mint_highscore_counter_title" = "Your best";
+"mint_leaderboard_hint" = "View the global top 50 scores";
+"mint_mode_section_title" = "Choose your game type";
+"mint_letter_glyph" = "A";
+"mint_digit_glyph" = "3";
+"mint_settings_section_title" = "Machine settings";
+"mint_duration_title" = "Duration";
+"mint_seconds_short" = "%ds";
+"mint_seconds_verbose" = "%d seconds";
+"mint_speed_title" = "Speed";
+"mint_items_per_second" = "%d items per second";
+"mint_item_count_title" = "Number of %@";
+"mint_item_count_value" = "%d %@";
+"mint_player_row_title" = "Player name";
+"mint_player_hint" = "Used to track your high scores";
+"mint_player_optional_hint" = "Optional — appears on the leaderboard";
+"mint_start_hint" = "Start the memory game with these settings";
+"mint_rewards_title" = "AUTEST rewards";
+"mint_rewards_subtitle" = "Earn $AUT tokens on Polygon for correct answers.";
+"mint_rewards_toggle_label" = "Rewards on";
+"mint_rewards_toggle_hint" = "Send $AUT tokens to your Polygon wallet";
+"mint_rewards_off_note" = "Rewards are off — you can play without crypto.";
+"mint_technical_details" = "Technical details";
+"mint_technical_details_hint" = "View blockchain connection diagnostics";
+"mint_wallet_hint" = "Enter your Polygon wallet address to receive $AUT";
+"mint_wallet_optional_note" = "Leave empty to play without on-chain reward.";
+"mint_wallet_status_idle" = "Waiting for connection…";
+"mint_connect_treasury_hint" = "Connect to the blockchain treasury wallet";
+"mint_close_button" = "Close";
+"mint_diagnostics_title" = "Diagnostics";
+"mint_diagnostics_empty" = "No diagnostics available yet.";
+"mint_footer_credo" = "Play. Think. Pass it on.";
+"info_button_accessibility" = "Game information";
+"info_button_hint" = "Show the game rules and information about crypto rewards";
+"disclosure_hint_expand" = "Double tap to expand";
+"disclosure_hint_collapse" = "Double tap to collapse";
+"wallet_address_placeholder" = "0x…";
+
+
+/* MARK: - Toy Mint redesign (GameContainer) */
+"mint_time_label" = "Time";
+"mint_sound_on_accessibility" = "Sound on";
+"mint_sound_off_accessibility" = "Sound off";
+"mint_sound_toggle_hint" = "Double tap to toggle game sounds";
+"mint_letter_accessibility" = "Letter %@";
+"mint_number_accessibility" = "Number %d";
+
+
+/* MARK: - Toy Mint redesign (EndScreen) */
+"mint_end_entry_title" = "Round complete";
+"mint_end_entry_prompt" = "Enter how many times you saw each item.";
+"mint_end_show_results_hint" = "Reveal your score and submit to the leaderboard";
+"mint_end_entry_accessibility" = "Count for %@";
+"mint_end_entry_hint" = "Enter how many times you saw this item";
+"mint_end_score_title" = "Score";
+"mint_end_score_of" = "of %d";
+"mint_end_score_accessibility" = "Score %d out of %d";
+"mint_end_highscore_new" = "New personal best";
+"mint_end_highscore_new_accessibility" = "New personal best score";
+"mint_end_rule_wait" = "Whoever tops the leaderboard waits until someone else beats them.";
+"mint_end_correct" = "Correct";
+"mint_end_incorrect" = "Different";
+"mint_end_result_accessibility" = "%1$@: %2$@, you entered %3$d, actual %4$d";
+"mint_end_status_title" = "Round status";
+"mint_end_status_subtitle" = "Blockchain reward and leaderboard submission";
+"mint_end_reward_idle" = "Reward: waiting…";
+"mint_end_leaderboard_idle" = "Leaderboard: waiting…";
+"mint_end_replay_hint" = "Return to the start screen to play again";
+
+
+/* MARK: - Toy Mint redesign (LeaderboardView) */
+"mint_leaderboard_rule" = "Whoever leads the board waits until someone else takes the top spot.";
+"mint_leaderboard_row_accessibility" = "Rank %1$d, %2$@, %3$@, score %4$d";
+
+
+/* MARK: - Toy Mint redesign (wallet inline validation) */
+"mint_wallet_valid" = "Valid Polygon address";
+"mint_wallet_invalid_inline" = "Address should start with 0x and be 42 characters.";

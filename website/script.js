@@ -20,8 +20,31 @@ const AUT_CONTRACT = '0x3a0DCDFf06f9a0Ad20f212224a5162F6fc0e344c';
 document.addEventListener('DOMContentLoaded', () => {
     setLanguage(currentLang);
     fetchAUTPrice();
-    initSmoothScroll();
+    initMintRail();
 });
+
+// The five navigation marks echo the physical progress rail on the Toy Mint.
+function initMintRail() {
+    const links = [...document.querySelectorAll('.nav-links > a[href^="#"]')]
+        .filter(link => link.getAttribute('href') !== '#bounties');
+    if (!links.length || !('IntersectionObserver' in window)) return;
+
+    const sections = links
+        .map(link => document.querySelector(link.getAttribute('href')))
+        .filter(Boolean);
+
+    const observer = new IntersectionObserver(entries => {
+        const visible = entries
+            .filter(entry => entry.isIntersecting)
+            .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (!visible) return;
+        links.forEach(link => {
+            link.classList.toggle('is-active', link.getAttribute('href') === `#${visible.target.id}`);
+        });
+    }, { rootMargin: '-28% 0px -54% 0px', threshold: [0, .2, .5] });
+
+    sections.forEach(section => observer.observe(section));
+}
 
 // Set language
 function setLanguage(lang) {
@@ -32,11 +55,11 @@ function setLanguage(lang) {
 
     // Set font family for Chinese and Hindi
     if (lang === 'zh') {
-        document.body.style.fontFamily = "'Noto Sans SC', 'Inter', sans-serif";
+        document.body.style.fontFamily = "'Noto Sans SC', 'DM Sans', sans-serif";
     } else if (lang === 'hi') {
-        document.body.style.fontFamily = "'Noto Sans Devanagari', 'Inter', sans-serif";
+        document.body.style.fontFamily = "'Noto Sans Devanagari', 'DM Sans', sans-serif";
     } else {
-        document.body.style.fontFamily = "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif";
+        document.body.style.fontFamily = "'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
     }
 
     // Update all translatable elements
@@ -65,18 +88,21 @@ function updateLangButton() {
 function toggleLangMenu() {
     const menu = document.getElementById('langMenu');
     menu.classList.toggle('active');
+    document.querySelector('.lang-toggle')?.setAttribute('aria-expanded', String(menu.classList.contains('active')));
 }
 
 // Close language menu
 function closeLangMenu() {
     const menu = document.getElementById('langMenu');
     if (menu) menu.classList.remove('active');
+    document.querySelector('.lang-toggle')?.setAttribute('aria-expanded', 'false');
 }
 
 // Toggle mobile menu
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('active');
+    document.querySelector('.mobile-menu-btn')?.setAttribute('aria-expanded', String(menu.classList.contains('active')));
 }
 
 // Copy contract address to clipboard
@@ -129,6 +155,7 @@ document.addEventListener('click', (e) => {
     // Close mobile menu
     if (mobileMenu && !mobileMenu.contains(e.target) && !mobileBtn.contains(e.target)) {
         mobileMenu.classList.remove('active');
+        mobileBtn?.setAttribute('aria-expanded', 'false');
     }
 
     // Close language menu

@@ -15,11 +15,11 @@
 		8B4D32722EDB39F700E0BFFD /* Secrets.exemples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */; };
 		8B79A63A2F4A2DCA0054734C /* AutestmeWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 8B79A61A2F4A2DC80054734C /* AutestmeWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8B7F8B9D2F4CD12D00860E32 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8B9C2F4CD12D00860E32 /* FirebaseManager.swift */; };
-		8B7F8BAA2F4CD12D00860E33 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8BAB2F4CD12D00860E33 /* KeychainHelper.swift */; };
 		8B7F8B9F2F4CD13A00860E32 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8B7F8B9E2F4CD13A00860E32 /* GoogleService-Info.plist */; };
 		8B7F8BA12F4CD15900860E32 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8BA02F4CD15900860E32 /* LeaderboardView.swift */; };
 		8B7F8BA42F4CD4E900860E32 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F8BA32F4CD4E900860E32 /* FirebaseCore */; };
 		8B7F8BA62F4CD4F100860E32 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F8BA52F4CD4F100860E32 /* FirebaseFirestore */; };
+		8B7F8BAA2F4CD12D00860E33 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8BAB2F4CD12D00860E33 /* KeychainHelper.swift */; };
 		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
 		8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF32DFEB900003B628F /* circle.mp3 */; };
 		8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF52DFEB910003B628F /* oval.mp3 */; };
@@ -48,6 +48,7 @@
 		BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */; };
 		BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */; };
 		BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */; };
+		CD70A00110001A0100000001 /* ToyMintKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD70A00110002A0100000001 /* ToyMintKit.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,9 +114,9 @@
 		8B79A6262F4A2DCA0054734C /* AutestmeWatch Watch AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutestmeWatch Watch AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B79A6302F4A2DCA0054734C /* AutestmeWatch Watch AppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "AutestmeWatch Watch AppUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B7F8B9C2F4CD12D00860E32 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
-		8B7F8BAB2F4CD12D00860E33 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		8B7F8B9E2F4CD13A00860E32 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8B7F8BA02F4CD15900860E32 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		8B7F8BAB2F4CD12D00860E33 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
 		8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationViewWrapper.swift; sourceTree = "<group>"; };
 		8BC9EEF32DFEB900003B628F /* circle.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = circle.mp3; sourceTree = "<group>"; };
 		8BC9EEF52DFEB910003B628F /* oval.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = oval.mp3; sourceTree = "<group>"; };
@@ -157,6 +158,7 @@
 		BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameContainerView.swift; sourceTree = "<group>"; };
 		BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndScreen.swift; sourceTree = "<group>"; };
 		F548C70BA32A4B2B93452B6E /* AppStoreScreenshots.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreScreenshots.swift; sourceTree = "<group>"; };
+		CD70A00110002A0100000001 /* ToyMintKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToyMintKit.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -281,6 +283,7 @@
 				8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */,
 				BCA976D32A13B075004EC58D /* ShapeType.swift */,
 				BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */,
+				CD70A00110002A0100000001 /* ToyMintKit.swift */,
 				1A964CA879F849EBBAEDD63C /* SoundManager.swift */,
 				BCCCABC22A0BA55E006CB6EF /* Assets.xcassets */,
 				8BE673262EB6B25C009F7596 /* beep.mp3 */,
@@ -457,7 +460,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2620;
-				LastUpgradeCheck = 2620;
+				LastUpgradeCheck = 2630;
 				TargetAttributes = {
 					8B79A6192F4A2DC80054734C = {
 						CreatedOnToolsVersion = 26.2;
@@ -616,6 +619,7 @@
 				BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */,
 				8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */,
 				BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */,
+				CD70A00110001A0100000001 /* ToyMintKit.swift in Sources */,
 				BCCCABBF2A0BA55C006CB6EF /* AutestmeApp.swift in Sources */,
 				8B7F8BA12F4CD15900860E32 /* LeaderboardView.swift in Sources */,
 				B2FD738A572745C7B804B66B /* SoundManager.swift in Sources */,
@@ -1005,7 +1009,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -1029,7 +1033,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 7;
+				MARKETING_VERSION = 10;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -1049,7 +1053,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 7;
+				CURRENT_PROJECT_VERSION = 10;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Autestme1/Preview Content\"";
 				ENABLE_APP_SANDBOX = YES;
@@ -1073,7 +1077,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 13.3;
-				MARKETING_VERSION = 7;
+				MARKETING_VERSION = 10;
 				PRODUCT_BUNDLE_IDENTIFIER = autestme.nl.nentjes.Autestme1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;

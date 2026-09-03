@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "mint-mark.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "codex",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

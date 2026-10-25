@@ -1,24 +1,38 @@
 rules_version = '2';
 
+// Autestme Firestore rules.
+//
+// Threat model: the Firebase web API key is shipped in the iOS bundle
+// (GoogleService-Info.plist), so anyone can extract it and write to
+// Firestore directly. These rules are the only thing standing between
+// honest clients and a forged/spammed leaderboard, or any client trying
+// to touch reward-payout bookkeeping that must only ever be written by
+// the Cloud Functions themselves.
+//
+// Deploy with:
+//   firebase deploy --only firestore:rules
+//
+// Test locally with the emulator:
+//   firebase emulators:start --only firestore
+
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // Public leaderboard: anyone can read, anyone can create a valid entry,
-    // nobody can modify or delete an existing score. Matches CLAUDE.md's
-    // documented rules — versioned here so they're no longer Console-only.
+    // Public leaderboard. Anyone can read; writes are append-only and
+    // strictly validated. No update or delete from clients.
     match /leaderboard/{entryId} {
       allow read: if true;
-      allow create: if request.resource.data.score is int
-                    && request.resource.data.score >= 0
-                    && request.resource.data.score <= 100
-                    && request.resource.data.gameType in ['shapes', 'letters', 'numbers'];
+
+      allow create: if isValidLeaderboardEntry(request.resource.data);
+
       allow update, delete: if false;
     }
 
     // Reward-claim bookkeeping is written exclusively by the claimReward /
     // reconcileStuckClaims Cloud Functions via the Admin SDK, which bypasses
     // these rules entirely. No client should ever read or write them
-    // directly, so every path is explicitly denied.
+    // directly. (The catch-all below already denies these too — matched
+    // explicitly here so it's clear this is deliberate, not an oversight.)
     match /rewardClaims/{claimId} {
       allow read, write: if false;
     }
@@ -29,8 +43,56 @@ service cloud.firestore {
       allow read, write: if false;
     }
 
+    // Default-deny everything else. Add explicit matches for any new
+    // collection — never widen the catch-all.
     match /{document=**} {
       allow read, write: if false;
     }
   }
+}
+
+function isValidLeaderboardEntry(data) {
+  return
+    // Exactly these seven fields, no extras.
+    data.keys().hasOnly([
+      'playerName', 'score', 'gameType',
+      'deviceID', 'timestamp', 'gameTime', 'numberOfItems'
+    ]) &&
+    data.keys().hasAll([
+      'playerName', 'score', 'gameType',
+      'deviceID', 'timestamp', 'gameTime', 'numberOfItems'
+    ]) &&
+
+    // playerName: non-empty string, capped to keep payloads small and
+    // avoid abusive long names in the leaderboard UI.
+    data.playerName is string &&
+    data.playerName.size() >= 1 &&
+    data.playerName.size() <= 30 &&
+
+    // score: integer in the range the game can actually produce.
+    // The iOS app awards 1 point per correct answer; cap at 100.
+    data.score is int &&
+    data.score >= 0 &&
+    data.score <= 100 &&
+
+    // gameType: one of the three GameVersion firestoreValue strings.
+    data.gameType in ['shapes', 'letters', 'numbers'] &&
+
+    // deviceID: non-empty string, UUID-sized.
+    data.deviceID is string &&
+    data.deviceID.size() >= 8 &&
+    data.deviceID.size() <= 64 &&
+
+    // gameTime: seconds the round lasted. Sanity bounds.
+    data.gameTime is int &&
+    data.gameTime > 0 &&
+    data.gameTime <= 600 &&
+
+    // numberOfItems: how many shapes/letters/numbers were shown.
+    data.numberOfItems is int &&
+    data.numberOfItems > 0 &&
+    data.numberOfItems <= 100 &&
+
+    // timestamp must be the server's clock — clients can't backdate.
+    data.timestamp == request.time;
 }

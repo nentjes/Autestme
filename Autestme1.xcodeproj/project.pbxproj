@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		521535F2828B4F8DA9FA3D4C /* AppStoreScreenshots.swift in Sources */ = {isa = PBXBuildFile; fileRef = F548C70BA32A4B2B93452B6E /* AppStoreScreenshots.swift */; };
 		8B1F6D342DF6F38C00D99F37 /* GameTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B1F6D322DF6EE7E00D99F37 /* GameTimer.swift */; };
-		8B4AABD02ED9028700EE7D58 /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B4AABCF2ED9028700EE7D58 /* web3swift */; };
 		8B4AABD22ED9039B00EE7D58 /* Web3Manager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */; };
 		8B4D32702EDB355A00E0BFFD /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D326F2EDB355A00E0BFFD /* Secrets.swift */; };
 		8B4D32722EDB39F700E0BFFD /* Secrets.exemples.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */; };
@@ -21,7 +20,6 @@
 		8B7F8BA62F4CD4F100860E32 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F8BA52F4CD4F100860E32 /* FirebaseFirestore */; };
 		A3A1470351260F9CED49E864 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = FE2478E6CE44D4634E8ABB37 /* FirebaseFunctions */; };
 		EB25675E6AA54FC3F1C45E40 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 10F3D376EACEC0A27D182295 /* FirebaseAppCheck */; };
-		6440037F1D45160FAC7E8F9B /* web3swift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B4AABCF2ED9028700EE7D58 /* web3swift */; };
 		D02186D8F84F380FED146B5C /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = FE2478E6CE44D4634E8ABB37 /* FirebaseFunctions */; };
 		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
 		8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF32DFEB900003B628F /* circle.mp3 */; };
@@ -195,7 +193,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8B7F8BA42F4CD4E900860E32 /* FirebaseCore in Frameworks */,
-				8B4AABD02ED9028700EE7D58 /* web3swift in Frameworks */,
 				8B7F8BA62F4CD4F100860E32 /* FirebaseFirestore in Frameworks */,
 				A3A1470351260F9CED49E864 /* FirebaseFunctions in Frameworks */,
 				EB25675E6AA54FC3F1C45E40 /* FirebaseAppCheck in Frameworks */,
@@ -206,7 +203,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6440037F1D45160FAC7E8F9B /* web3swift in Frameworks */,
 				D02186D8F84F380FED146B5C /* FirebaseFunctions in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -506,7 +502,6 @@
 			);
 			mainGroup = BCCCABB22A0BA55C006CB6EF;
 			packageReferences = (
-				8B4AABCE2ED9028700EE7D58 /* XCRemoteSwiftPackageReference "web3swift" */,
 				8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = BCCCABBC2A0BA55C006CB6EF /* Products */;
@@ -1244,14 +1239,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8B4AABCE2ED9028700EE7D58 /* XCRemoteSwiftPackageReference "web3swift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/web3swift-team/web3swift.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 3.3.2;
-			};
-		};
 		8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -1263,11 +1250,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8B4AABCF2ED9028700EE7D58 /* web3swift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8B4AABCE2ED9028700EE7D58 /* XCRemoteSwiftPackageReference "web3swift" */;
-			productName = web3swift;
-		};
 		8B7F8BA32F4CD4E900860E32 /* FirebaseCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

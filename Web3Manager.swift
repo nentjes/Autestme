@@ -1,7 +1,4 @@
 import Foundation
-import BigInt
-import web3swift
-import Web3Core
 import FirebaseFunctions
 import SwiftUI
 
@@ -40,7 +37,6 @@ class Web3Manager: ObservableObject {
     static let shared = Web3Manager()
 
     // --- 1. CONFIGURATION ---
-    private let rpcURL = "https://polygon-bor-rpc.publicnode.com"
 
     // Contract address (public info)
     private let contractAddressString = Secrets.contractAddress
@@ -62,19 +58,6 @@ class Web3Manager: ObservableObject {
     // Log for debug sheet
     @Published var debugLog: String = ""
 
-    // --- 3. Read-only ERC-20 ABI — balance checks only, no signing capability lives here ---
-    private let balanceOfABI = """
-    [
-        {
-            "constant": true,
-            "inputs": [{"name": "_owner", "type": "address"}],
-            "name": "balanceOf",
-            "outputs": [{"name": "balance", "type": "uint256"}],
-            "type": "function"
-        }
-    ]
-    """
-
     private let claimer: RewardClaiming
     private static let pendingClaimDefaultsKey = "com.autestme.pendingRewardClaim"
 
@@ -87,89 +70,23 @@ class Web3Manager: ObservableObject {
         debugLog += message + "\n"
     }
 
-    // --- 4. CONNECT & DIAGNOSTICS (read-only, no private key involved) ---
+    // --- 3. CONNECT ---
+    //
+    // There is nothing left to actually "connect" to on the client: the
+    // treasury address is a public constant, and no private key or RPC
+    // session lives here. This just confirms configuration and surfaces a
+    // Polygonscan link for anyone who wants to check live balances —
+    // on-chain reads no longer happen in the app itself.
 
     func connect() async {
         isLoading = true
-        statusMessage = "Running diagnostics..."
-        debugLog = "--- START DIAGNOSTICS ---\n"
-
-        do {
-            try await withThrowingTaskGroup(of: Void.self) { group in
-                group.addTask { await self.runDiagnostics() }
-                group.addTask {
-                    try await Task.sleep(for: .seconds(10)) // 10 second timeout
-                    throw CancellationError()
-                }
-                try await group.next()
-                group.cancelAll()
-            }
-            isConnected = true
-            statusMessage = "✅ Connected"
-        } catch is CancellationError {
-            let msg = "⏱️ Connection timeout - check your internet"
-            statusMessage = msg
-            log(msg)
-        } catch {
-            let msg = "❌ Connection error: \(error.localizedDescription)"
-            statusMessage = msg
-            log(msg)
-        }
-
-        isLoading = false
-    }
-
-    func runDiagnostics() async {
-        log("\n🕵️‍♂️ --- START DIAGNOSTICS ---")
+        debugLog = "--- CONFIGURATION ---\n"
         log("🏠 GAME TREASURY (public address): \(defaultRecipientAddress)")
-
-        guard let treasuryAddress = EthereumAddress(defaultRecipientAddress) else {
-            log("❌ ERROR: Configured treasury address is invalid.")
-            return
-        }
-
-        do {
-            let web3 = try await getWeb3()
-
-            let polBalance = try await web3.eth.getBalance(for: treasuryAddress)
-            let polDouble = Double(polBalance.description) ?? 0.0
-            log("⛽️ GAS BALANCE: \(String(format: "%.4f", polDouble / 1e18)) POL")
-            if polBalance == 0 {
-                log("⚠️ Game Treasury has 0 POL (no gas).")
-            }
-
-            if let contractAddress = EthereumAddress(contractAddressString),
-               let contract = web3.contract(balanceOfABI, at: contractAddress, abiVersion: 2) {
-                log("📜 CONTRACT: \(contractAddress.address)")
-
-                if let readOp = contract.createReadOperation("balanceOf", parameters: [treasuryAddress]) {
-                    readOp.transaction.from = treasuryAddress
-                    do {
-                        let response = try await readOp.callContractMethod()
-                        let balance = (response["balance"] as? BigUInt) ?? (response["0"] as? BigUInt)
-                        if let bal = balance {
-                            let autDouble = Double(bal.description) ?? 0.0
-                            log("💰 AUTESTME BALANCE (Treasury): \(String(format: "%.2f", autDouble / 1e18)) AUT")
-                            if bal == 0 {
-                                log("⚠️ Treasury has 0 AUT.")
-                            }
-                        } else {
-                            log("⚠️ balanceOf returned a response, but no BigUInt.")
-                        }
-                    } catch {
-                        log("❌ 'balanceOf' failed: \(error.localizedDescription)")
-                    }
-                } else {
-                    log("❌ Cannot create readOperation('balanceOf').")
-                }
-            } else {
-                log("❌ Invalid contract address or ABI error.")
-            }
-        } catch {
-            log("❌ DIAGNOSTICS ERROR: \(error)")
-        }
-
-        log("🕵️‍♂️ --- END DIAGNOSTICS ---\n")
+        log("📜 CONTRACT: \(contractAddressString)")
+        log("🔎 Live balances: https://polygonscan.com/address/\(defaultRecipientAddress)")
+        isConnected = true
+        statusMessage = "✅ Connected"
+        isLoading = false
     }
 
     // --- 5. REWARD CLAIMS (signed server-side by the claimReward Cloud Function) ---
@@ -254,15 +171,5 @@ class Web3Manager: ObservableObject {
 
     private func clearPendingClaim() {
         UserDefaults.standard.removeObject(forKey: Self.pendingClaimDefaultsKey)
-    }
-
-    // --- 6. HELPERS ---
-
-    private func getWeb3() async throws -> Web3 {
-        guard let url = URL(string: rpcURL) else {
-            throw Web3Error.inputError(desc: "RPC URL error")
-        }
-        let provider = try await Web3HttpProvider(url: url, network: .Custom(networkID: BigUInt(137)))
-        return Web3(provider: provider)
     }
 }

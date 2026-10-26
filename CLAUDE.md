@@ -24,7 +24,7 @@ xcodebuild -project Autestme1.xcodeproj -scheme Autestme1 -destination 'platform
 1. Xcode 15+, iOS 16.4+ deployment target, Swift 5.9
 2. Copy `Secrets.exemples.swift` to `Secrets.swift` and fill in the public contract/wallet addresses. **No private key belongs in this file, or anywhere in the app** — see `functions/README.md` for treasury key setup.
 3. Download `GoogleService-Info.plist` from Firebase Console → project Autestme → iOS app, and add it to the `Autestme1` target in Xcode
-4. Open `Autestme1.xcodeproj` — SPM dependencies (web3swift, BigInt, FirebaseCore, FirebaseFirestore, FirebaseFunctions, FirebaseAppCheck) resolve automatically
+4. Open `Autestme1.xcodeproj` — SPM dependencies (FirebaseCore, FirebaseFirestore, FirebaseFunctions, FirebaseAppCheck) resolve automatically
 5. Register the app for App Check (App Attest) in the Firebase Console — required for `Web3Manager.rewardPlayer` to succeed against a deployed backend; see `functions/README.md` step 8
 6. Deploy the `functions/` Cloud Functions project (see `functions/README.md`) — the app has no reward flow to test against without it
 
@@ -37,7 +37,7 @@ xcodebuild -project Autestme1.xcodeproj -scheme Autestme1 -destination 'platform
 - **`AutestmeApp.swift`** → `NavigationViewWrapper` → `StartScreen`: App entry point, initialises Firebase via `FirebaseApp.configure()`
 - **`GameLogic`** (ObservableObject): Game state, configuration, scoring, high score persistence via UserDefaults
 - **`GameTimer`** (ObservableObject): Dual timer system (countdown + shape display intervals)
-- **`Web3Manager`** (ObservableObject, Singleton): Requests reward payouts via the `claimReward` Firebase Cloud Function (`/functions`) and reads read-only balances via web3swift on Polygon Mainnet. Holds no private key — signing happens exclusively server-side.
+- **`Web3Manager`** (ObservableObject, Singleton): Requests reward payouts via the `claimReward` Firebase Cloud Function (`/functions`). Holds no private key, no blockchain library, and makes no direct chain calls — signing and on-chain reads happen exclusively server-side.
 - **`FirebaseManager`** (ObservableObject, Singleton, @MainActor): Firestore operations — `submitScore()` and `fetchLeaderboard()`; uses fire-and-forget pattern for score submission
 - **`LeaderboardView`** (SwiftUI View): Displays top 50 global scores with gold/silver/bronze colours; pull-to-refresh
 
@@ -54,9 +54,9 @@ Three modes via `GameVersion` enum: `.shapes`, `.letters`, `.numbers`
 - `Web3Manager.shared` requests reward payouts and reads read-only treasury/contract balances; it never holds a private key
 - Rewards triggered on EndScreen for correct answers (1 AUT per correct answer, capped at 26 per claim — see `functions/src/config.ts`)
 - The treasury private key lives only in Google Secret Manager, loaded exclusively by the `claimReward` Cloud Function (`functions/src/claimReward.ts`), which validates the request (checksummed address, per-call/per-wallet/per-device/global daily caps, idempotent per `gameId`), signs, and broadcasts the transfer
-- Gas price: fetched dynamically from network + 30 Gwei tip for Polygon EIP-1559 minimum (mirrored client- and server-side)
+- Gas price: fetched dynamically from network + 30 Gwei tip for Polygon EIP-1559 minimum, entirely server-side
 - `Web3Manager` persists an unclaimed reward locally and retries it via `retryPendingClaimIfAny` on next launch if the request never confirmed — safe to retry because the server dedupes by `gameId`
-- All blockchain calls are async/await
+- The `claimReward` call is async/await; the client makes no direct blockchain calls at all
 - See `/functions/README.md` for the full backend architecture, deploy steps, and operational limits
 
 ### Firebase / Leaderboard Integration

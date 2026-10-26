@@ -1,5 +1,4 @@
 import SwiftUI
-import Web3Core
 
 struct StartScreen: View {
     @Binding var navigationPath: NavigationPath
@@ -427,7 +426,7 @@ struct StartScreen: View {
                     // non-hex/wrong-length input immediately in the UI. The
                     // authoritative EIP-55 checksum validation happens
                     // server-side in the claimReward Cloud Function.
-                    guard EthereumAddress(userAddress) != nil else {
+                    guard userAddress.range(of: "^0x[0-9a-fA-F]{40}$", options: .regularExpression) != nil else {
                         web3Manager.statusMessage = NSLocalizedString("invalid_wallet_address", comment: "Invalid Wallet Address")
                         return
                     }

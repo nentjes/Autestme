@@ -6,7 +6,6 @@
 //
 
 import XCTest
-import Web3Core
 import FirebaseFunctions
 @testable import Autestme
 
@@ -194,19 +193,23 @@ final class Web3ManagerTests: XCTestCase {
         manager.statusMessage = originalMessage
     }
 
-    // MARK: - EthereumAddress format validation (used by StartScreen)
+    // MARK: - Wallet address format validation (used by StartScreen)
     //
     // This is defense-in-depth only — the authoritative EIP-55 checksum
     // check lives server-side (functions/src/validation.ts, ethers.getAddress()).
 
-    func testEthereumAddressAcceptsWellFormedHexAddress() {
-        XCTAssertNotNil(EthereumAddress("0x742d35Cc6634C0532925a3b844Bc9e7595f3a1Ac"))
+    private func isWellFormedHexAddress(_ address: String) -> Bool {
+        address.range(of: "^0x[0-9a-fA-F]{40}$", options: .regularExpression) != nil
     }
 
-    func testEthereumAddressRejectsMalformedInput() {
-        XCTAssertNil(EthereumAddress("not-an-address"))
-        XCTAssertNil(EthereumAddress("0x123"))
-        XCTAssertNil(EthereumAddress(""))
+    func testAddressRegexAcceptsWellFormedHexAddress() {
+        XCTAssertTrue(isWellFormedHexAddress("0x742d35Cc6634C0532925a3b844Bc9e7595f3a1Ac"))
+    }
+
+    func testAddressRegexRejectsMalformedInput() {
+        XCTAssertFalse(isWellFormedHexAddress("not-an-address"))
+        XCTAssertFalse(isWellFormedHexAddress("0x123"))
+        XCTAssertFalse(isWellFormedHexAddress(""))
     }
 
     // MARK: - Reward claiming (server-side signing via claimReward)

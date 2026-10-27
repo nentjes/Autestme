@@ -21,6 +21,11 @@ class AutestmeAppCheckProviderFactory: NSObject, AppCheckProviderFactory {
         // this literal for a value loaded from an untracked local config
         // (or re-investigate why the scheme env var wasn't picked up) so
         // this isn't a hardcoded value in source control long-term.
+        //
+        // Current SDK versions read "AppCheckDebugToken" first and only
+        // fall back to the older "FIRAAppCheckDebugToken" name — set both
+        // so this doesn't depend on which one this SDK version checks.
+        setenv("AppCheckDebugToken", "567A47FD-E8ED-4299-A0A1-7162B2F52DA7", 1)
         setenv("FIRAAppCheckDebugToken", "567A47FD-E8ED-4299-A0A1-7162B2F52DA7", 1)
         return AppCheckDebugProvider(app: app)
         #else
@@ -34,6 +39,26 @@ struct AutestmeApp: App {
     init() {
         AppCheck.setAppCheckProviderFactory(AutestmeAppCheckProviderFactory())
         FirebaseApp.configure()
+
+        #if DEBUG
+        // Temporary diagnostics for the App Check debug-token rejection —
+        // isolates the token fetch itself from the claimReward call, and
+        // confirms which Firebase app identity this build is actually
+        // configured against. Remove once claims are confirmed working.
+        print("🔎 Firebase project:", FirebaseApp.app()?.options.projectID ?? "nil")
+        print("🔎 Firebase app ID:", FirebaseApp.app()?.options.googleAppID ?? "nil")
+        print("🔎 Bundle ID:", Bundle.main.bundleIdentifier ?? "nil")
+        print("🔎 AppCheckDebugToken env present:", ProcessInfo.processInfo.environment["AppCheckDebugToken"] != nil)
+        print("🔎 FIRAAppCheckDebugToken env present:", ProcessInfo.processInfo.environment["FIRAAppCheckDebugToken"] != nil)
+
+        AppCheck.appCheck().token(forcingRefresh: true) { token, error in
+            if let error {
+                print("🔎 APP CHECK FAILED:", error)
+            } else {
+                print("🔎 APP CHECK SUCCESS, expires:", token?.expirationDate as Any)
+            }
+        }
+        #endif
     }
 
     var body: some Scene {

@@ -32,6 +32,9 @@ struct LeaderboardView: View {
                             Text(entry.gameType.capitalized)
                                 .font(.caption)
                                 .foregroundColor(.secondary)
+                            Text(Self.dateFormatter.string(from: entry.timestamp))
+                                .font(.caption2)
+                                .foregroundColor(.secondary)
                         }
 
                         Spacer()
@@ -70,6 +73,13 @@ struct LeaderboardView: View {
         default: return .primary
         }
     }
+
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .none
+        return formatter
+    }()
 }
 
 #Preview {

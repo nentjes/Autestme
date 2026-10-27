@@ -18,9 +18,6 @@
 		8B7F8BA12F4CD15900860E32 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7F8BA02F4CD15900860E32 /* LeaderboardView.swift */; };
 		8B7F8BA42F4CD4E900860E32 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F8BA32F4CD4E900860E32 /* FirebaseCore */; };
 		8B7F8BA62F4CD4F100860E32 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8B7F8BA52F4CD4F100860E32 /* FirebaseFirestore */; };
-		A3A1470351260F9CED49E864 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = FE2478E6CE44D4634E8ABB37 /* FirebaseFunctions */; };
-		EB25675E6AA54FC3F1C45E40 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 10F3D376EACEC0A27D182295 /* FirebaseAppCheck */; };
-		D02186D8F84F380FED146B5C /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = FE2478E6CE44D4634E8ABB37 /* FirebaseFunctions */; };
 		8B9102382DFE03B5006B79D8 /* NavigationViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9102372DFE03AB006B79D8 /* NavigationViewWrapper.swift */; };
 		8BC9EEF42DFEB900003B628F /* circle.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF32DFEB900003B628F /* circle.mp3 */; };
 		8BC9EEF62DFEB910003B628F /* oval.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8BC9EEF52DFEB910003B628F /* oval.mp3 */; };
@@ -36,6 +33,7 @@
 		8BTEST0012EF0000000000001 /* GameLogicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000011 /* GameLogicTests.swift */; };
 		8BTEST0012EF0000000000002 /* GameTimerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000012 /* GameTimerTests.swift */; };
 		8BTEST0012EF0000000000003 /* Web3ManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */; };
+		A3A1470351260F9CED49E864 /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = FE2478E6CE44D4634E8ABB37 /* FirebaseFunctions */; };
 		B2FD738A572745C7B804B66B /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A964CA879F849EBBAEDD63C /* SoundManager.swift */; };
 		B5DD56FF8E5C4C57AB7B6B68 /* beep1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 650EC48A1200424483A4AC10 /* beep1.mp3 */; };
 		BCA976D42A13B075004EC58D /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCA976D32A13B075004EC58D /* ShapeType.swift */; };
@@ -49,6 +47,8 @@
 		BCCCABEC2A0BA700006CB6EF /* StartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEB2A0BA700006CB6EF /* StartScreen.swift */; };
 		BCCCABF02A0BA7A7006CB6EF /* GameContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABEF2A0BA7A7006CB6EF /* GameContainerView.swift */; };
 		BCCCABF42A0BA81C006CB6EF /* EndScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCCABF32A0BA81C006CB6EF /* EndScreen.swift */; };
+		D02186D8F84F380FED146B5C /* FirebaseFunctions in Frameworks */ = {isa = PBXBuildFile; productRef = FE2478E6CE44D4634E8ABB37 /* FirebaseFunctions */; };
+		EB25675E6AA54FC3F1C45E40 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 10F3D376EACEC0A27D182295 /* FirebaseAppCheck */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +141,7 @@
 		8BTEST0012EF0000000000011 /* GameLogicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameLogicTests.swift; sourceTree = "<group>"; };
 		8BTEST0012EF0000000000012 /* GameTimerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameTimerTests.swift; sourceTree = "<group>"; };
 		8BTEST0012EF0000000000013 /* Web3ManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Web3ManagerTests.swift; sourceTree = "<group>"; };
+		B333FE6430901B6E003AC26D /* AutestmeRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AutestmeRelease.entitlements; sourceTree = "<group>"; };
 		BCA976D32A13B075004EC58D /* ShapeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
 		BCCCABBB2A0BA55C006CB6EF /* Autestme.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Autestme.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BCCCABBE2A0BA55C006CB6EF /* AutestmeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutestmeApp.swift; sourceTree = "<group>"; };
@@ -230,6 +231,7 @@
 		BCCCABB22A0BA55C006CB6EF = {
 			isa = PBXGroup;
 			children = (
+				B333FE6430901B6E003AC26D /* AutestmeRelease.entitlements */,
 				8B4D326F2EDB355A00E0BFFD /* Secrets.swift */,
 				8B4D32712EDB39F700E0BFFD /* Secrets.exemples.swift */,
 				8B4AABD12ED9039B00EE7D58 /* Web3Manager.swift */,
@@ -1046,7 +1048,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
-				CODE_SIGN_ENTITLEMENTS = Autestme1/Autestme1.entitlements;
+				CODE_SIGN_ENTITLEMENTS = AutestmeRelease.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
 				DEAD_CODE_STRIPPING = YES;
@@ -1250,6 +1252,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		10F3D376EACEC0A27D182295 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
 		8B7F8BA32F4CD4E900860E32 /* FirebaseCore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
@@ -1264,11 +1271,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFunctions;
-		};
-		10F3D376EACEC0A27D182295 /* FirebaseAppCheck */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8B7F8BA22F4CD27E00860E32 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAppCheck;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

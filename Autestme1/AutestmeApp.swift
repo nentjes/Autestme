@@ -39,26 +39,6 @@ struct AutestmeApp: App {
     init() {
         AppCheck.setAppCheckProviderFactory(AutestmeAppCheckProviderFactory())
         FirebaseApp.configure()
-
-        #if DEBUG
-        // Temporary diagnostics for the App Check debug-token rejection —
-        // isolates the token fetch itself from the claimReward call, and
-        // confirms which Firebase app identity this build is actually
-        // configured against. Remove once claims are confirmed working.
-        print("🔎 Firebase project:", FirebaseApp.app()?.options.projectID ?? "nil")
-        print("🔎 Firebase app ID:", FirebaseApp.app()?.options.googleAppID ?? "nil")
-        print("🔎 Bundle ID:", Bundle.main.bundleIdentifier ?? "nil")
-        print("🔎 AppCheckDebugToken env present:", ProcessInfo.processInfo.environment["AppCheckDebugToken"] != nil)
-        print("🔎 FIRAAppCheckDebugToken env present:", ProcessInfo.processInfo.environment["FIRAAppCheckDebugToken"] != nil)
-
-        AppCheck.appCheck().token(forcingRefresh: true) { token, error in
-            if let error {
-                print("🔎 APP CHECK FAILED:", error)
-            } else {
-                print("🔎 APP CHECK SUCCESS, expires:", token?.expirationDate as Any)
-            }
-        }
-        #endif
     }
 
     var body: some Scene {
